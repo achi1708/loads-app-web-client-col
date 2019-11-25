@@ -1,0 +1,41 @@
+#container-row{
+	display: table-row;
+	#left_panel_login{
+		.title-info-left{
+			@include margin-bottom(20px);
+		}
+		.subtitle-info-left{
+			@include margin-bottom(70px);
+		}
+		.content-items-left{
+			@include margin-bottom(60px);
+			.item-img-left{
+				height: 36px;
+				@include margin-bottom(25px);
+			}
+		}
+	}
+	#right_panel_login{
+		background: $white_color;
+		.content-logo-login{
+			margin-bottom: $spacing4_value * 3;
+		}
+		#buttons-panel{
+			@include margin-bottom(30px);
+		}
+		.title-login{
+			@include margin-bottom(10px);
+		}
+		.subtitle-login{
+			@include margin-bottom(10px);
+		}
+		form{
+			@include margin-top(30px);
+		}
+	}
+}
+
+.bg-carrier-login{
+	background: url(../assets/images/carrier/bg-carrier.png) left center no-repeat;
+	background-size: cover;
+}

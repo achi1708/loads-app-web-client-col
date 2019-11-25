@@ -1,0 +1,265 @@
+<div id="page-section-post-load" class="page-section page-section-with-margin col bg-color-white">
+	<div class="row">
+		<div class="col-12 col-sm-6">
+			<div class="full-width" ng-if="!loadsdetails.loadingDataDetails && loadsdetails.loadData.load_id">
+				<ul class="nav pickup-destiny-details">
+					<li class="nav-item">
+						<h3 class="title-load-details">{{loadsdetails.loadData.from}}</h3>
+					</li>
+					<li class="nav-item">
+						<span class="fa fa-arrow-right"></span>
+					</li>
+					<li class="nav-item">
+						<h3 class="title-load-details">{{loadsdetails.loadData.to}}</h3>
+					</li>
+					<li class="nav-item">
+						<span>{{loadsdetails.loadData.distance}}</span>
+					</li>
+				</ul>
+				<div class="row">
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:load_id:title' | translate}}</label>
+						<p>{{loadsdetails.loadData.load_id}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:pickup_address:title' | translate}}</label>
+						<p>{{loadsdetails.loadData.pickup_address}}</p>
+					</div>
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:pickup_address_details:title' | translate }}</label>
+						<p>{{loadsdetails.loadData.detail_address_pickup}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:delivery_address:title' | translate}}</label>
+						<p>{{loadsdetails.loadData.delivery_address}}</p>
+					</div>
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:delivery_address_details:title' | translate }}</label>
+						<p>{{loadsdetails.loadData.detail_address_delivery}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:pickup_date:title' | translate}}</label>
+						<p>{{loadsdetails.loadData.pickup_date | amDateFormat:'MMM DD YYYY'}}</p>
+					</div>
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:delivery_date:title' | translate}}</label>
+						<p>{{loadsdetails.loadData.delivery_date | amDateFormat:'MMM DD YYYY'}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:pickup_zip_code:title' | translate }}</label>
+						<p>{{loadsdetails.loadData.zip_code_pickup}}</p>
+					</div>
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:delivery_zip_code:title' | translate }}</label>
+						<p>{{loadsdetails.loadData.zip_code_delivery}}</p>
+					</div>
+				</div>
+				<div class="row" ng-if="loadsdetails.userProfile != 'DRIVER'">
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:price:title' | translate}}</label>
+						<p>{{loadsdetails.loadData.price_to_show}}</p>
+					</div>
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:rate_miles:title' | translate}}</label>
+						<p>{{loadsdetails.loadData.rate_miles}}</p>
+					</div>
+				</div>
+				<div class="row" ng-if="loadsdetails.userProfile == 'DRIVER'">
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:price:title' | translate}}</label>
+						<p ng-if="loadsdetails.loadData.show_precie_drive == '1' || loadsdetails.seePrice">{{loadsdetails.loadData.price_to_show}}</p>
+						<p ng-if="loadsdetails.loadData.show_precie_drive != '1' && !loadsdetails.seePrice">{{'loads:details:price:prohibited' | translate}}</p>
+					</div>
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:rate_miles:title' | translate}}</label>
+						<p>{{loadsdetails.loadData.rate_miles}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:length:title' | translate}}</label>
+						<p>{{loadsdetails.loadData.length_loads}}</p>
+					</div>
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:weight:title' | translate}}</label>
+						<p>{{loadsdetails.loadData.weight}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:size:title' | translate}}</label>
+						<p>{{loadsdetails.loadData.dimension}}</p>
+					</div>
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:load_type:title' | translate}}</label>
+						<p>{{loadsdetails.loadData.type_load_text}}</p>
+					</div>
+				</div>
+				<div class="row parrafo" permission permission-only="['GENERADOR_CARGA', 'CARRIER','OWNER']">
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:tipocamion:title' | translate}}</label>
+						<p>{{loadsdetails.loadData.TipoDeCamion_text}}</p>
+					</div>
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:tipotrailer:title' | translate}}</label>
+						<p>{{loadsdetails.loadData.TipoDeTrailer_text}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:carrier_skills_required:title' | translate}}</label>
+						<p>{{loadsdetails.loadData.carrier_skills_required_text}}</p>
+					</div>
+					<div permission permission-only="'GENERADOR_CARGA'" ng-if="!loadsdetails.loadingDataDetails && loadsdetails.loadData.status_loads !='NOT_ASSIGNED' && loadsdetails.loadData.carrier" class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:carrier_assigned:title' | translate}}</label>
+						<p><a ng-click="loadsdetails.openCarrierAssignedInfoModal()" class="small-text normal-link pointer">{{loadsdetails.loadData.carrier.company_name}}</a></p>
+					</div>
+					<div permission permission-only="['CARRIER','OWNER']" ng-if="!loadsdetails.loadingDataDetails && loadsdetails.loadData.status_loads !='NOT_ASSIGNED' && loadsdetails.loadData.carrier" class="col-12 col-sm-6 parrafo">
+						<label ng-if="loadsdetails.loadData.carrier.user_id == loadsdetails.myData.user_id">{{'loads:details:carrier_assigned:title' | translate}}</label>
+						<p ng-if="loadsdetails.loadData.carrier.user_id == loadsdetails.myData.user_id">{{'loads:details:carrier_assigned:me:text' | translate}}</p>
+					</div>
+				</div>
+				<div permission permission-only="'GENERADOR_CARGA'" class="row">
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:recurrent:title' | translate}}</label>
+						<p ng-if="loadsdetails.loadData.recurrent_load_status != 'False'">{{'loads:details:recurrent:options:yes' | translate}}</p>
+						<p ng-if="loadsdetails.loadData.recurrent_load_status == 'False'">{{'loads:details:recurrent:options:no' | translate}}</p>
+					</div>
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:frecuency:title' | translate}}</label>
+						<p ng-if="loadsdetails.loadData.recurrent.name">{{loadsdetails.loadData.recurrent.name}}</p>
+					</div>
+				</div>
+				<div class="row" permission permission-only="['CARRIER','OWNER']">
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:fast_pay_status:title' | translate}}</label>
+						<p ng-if="loadsdetails.loadData.status_factoring == 0">{{'loads:details:fast_pay_status:options:not_applied' | translate}}Not applied</p>
+						<p ng-if="loadsdetails.loadData.status_factoring == 1">{{'loads:details:fast_pay_status:options:applied' | translate}}Applied</p>
+					</div>
+					<div ng-if="!loadsdetails.loadingDataDetails && loadsdetails.loadData.status_loads !='NOT_ASSIGNED' && loadsdetails.loadData.info_truck != 0" class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:truck_assigned:title' | translate}}</label><br>
+						<a ng-click="loadsdetails.openTruckAssignedInfoModal()" class="small-text normal-link pointer">{{loadsdetails.loadData.info_truck.brand}} {{loadsdetails.loadData.info_truck.model}}</a>
+					</div>
+					<div ng-if="!loadsdetails.loadingDataDetails && loadsdetails.loadData.status_loads !='NOT_ASSIGNED' && loadsdetails.loadData.status_loads !='CANCELADA' && loadsdetails.loadData.info_truck == 0" class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:truck_assigned:title' | translate}}</label><br>
+						<a ng-click="loadsdetails.openChooseTruckModal()" class="small-text normal-link pointer">{{'loads:details:truck_assigned:choose_truck:text' | translate}}</a>
+					</div>
+				</div>
+				<div class="row">
+					<div permission permission-only="'GENERADOR_CARGA'" ng-if="!loadsdetails.loadingDataDetails && loadsdetails.loadData.status_loads =='NOT_ASSIGNED'" class="col-12 col-sm-6 parrafo">
+						<a ng-click="loadsdetails.openCarrierRequestModal()" class="small-text normal-link pointer">{{'loads:details:carrier_requests:title' | translate}} ({{loadsdetails.loadData.request_carriers}})</a>
+					</div>
+					<div ng-if="!loadsdetails.loadingDataDetails && (loadsdetails.loadData.status_loads =='ACEPTADA' || loadsdetails.loadData.status_loads =='EN_TRANSITO' || loadsdetails.loadData.status_loads =='ENTREGADA') && loadsdetails.loadData.history_load" class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:see_activity:title' | translate}}</label><br>
+						<a ng-click="loadsdetails.openLoadActivityInfoModal()" class="small-text normal-link pointer">{{'loads:details:see_activity:link:title' | translate}}</a>
+					</div>
+				</div>
+				<div permission permission-only="['CARRIER', 'GENERADOR_CARGA', 'OWNER']" ng-if="(loadsdetails.loadData.status_loads == 'PAGADA' || loadsdetails.loadData.status_loads == 'ENTREGADA') && loadsdetails.loadData.info_payment.length" class="row">
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:payment_day:title' | translate }}</label>
+						<p>{{loadsdetails.loadData.info_payment[0].payment_day}}</p>
+					</div>
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:payment_date:title' | translate }}</label>
+						<p>{{loadsdetails.loadData.info_payment[0].payment_date | amDateFormat:'MMM DD YYYY'}}</p>
+					</div>
+				</div>
+				<div permission permission-only="['CARRIER', 'GENERADOR_CARGA', 'OWNER']" ng-if="(loadsdetails.loadData.status_loads == 'PAGADA' || loadsdetails.loadData.status_loads == 'ENTREGADA') && loadsdetails.loadData.info_payment.length" class="row">
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:payment_amount:title' | translate }}</label>
+						<p>{{loadsdetails.loadData.info_payment[0].ammount}}</p>
+					</div>
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:payment_transfered:title' | translate }}</label>
+						<p>{{loadsdetails.loadData.info_payment[0].transfered}}</p>
+					</div>
+				</div>
+				<div permission permission-only="['CARRIER', 'GENERADOR_CARGA', 'OWNER']" ng-if="(loadsdetails.loadData.status_loads == 'PAGADA' || loadsdetails.loadData.status_loads == 'ENTREGADA') && loadsdetails.loadData.info_payment.length" class="row">
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:payment_percentage:title' | translate }}</label>
+						<p>{{loadsdetails.loadData.info_payment[0].payment_percentage}}</p>
+					</div>
+				</div>
+				<div ng-if="loadsdetails.loadData.info_load_generator.phone_company" class="row">
+					<div class="col-12 col-sm-6 parrafo">
+						<label>{{'loads:details:contactinfo:title' | translate }}</label>
+						<p>{{loadsdetails.loadData.info_load_generator.phone_company}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 parrafo">
+						<label>{{'loads:details:comments:title' | translate }}</label>
+						<p>{{loadsdetails.loadData.comments}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 parrafo">
+						<label>{{ 'loads:details:documents:title' | translate }}</label>
+						<p>{{ 'loads:details:invoice:title' | translate }}</p>
+						<p ng-if="!loadsdetails.loadInvoiceImgFilesList.length && !loadsdetails.loadInvoiceDocsFilesList.length">{{ 'loads:details:documents:empty' | translate }}</p>
+						<p ng-if="loadsdetails.loadInvoiceImgFilesList.length">{{ 'loads:details:documents:images' | translate }}</p>
+						<div ng-if="loadsdetails.loadInvoiceImgFilesList.length" ng-image-gallery images="loadsdetails.loadInvoiceImgFilesList"></div>
+						<p ng-if="loadsdetails.loadInvoiceDocsFilesList.length">{{ 'loads:details:documents:docs' | translate }}</p>
+						<ul ng-if="loadsdetails.loadInvoiceDocsFilesList.length" class="nav documents-list">
+							<li class="nav-item parrafo" ng-repeat="fileInvoice in loadsdetails.loadInvoiceDocsFilesList">
+								<a href="{{fileInvoice.url}}" target="_blank">
+									<span alt="{{fileInvoice.title}}" class="fa fa-file-pdf-o"></span><br>
+									<span>{{fileInvoice.invoice_name}}</span>
+								</a>
+							</li>
+						</ul>
+						<p>{{ 'loads:details:legal_docs:title' | translate }}</p>
+						<p ng-if="!loadsdetails.loadLegalImgFilesList.length && !loadsdetails.loadLegalDocsFilesList.length">{{ 'loads:details:documents:empty' | translate }}</p>
+						<div ng-if="loadsdetails.loadLegalImgFilesList.length" ng-image-gallery images="loadsdetails.loadLegalImgFilesList"></div>
+						<p ng-if="loadsdetails.loadLegalDocsFilesList.length">{{ 'loads:details:documents:docs' | translate }}</p>
+						<ul ng-if="loadsdetails.loadLegalDocsFilesList.length" class="nav documents-list">
+							<li class="nav-item parrafo" ng-repeat="fileLegal in loadsdetails.loadLegalDocsFilesList">
+								<a href="{{fileLegal.url}}" target="_blank">
+									<span alt="{{fileLegal.title}}" class="fa fa-file-pdf-o"></span><br>
+									<span>{{fileLegal.invoice_name}}</span>
+								</a>
+							</li>
+						</ul>
+						<br /><br />
+						<button permission permission-only="'GENERADOR_CARGA'" ng-if="loadsdetails.loadData.status_loads !='PAGADA'" ng-disabled="loadsdetails.legalDocFileSaving" ngf-select="loadsdetails.uploadLegalDoc($file, $invalidFiles)" ngf-accept="'image/jpg, image/jpeg, application/pdf'" class="btn btn-class2 bg-color-1 color-white">
+							<main-loader ng-if="loadsdetails.legalDocFileSaving"></main-loader>
+		                    <span ng-show="!loadsdetails.legalDocFileSaving">{{ 'loads::add:form:upload_doc:btn' | translate }}</span>
+		                </button>
+		                <button permission permission-only="['CARRIER','OWNER']" ng-if="loadsdetails.loadData.carrier.user_id && loadsdetails.loadData.carrier.user_id == loadsdetails.myData.user_id" ng-disabled="loadsdetails.legalDocFileSaving" ngf-select="loadsdetails.uploadLegalDoc($file, $invalidFiles)" ngf-accept="'image/jpg, image/jpeg, application/pdf'" class="btn btn-class2 bg-color-1 color-white">
+							<main-loader ng-if="loadsdetails.legalDocFileSaving"></main-loader>
+		                    <span ng-show="!loadsdetails.legalDocFileSaving">{{ 'loads::add:form:upload_doc:btn' | translate }}</span>
+		                </button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-sm-6">
+			<div class="full-width text-right parrafo">
+				<a ui-sref="private.loads()" ui-sref-opts="{}" class="normal-link">
+					<span class="fa fa-arrow-left"></span> {{ 'loads:details:options:comeback' | translate }}
+				</a>
+			</div>
+			<div class="full-width loads-map-detail parrafo" ng-if="!loadsdetails.loadingDataDetails && loadsdetails.loadData.load_id">
+				<div ng-if="!loadsdetails.loadingMap">
+					<ui-gmap-google-map center='loadsdetails.map.center' zoom='loadsdetails.map.zoom'>
+						<ui-gmap-marker ng-repeat="m in loadsdetails.markers" coords="m.coords" idkey="m.id"></ui-gmap-marker>
+					</ui-gmap-google-map>
+				</div>
+			</div>
+			<div class="full-width text-center">
+				<button ng-if="!loadsdetails.loadingDataDetails && loadsdetails.loadData.status_loads =='NOT_ASSIGNED' && loadsdetails.loadData.owner_request_carriers == 0 && posteverywhere != '1' && loadsdetails.letApply" permission permission-only="['DRIVER']" ng-click="loadsdetails.createRequestCarrierLoad()" class="btn btn-class1 bg-color-1 color-white parrafo">{{ 'loads:details:apply:btn' | translate }}</button>
+				<button ng-if="!loadsdetails.loadingDataDetails && loadsdetails.loadData.status_loads =='NOT_ASSIGNED' && loadsdetails.loadData.owner_request_carriers == 0 && posteverywhere != '1'" permission permission-only="['CARRIER','OWNER']" ng-click="loadsdetails.createRequestCarrierLoad()" class="btn btn-class1 bg-color-1 color-white parrafo">{{ 'loads:details:apply:btn' | translate }}</button>
+				<button ng-if="!loadsdetails.loadingDataDetails && loadsdetails.loadData.status_loads =='NOT_ASSIGNED' && loadsdetails.loadData.owner_request_carriers == '1' && posteverywhere != '1'" permission permission-only="['CARRIER','OWNER']" ng-click="loadsdetails.cancelRequestCarrierLoad()" class="btn btn-class1 bg-color-4 color-white parrafo">{{ 'loads:details:notapply:btn' | translate }}</button><br>
+				<a ng-if="!loadsdetails.loadingDataDetails && loadsdetails.loadData.load_id" permission permission-only="['CARRIER','OWNER']" ng-click="loadsdetails.openReportIssuesLoadModal()" class="small-text normal-link">{{ 'loads:details:report_suspect:text' | translate }}</a>
+			</div>
+		</div>
+	</div>
+</div>

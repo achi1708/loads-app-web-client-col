@@ -1,0 +1,58 @@
+#page-section-profile{
+	.title-profile{
+		@include margin-bottom($spacing3_value);
+	}
+	form{
+		label{
+			font-family: $bold_font;
+			font-size: $small_size - 3px;
+			
+			@extend .uppercase-text;
+			@include margin-bottom(5px);
+		}
+		.link-bottom-form{
+			display: inline-block;
+			@include margin-top(40px);	
+		}
+	}
+	.section-profile{
+		@include margin-bottom($spacing2_value - 6);
+		.content-img-profile{
+			background: #f8f8f8;
+			padding: 10px;
+			min-height: 130px;
+			text-align: center;
+			@include margin-bottom(10px);
+			&:before{
+				content: ' ';
+			    display: inline-block;
+			    vertical-align: middle;
+			    height: 100%;
+			}
+			img{
+				@extend .block;
+				@extend .center;
+				vertical-align: middle;
+			}
+		}
+		.user-calification{
+			float: none;
+			display: inline-block;
+			.nav-item{
+				display: inline-block;
+				@include margin-left(2px);
+				@include margin-right(2px);
+				.fa-star{
+					color: $saffron_color;
+				}
+				.fa-star-o{
+					color: $dark_gray_color;
+				}	
+			}
+		}
+		.parrafo-info-user{
+			@extend .small-text;
+			color: $dark_gray_color;
+		}
+	}
+}

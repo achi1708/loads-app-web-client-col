@@ -1,0 +1,136 @@
+<div id="page-section-post-truck" class="page-section page-section-with-margin col bg-color-white">
+	<h3 class="large-title title-section">{{ 'drivers:edit:section:title' | translate }}</h3>
+	<form method="post" id=postDriverFormId name="postDriverFormName" ng-submit="driversedit.save(postDriverFormName)" novalidate>
+		<div class="row">
+			<div class="col-12">
+				<div class="row">
+					<div class="col-4">
+						<div class="pic-square" ngf-select ng-model="driversedit.dataUpdateDriver.pic" name="pic" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="2MB">
+							<img ng-show="postDriverFormName.pic.$valid" ngf-thumbnail="driversedit.dataUpdateDriver.pic" class="img-fluid">
+							<img ng-show="!postDriverFormName.pic.$valid" ngf-thumbnail="driversedit.driverData.user.img_perfil[0]['imagen-60']" class="img-fluid">
+						</div>
+					</div>
+					<div class="col-8">
+						<div class="form-group">
+							<div class="row">
+								<div class="col-6">
+									<label>{{ 'drivers:add:form:name:text' | translate }}</label>
+									<span class="help-inline" ng-show="postDriverFormName.user_first_name.$error.required">*</span>
+									<input type="text" name="user_first_name" class="form-control" ng-model="driversedit.dataUpdateDriver.user_first_name" placeholder='{{ "drivers:add:form:name:text" | translate }}' required>
+								</div>
+								<div class="col-6">
+									<label>{{ 'drivers:add:form:lastname:text' | translate }}</label>
+									<span class="help-inline" ng-show="postDriverFormName.lastname.$error.required">*</span>
+									<input type="text" name="lastname" class="form-control" ng-model="driversedit.dataUpdateDriver.user_last_name" placeholder='{{ "drivers:add:form:lastname:text" | translate }}' required>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-6">
+									<label>{{ 'drivers:add:form:phone:text' | translate }}</label>
+									<span class="help-inline" ng-show="postDriverFormName.phone.$error.required">*</span>
+									<input type="text" name="phone" class="form-control" ng-model="driversedit.dataUpdateDriver.user_phone" placeholder='{{ "drivers:add:form:phone:text" | translate }}' required>
+								</div>
+								<div class="col-6">
+									<label>{{ 'drivers:add:form:email:text' | translate }}</label>
+									<span class="help-inline" ng-show="postDriverFormName.email.$error.required">*</span>
+									<input type="email" name="email" class="form-control" ng-model="driversedit.dataUpdateDriver.user_email" placeholder='{{ "drivers:add:form:email:text" | translate }}' required>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-6">
+							<label>{{ 'drivers:add:form:country:text' | translate }}</label>
+							<span class="help-inline" ng-show="postDriverFormName.country.$error.required">*</span>
+							<input type="text" name="country" class="form-control" g-places-autocomplete force-selection="true" ng-model="driversedit.dataUpdateDriver.user_contry" placeholder='{{ "drivers:add:form:country:text" | translate }}' required>
+						</div>
+						<div class="col-6">
+							<label>{{ 'drivers:add:form:state:text' | translate }}</label>
+							<span class="help-inline" ng-show="postDriverFormName.state.$error.required">*</span>
+							<input type="text" name="state" class="form-control" g-places-autocomplete force-selection="true" ng-model="driversedit.dataUpdateDriver.user_state" placeholder='{{ "drivers:add:form:state:text" | translate }}' required>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-6">
+							<label>{{ 'drivers:add:form:city:text' | translate }}</label>
+							<span class="help-inline" ng-show="postDriverFormName.city.$error.required">*</span>
+							<input type="text" name="city" class="form-control" g-places-autocomplete options="driversedit.optionsGoogleInputCity" force-selection="true" ng-model="driversedit.dataUpdateDriver.user_city" placeholder='{{ "drivers:add:form:city:text" | translate }}' required>
+						</div>
+						<div class="col-6">
+							<label>{{ 'drivers:add:form:zipcode:text' | translate }}</label>
+							<span class="help-inline" ng-show="postDriverFormName.zipcode.$error.required">*</span>
+							<input type="text" name="zipcode" class="form-control" ng-model="driversedit.dataUpdateDriver.user_postalcode" placeholder='{{ "drivers:add:form:zipcode:text" | translate }}' required>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-6">
+							<label>{{ 'drivers:add:form:eps:text' | translate }}</label>
+							<span class="help-inline" ng-show="postDriverFormName.insurance_number.$error.required">*</span>
+							<input type="text" name="insurance_number" class="form-control" ng-model="driversedit.dataUpdateDriver.bond_insurance_num" placeholder='{{ "drivers:add:form:eps:text" | translate }}' required>
+						</div>
+						<div class="col-6">
+							<label>{{ 'drivers:add:form:arl:text' | translate }}</label>
+							<span class="help-inline" ng-show="postDriverFormName.insurance_company.$error.required">*</span>
+							<input type="text" name="insurance_company" class="form-control" ng-model="driversedit.dataUpdateDriver.bond_insurance_comp" placeholder='{{ "drivers:add:form:arl:text" | translate }}' required>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-6">
+							<label>{{ 'drivers:add:form:document_type:text' | translate }}</label>
+							<span class="help-inline" ng-show="postDriverFormName.type_document.$error.required">*</span>
+							<select name="type_document" id="type_document" ng-model="driversedit.dataUpdateDriver.type_document" class="form-control input-md" required>
+								<option ng-repeat="typeDocumentItem in driversedit.typeDocumentOptions" value="{{typeDocumentItem.id}}">{{typeDocumentItem.name}}</option>
+							</select>
+						</div>
+						<div class="col-6">
+							<label>{{ 'drivers:add:form:document_number:text' | translate }}</label>
+							<span class="help-inline" ng-show="postDriverFormName.type_document_number.$error.required">*</span>
+							<input type="text" name="type_document_number" class="form-control" ng-model="driversedit.dataUpdateDriver.type_document_number" placeholder='{{ "drivers:add:form:document_number:text" | translate }}' required>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col-6">
+							<label>{{ 'drivers:add:form:license_type:text' | translate }}</label>
+							<span class="help-inline" ng-show="postDriverFormName.license_number.$error.required">*</span>
+							<input type="text" name="license_number" class="form-control" ng-model="driversedit.dataUpdateDriver.driver_license_num" placeholder='{{ "drivers:add:form:license_type:text" | translate }}' required>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col-12">
+							<label>{{ 'drivers:add:form:truck:text' | translate }}</label>
+							<select name="truck" id="driver" ng-model="driversedit.dataUpdateDriver.truck_id" class="form-control input-md">
+								<option value="">{{ 'drivers:add:form:truck:any' | translate }}</option>
+								<option ng-repeat="option in driversedit.trucksList" value="{{option.id}}">{{option.brand}} {{option.marca}} {{option.model}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row main-botonera">
+			<div class="col-12 col-sm-9">
+				<button ng-disabled="driversedit.savingUpdateDriver" type="submit" class="btn btn-class1 bg-color-1 color-white">{{ 'drivers:edit:form:btn:save_btn' | translate }}</button>
+				<a ng-disabled="driversedit.savingUpdateDriver" ng-click="driversedit.submitReturnListFunc(postDriverFormName)" class="normal-link small-text">{{ 'loads:add:form:btn:save_return_list' | translate }}</a>
+			</div>
+			<div class="col-12 col-sm-3 text-right">
+				<a ng-if="!driversedit.savingUpdateDriver" ui-sref="private.drivers" ui-sref-opts="{ reload: true }" class="normal-link small-text cancel-post-link">{{ 'loads:add:form:btn:cancel' | translate }}</a>
+			</div>
+		</div>
+	</form>
+</div>

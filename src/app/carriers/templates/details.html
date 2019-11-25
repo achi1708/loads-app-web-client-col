@@ -1,0 +1,178 @@
+<div id="page-section-profile" class="page-section page-section-with-margin col bg-color-white">
+	<h3 class="large-title title-profile">{{'profile:section:title' | translate }}</h3>
+	<form method="post">
+		<div class="row">
+			<div class="col">
+				<div class="section-profile">
+					<div class="row">
+						<div class="col-2">
+							<div ng-if="!carriersdetails.carrierData.img_perfil_carrier" class="content-img-profile rounded-circle"></div>
+							<img ng-if="carriersdetails.carrierData.img_perfil_carrier[0]" ng-src="{{carriersdetails.carrierData.img_perfil_carrier[0]['imagen-270']}}" class="img-fluid rounded-circle" border="0">
+							<div class="full-width text-center">
+								<ul ng-if="carriersdetails.carrierData.carrier_info.user.user_votes.length" class="nav user-calification">
+									<li class="nav-item">
+										<span ng-class="carriersdetails.carrierData.carrier_info.user.user_votes[0].total_prom >= 1 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+									</li>
+									<li class="nav-item">
+										<span ng-class="carriersdetails.carrierData.carrier_info.user.user_votes[0].total_prom >= 2 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+									</li>
+									<li class="nav-item">
+										<span ng-class="carriersdetails.carrierData.carrier_info.user.user_votes[0].total_prom >= 3 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+									</li>
+									<li class="nav-item">
+										<span ng-class="carriersdetails.carrierData.carrier_info.user.user_votes[0].total_prom >= 4 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+									</li>
+									<li class="nav-item">
+										<span ng-class="carriersdetails.carrierData.carrier_info.user.user_votes[0].total_prom >= 5 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+									</li>
+								</ul>
+								<ul ng-if="!carriersdetails.carrierData.carrier_info.user.user_votes.length" class="nav user-calification">
+									<li class="nav-item">
+										<span class="fa fa-star-o"></span>
+									</li>
+									<li class="nav-item">
+										<span class="fa fa-star-o"></span>
+									</li>
+									<li class="nav-item">
+										<span class="fa fa-star-o"></span>
+									</li>
+									<li class="nav-item">
+										<span class="fa fa-star-o"></span>
+									</li>
+									<li class="nav-item">
+										<span class="fa fa-star-o"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-10">
+							<!--<h3 class="large-title title-profile">{{carriersdetails.carrierData.carrier_info.phone_company}}</h3>-->
+							<div class="form-group">
+								<div class="row">
+									<div class="col-6">
+										<label>{{ "carriers:profile:first_name:text" | translate }}</label>
+										<p class="small-text">{{carriersdetails.carrierData.carrier_info.user.user_first_name}}</p>
+									</div>
+									<div class="col-6">
+										<label>{{ "carriers:profile:last_name:text" | translate }}</label>
+										<p class="small-text">{{carriersdetails.carrierData.carrier_info.user.user_last_name}}</p>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-6">
+										<label>{{ "carriers:profile:email:text" | translate }}</label>
+										<p class="small-text">{{carriersdetails.carrierData.carrier_info.user.user_email}}</p>
+									</div>
+									<div class="col-6">
+										<label>{{ "carriers:profile:phone:text" | translate }}</label>
+										<p class="small-text">{{carriersdetails.carrierData.carrier_info.user.user_phone}}</p>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-6">
+										<label>{{ "carriers:profile:bank:text" | translate }}</label>
+										<p class="small-text">{{carriersdetails.carrierData.carrier_info.user.name_bank}}</p>
+									</div>
+									<div class="col-6">
+										<label>{{ "carriers:profile:account_bank_number:text" | translate }}</label>
+										<p class="small-text">{{carriersdetails.carrierData.carrier_info.user.number_account_bank}}</p>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-6">
+										<label>{{ "carriers:profile:company_name:text" | translate }}</label>
+										<p class="small-text">{{carriersdetails.carrierData.carrier_info.company_name}}</p>
+									</div>
+									<div class="col-6">
+										<label>{{ "carriers:profile:ein_ssn:text" | translate }}</label>
+										<p class="small-text">{{carriersdetails.carrierData.carrier_info.ein_number}}</p>
+									</div>
+								</div>
+							</div>
+							<div class="form-group parrafo"></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<h3 class="large-title title-profile">{{ "carriers:profile:company_info:title" | translate}}</h3>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-4">
+										<label>{{ "carriers:profile:mc_number:text" | translate }}</label>
+										<p class="small-text">{{carriersdetails.carrierData.carrier_info.mc_number}}</p>
+									</div>
+									<div class="col-4">
+										<label>{{ "carriers:profile:dot_number:text" | translate }}</label>
+										<p class="small-text">{{carriersdetails.carrierData.carrier_info.dot_number}}</p>
+									</div>
+									<div class="col-4">
+										<label>{{ "carriers:profile:corp_number:text" | translate }}</label>
+										<p class="small-text">{{carriersdetails.carrierData.carrier_info.corp_number}}</p>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-4">
+										<label>{{ "carriers:profile:comp_address:text" | translate }}</label>
+										<p class="small-text">{{carriersdetails.carrierData.carrier_info.address_company}}</p>
+									</div>
+									<div class="col-4">
+										<label>{{ "carriers:profile:comp_city:text" | translate }}</label>
+										<p class="small-text">{{carriersdetails.carrierData.carrier_info.city_company}}</p>
+									</div>
+									<div class="col-4">
+										<label>{{ "carriers:profile:comp_state:text" | translate }}</label>
+										<p class="small-text">{{carriersdetails.carrierData.carrier_info.state_company}}</p>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-4">
+										<label>{{ "carriers:profile:comp_country:text" | translate }}</label>
+										<p class="small-text">{{carriersdetails.carrierData.carrier_info.country_company}}</p>
+									</div>
+									<div class="col-4">
+										<label>{{ "carriers:profile:comp_phone:text" | translate }}</label>
+										<p class="small-text">{{carriersdetails.carrierData.carrier_info.phone_company}}</p>
+									</div>
+									<div class="col-4">
+										<label>{{ "carriers:profile:comp_email:text" | translate }}</label>
+										<p class="small-text">{{carriersdetails.carrierData.carrier_info.email_company}}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row" permission permission-only="['CARRIER','OWNER']">
+						<div class="col-12">
+							<h3 class="large-title title-profile">Trucks availables</h3>
+							<ul ng-if="carriersdetails.carrierData.truck_results.length" class="nav flex-column carrier-drivers-list">
+								<li ng-click="openTruckModal(truck.id)" ng-repeat="truck in carriersdetails.carrierData.truck_results" class="nav-item">
+									<div class="img-truck">
+										<img ng-if="truck.img_truck_imagenes[0]['imagen-60']" ng-src="{{truck.img_truck_imagenes[0]['imagen-60']}}" class="img-fluid rounded-circle" border="0">
+									</div>
+									<span class="truck-name-table">{{truck.brand}} {{truck.model}} {{truck.dimension}}</span>
+									<span class="driver-name-table">Driven by {{truck.driver.user.user_first_name}} {{truck.driver.user.user_last_name}}</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="row main-botonera">
+			<div class="col-12 text-right" permission permission-only="['GENERADOR_CARGA']">
+				<button style="max-width: 300px;" ng-if="carriersdetails.shipperCanAcceptRequest && carriersdetails.loadCarrierRequest" ng-click="carriersdetails.answerRequestByCarrier()" type="button" class="btn btn-class1 bg-color-1 color-white">{{ 'modals:carrier_requests:form:btn' | translate }}</button>
+			</div>
+		</div>
+	</form>
+</div>

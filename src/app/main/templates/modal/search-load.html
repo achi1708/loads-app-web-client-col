@@ -1,0 +1,168 @@
+<div class="modal-body" id="load-search-modal">
+	<h3 class="title-modal text-left">{{ 'modals:search_load:title' | translate }}</h3>
+	<form novalidate>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-12 col-sm-6">
+					<label class="title-field">{{ 'modals:search_load:fields:from:title' | translate }}</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<span>
+						<input type="checkbox" id="any_from" name="any_from" ng-model="searchload.from_any" class="custom-checkbox" ng-change="searchload.fromAnyChanged()" />
+						<label for="any_from"><span></span>{{ 'modals:search_load:fields:any:title' | translate }}</label>
+					</span>
+					<input ng-disabled="searchload.from_any" g-places-autocomplete force-selection="true" id="from" ng-model="searchload.searchData.fromObject" name="from" type="text" placeholder='' class="form-control input-md" required>
+				</div>
+				<div class="col-12 col-sm-6">
+					<label class="title-field">{{ 'modals:search_load:fields:to:title' | translate }}</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<span>
+						<input type="checkbox" id="any_to" name="any_to" ng-model="searchload.to_any" class="custom-checkbox" ng-change="searchload.toAnyChanged()" />
+						<label for="any_to"><span></span>{{ 'modals:search_load:fields:any:title' | translate }}</label>
+					</span>
+					<input ng-disabled="searchload.to_any" g-places-autocomplete force-selection="true" id="from" ng-model="searchload.searchData.toObject" name="to" type="text" placeholder='' class="form-control input-md" required>
+				</div>
+			</div>
+		</div>
+		<div ng-if="searchload.advancedOptions" class="form-group">
+			<div class="row">
+				<div class="col-12 col-sm-6">
+					<label class="title-field">{{ 'modals:search_load:fields:pricemin:title' | translate }}</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<span>
+						<input type="checkbox" id="any_price" name="any_price" ng-model="searchload.price_any" class="custom-checkbox" ng-change="searchload.priceAnyChanged()" />
+						<label for="any_price"><span></span>{{ 'modals:search_load:fields:any:title' | translate }}</label>
+					</span>
+					<input ng-disabled="searchload.price_any" ng-blur="searchload.allowPriceMax()" id="price_min" ng-model="searchload.searchData.price_min" name="price_min" type="number" placeholder='' class="form-control input-md" required>
+				</div>
+				<div class="col-12 col-sm-6">
+					<label class="title-field">{{ 'modals:search_load:fields:pricemax:title' | translate }}</label>
+					<input ng-disabled="searchload.price_any" ng-blur="searchload.allowPriceMax()" ng-disabled="searchload.priceMaxDisabled" type="number" name="price_max" class="form-control" ng-model="searchload.searchData.price_max" placeholder='' min="searchload.searchData.price_min" required>
+				</div>
+			</div>
+		</div>
+		<div ng-if="searchload.advancedOptions" class="form-group">
+			<div class="row">
+				<div class="col-12 col-sm-6">
+					<label class="title-field">{{ 'modals:search_load:fields:length:title' | translate }}</label>
+					<input type="number" name="length" class="form-control" ng-model="searchload.searchData.length" placeholder='' required>
+				</div>
+				<div class="col-12 col-sm-6">
+					<label class="title-field">{{ 'modals:search_load:fields:size:title' | translate }}</label>
+					<select name="size" id="size" ng-model="searchload.searchData.size" class="form-control input-md" required>
+						<option value="">{{ 'loads:add:form:select:any' | translate }}</option>
+						<option ng-repeat="option in searchload.itemsSizeLenLoads.LoadsSize_list" value="{{option.id}}">{{option.name}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div ng-if="searchload.advancedOptions" class="form-group">
+			<div class="row">
+				<div class="col-12 col-sm-6">
+					<label class="title-field">{{ 'modals:search_load:fields:weight:title' | translate }}</label>
+					<input type="number" name="weight" class="form-control" ng-model="searchload.searchData.weight" placeholder='' required>
+				</div>
+				<div class="col-12 col-sm-6">
+					<label class="title-field">{{ 'modals:search_load:fields:load_type:title' | translate }}</label>
+					<select name="load_type" id="load_type" ng-model="searchload.searchData.load_type" class="form-control input-md" required>
+						<option value="">{{ 'loads:add:form:select:any' | translate }}</option>
+						<option ng-repeat="option in searchload.itemsSizeLenLoads.LoadsType_list" value="{{option.id}}">{{option.skill_name}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-12 col-sm-6">
+					<label class="title-field">{{ 'modals:search_load:fields:pickupdate:title' | translate }}</label>
+					<input ng-blur="searchload.allowDeliveryDate()" date-range-picker id="pickup" ng-model="searchload.searchData.pickup" name="pickup" type="text" placeholder='' class="form-control input-md date-picker" options="searchload.optsDatePicker" required>
+				</div>
+				<div class="col-12 col-sm-6">
+					<label class="title-field">{{ 'modals:search_load:fields:deliverydate:title' | translate }}</label>
+					<input ng-disabled="searchload.dateDeliveryDisabled" date-range-picker type="text" name="delivery" class="form-control date-picker" ng-model="searchload.searchData.delivery" placeholder='' options="searchload.optsDatePicker" min="searchload.searchData.pickup" required>
+				</div>
+			</div>
+		</div>
+		<div ng-if="searchload.advancedOptions" class="form-group">
+			<div class="row">
+				<div class="col-12">
+					<label class="title-field">{{ 'modals:search_load:fields:deadhead:title' | translate }}</label>
+					<input type="number" name="deadhead" class="form-control" ng-model="searchload.searchData.deadhead" placeholder='' required>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-12">
+					<label class="title-field">{{ 'modals:search_load:fields:load_id:title' | translate }}</label>
+					<input type="text" name="load_id" class="form-control" ng-model="searchload.searchData.load_id" placeholder='' required>
+				</div>
+			</div>
+		</div>
+		<div ng-if="searchload.advancedOptions" class="form-group">
+			<div class="row">
+				<div class="col-12">
+					<label class="title-field">{{ 'modals:search_load:fields:shipper:title' | translate }}</label>
+					<input type="text" name="shipper" class="form-control" ng-model="searchload.searchData.shipper" placeholder='' required>
+				</div>
+			</div>
+		</div>
+		<div ng-if="searchload.advancedOptions" class="form-group">
+			<div class="row">
+				<div class="col-12">
+					<label class="title-field">{{ 'modals:search_load:fields:review:title' | translate }}</label>
+					<div class="clearfix"></div>
+					<ul class="nav reviews-calification">
+						<li class="nav-item">
+							<span ng-class="{'fa-star': hover1 || hover2 || hover3 || hover4 || hover5 || searchload.searchData.review >= 1, 'fa-star-o': !hover1 && !hover2 && !hover3 && !hover4 && !hover5 && searchload.searchData.review < 1}"
+								  ng-init="hover1 = false"
+								  ng-mouseenter="hover1 = true"
+								  ng-mouseleave="hover1 = false" 
+								  ng-click="searchload.setReview('1')" class="fa"></span>
+						</li>
+						<li class="nav-item">
+							<span ng-class="{'fa-star': hover2 || hover3 || hover4 || hover5 || searchload.searchData.review >= 2, 'fa-star-o': !hover2 && !hover3 && !hover4 && !hover5 && searchload.searchData.review < 2}"
+								  ng-init="hover2 = false"
+								  ng-mouseenter="hover2 = true"
+								  ng-mouseleave="hover2 = false" 
+								  ng-click="searchload.setReview('2')" class="fa"></span>
+						</li>
+						<li class="nav-item">
+							<span ng-class="{'fa-star': hover3 || hover4 || hover5 || searchload.searchData.review >= 3, 'fa-star-o': !hover3 && !hover4 && !hover5 && searchload.searchData.review < 3}"
+								  ng-init="hover3 = false"
+								  ng-mouseenter="hover3 = true"
+								  ng-mouseleave="hover3 = false" 
+								  ng-click="searchload.setReview('3')" class="fa"></span>
+						</li>
+						<li class="nav-item">
+							<span ng-class="{'fa-star': hover4 || hover5 || searchload.searchData.review >= 4, 'fa-star-o': !hover4 && !hover5 && searchload.searchData.review < 4}"
+								  ng-init="hover4 = false"
+								  ng-mouseenter="hover4 = true"
+								  ng-mouseleave="hover4 = false" 
+								  ng-click="searchload.setReview('4')" class="fa"></span>
+						</li>
+						<li class="nav-item">
+							<span ng-class="{'fa-star': hover5 || searchload.searchData.review >= 5, 'fa-star-o': !hover5 && searchload.searchData.review < 5}"
+								  ng-init="hover5 = false"
+								  ng-mouseenter="hover5 = true"
+								  ng-mouseleave="hover5 = false" 
+								  ng-click="searchload.setReview('5')" class="fa"></span>
+						</li>
+						<li class="nav-item">
+							<a ng-click="searchload.setReview('0')" class="small-text normal-link load-search-lessf pointer">Reset review</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-8 content-links-filter">
+					<a ng-click="searchload.showHideAdvancedFilters()" ng-if="!searchload.advancedOptions" class="small-text normal-link load-search-lessf pointer">{{ "modals:search_load:more_filter:text" | translate }}</a>
+					<a ng-click="searchload.showHideAdvancedFilters()" ng-if="searchload.advancedOptions" class="small-text normal-link load-search-lessf pointer">{{ "modals:search_load:less_filter:text" | translate }}</a>
+					<a ng-click="searchload.resetFilters('all')" class="small-text normal-link load-search-resetf pointer">{{ "modals:search_load:reset_filter:text" | translate }}</a>
+				</div>
+				<div class="col-4">
+					<button  ng-click="searchload.sendDataFormSearch()" class="btn btn-class1 bg-color-1 color-white">Search</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

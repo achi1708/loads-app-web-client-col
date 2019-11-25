@@ -1,0 +1,514 @@
+#page-section-loads{
+	.title-section{
+		@include margin-bottom($spacing3_value);
+	}
+	.subtitle-section{
+		@include margin-bottom($small_size + 1px);
+	}
+	.data-count-loads{
+		@include border-radius(5px);
+		@include padding-top(15px);
+		@include padding-bottom(15px);
+		@include margin-bottom(15px);
+		text-align: center;
+		.nav{
+			float: none;
+			display: inline-block;
+			.nav-item{
+				display: inline-block;
+				@include margin-left(15px);
+				@include margin-right(15px);
+				.data-load-circle{
+					position: relative;
+					@include border-radius(300px);
+					padding: 50px;
+					border-width: 8px;
+					border-style: solid;
+					max-width: 116px;
+					max-height: 116px;
+					@include margin-top(0);
+					@include margin-left(auto);
+					@include margin-right(auto);
+					@include margin-bottom(15px);
+					span{
+						position: absolute;
+						width: 27px;
+						height: 16px;
+						top: 50%;
+						left: 50%;
+						margin: -8px 0 0 -13px;
+						font-family: $regular_font;
+						font-size: $regular_size;
+						color: $armadillo_color;
+					}
+				}
+				.item-data-load-name{
+					margin: 0;
+					font-family: $regular_font;
+					font-size: $small_size;
+					color: $armadillo_color;
+					text-align: center;
+				}
+			}
+		}
+	}
+	.content-load-list{
+		@include border-radius(5px);
+		@include padding-top(15px);
+		@include padding-bottom(15px);
+		.content-tableData{
+		  table{
+		    tr{
+		      td.tags-row{
+		        padding: 5px 10px 0px !important;
+		      }
+		      td.info-row{
+		        padding: 0px 10px 5px !important;
+		      }
+		    }
+		  }
+		}
+		.detail-load-table{
+			.details-table-row{
+				position: relative;
+				box-sizing: border-box;
+				.dropdown-actions-load{
+					position: absolute;
+					top: 5px;
+					right: 5px;
+					z-index: 100;
+					button{
+						font-size: 0;
+						background:none;
+						border:none;
+						span{
+							color: $saint_juan_color;
+							font-size: $large_size;
+						}
+					}
+					.dropdown-menu{
+						.dropdown-item{
+							color: $saint_juan_color;
+							font-size: $regular_size;
+							a{
+								color: $saint_juan_color;
+								font-size: $regular_size - 2px;
+								span{
+									color: $saint_juan_color;
+									font-size: $regular_size - 2px;
+								}
+							}
+						}
+					}
+				}
+				.edit-detail-load{
+					position: absolute;
+					top: 5px;
+					right: 5px;
+					z-index: 100;
+					span{
+						font-size: $title3_size;
+						color: $saint_juan_color;
+					}
+				}
+				.pickup-destiny-details{
+					@include margin-bottom(10px);
+					.nav-item{
+						@include margin-left(10px);
+						@include margin-right(10px);
+						&:first-child{
+							@include margin-left(0px);
+						}
+						.title-load-details{
+							font-family: $regular_font;
+							font-size: $large_size;
+							color: $armadillo_color;
+							margin: 0;
+						}
+						span{
+							font-size: $large_size;
+							color: $armadillo_color;
+						}
+					}
+				}
+				.info-owner-load{
+					font-size: $small_size;
+					.nav-item{
+						@include margin-left(10px);
+						@include margin-right(10px);
+						&:first-child{
+							@include margin-left(0px);
+						}
+						.fa{
+							font-size: $regular_size;
+						}
+						.fa-star{
+							color: $saffron_color;
+						}
+						.fa-star-o{
+							color: $dark_gray_color;
+						}
+						.btn-details-status{
+							font-size: 8px;
+							padding: 6px 8px;
+						}
+					}
+				}
+				.loads-map-detail{
+					height: 350px;
+					overflow: hidden;
+					.angular-google-map-container{
+						height: 350px !important;
+					}
+				}
+				.load-items-data{
+					label{
+						font-family: $bold_font;
+						font-size: $small_size - 3px;
+						color: $armadillo_color;
+						@include margin-bottom(5px);
+						@extend .uppercase-text;
+					}
+					p{
+						font-family: $light_font;
+						font-size: $small_size;
+						color: $armadillo_color;
+					}
+					.user-calification{
+						float: none;
+						display: inline-block;
+						@include margin-left(15px);
+						.nav-item{
+							display: inline-block;
+							@include margin-left(2px);
+							@include margin-right(2px);
+							.fa{
+								font-size: $regular_size;
+							}
+							.fa-star{
+								color: $saffron_color;
+							}
+							.fa-star-o{
+								color: $dark_gray_color;
+							}	
+						}
+					}
+				}
+				.status-load-details-list{
+					margin: 0 0 -15px;
+					@include border-radius(5px);
+					.item-status-load{
+						background: $white_color;
+						@include padding-top(15px);
+						@include padding-bottom(15px);
+						font-family: $light_font;
+						font-size: $small_size - 3;
+						color: $armadillo_color;
+						&.active{
+							background: $fern_color;
+							color: $white_color;
+						}
+						.text-item-status{
+							display: inline-block;
+							width: 50%;
+							vertical-align: middle;
+							font-size: $small_size;
+						}
+						span{
+							font-size: $small_size;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#page-section-post-load{
+	.pickup-destiny-details{
+		@include margin-bottom(10px);
+		.nav-item{
+			@include margin-left(10px);
+			@include margin-right(10px);
+			&:first-child{
+				@include margin-left(0px);
+			}
+			.title-load-details{
+				font-family: $regular_font;
+				font-size: $large_size;
+				color: $armadillo_color;
+				margin: 0;
+			}
+			span{
+				font-size: $large_size;
+				color: $armadillo_color;
+			}
+		}
+	}
+	label{
+		font-family: $bold_font;
+		font-size: $small_size - 3px;
+		color: $armadillo_color;
+		@include margin-bottom(5px);
+		@extend .uppercase-text;
+	}
+	p{
+		font-family: $light_font;
+		font-size: $small_size;
+		color: $armadillo_color;
+	}
+	.loads-map-detail{
+		height: 650px;
+		overflow: hidden;
+		.angular-google-map-container{
+			height: 650px !important;
+		}
+	}
+}
+
+#payment-details-modal{
+	.content-apply-fast-pay{
+		@include margin-bottom(30px);
+	}
+}
+
+#load-edit-status-modal{
+	.nav{
+		@include margin-bottom(30px);
+		.nav-item{
+			position: relative;
+			label{
+				span{
+					&.status-circle{
+						border-radius: 100%;
+					    height: 18px;
+					    width: 18px;
+					    display: inline-block;
+					    margin: 0 7px;
+					    vertical-align: middle;
+					}
+				}
+			}
+			hr{
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				width: calc(100% - 30px);
+				margin: 0;
+				color: $dark_gray_color;
+			}
+		}
+	}
+}
+
+#cancel-load-modal{
+	form{
+		select{
+			font-family: $regular_font;
+			font-size: $small_size;
+		}
+		textarea{
+			font-family: $regular_font;
+			font-size: $small_size;
+			height: 100px;
+			resize: none;
+		}
+	}
+}
+
+#choose-drivers-modal{
+	form{
+		.nav{
+			@include margin-bottom(30px);
+			.nav-item{
+				position: relative;
+				label{
+					height: 37px;
+					.img-truck{
+						width: 37px;
+						height: 37px;
+						float: left;
+						@include margin-right(10px);
+					}
+					span{
+						&.truck-name-table{
+							font-family: $bold_font;
+							font-size: $small_size;
+							color: $armadillo_color;
+							@include margin-bottom(3px);
+							display: inline-block;
+							width: calc(100% - 60px);
+						}
+						&.driver-name-table{
+							color: $dark_gray_color;
+							display: inline-block;
+							width: calc(100% - 60px);
+						}
+					}
+				}
+				.check{
+					top: 16px;
+				}
+				hr{
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					width: calc(100% - 30px);
+					margin: 0;
+					color: $dark_gray_color;
+				}
+			}
+		}
+	}
+}
+
+.carrier-requests-modal{
+	.modal-dialog{
+		width: 800px;
+		max-width: 100%;
+	}
+}
+
+#carrier-requests-modal{
+	max-width: 1000px !important;
+	form{
+		table{
+			tr{
+				td{
+					border-bottom: 1px solid $dark_gray_color;
+					.check{
+						top: 50%;
+						left: 50%;
+						margin: -9px 0 0 -9px;
+					}
+					.user-calification{
+						float: none;
+						display: inline-block;
+						.nav-item{
+							display: inline-block;
+							@include margin-left(2px);
+							@include margin-right(2px);
+							.fa{
+								font-size: $regular_size;
+							}
+							.fa-star{
+								color: $saffron_color;
+							}
+							.fa-star-o{
+								color: $dark_gray_color;
+							}	
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#load-truck-select-modal{
+	form{
+		table{
+			tr{
+				td{
+					border-bottom: 1px solid $dark_gray_color;
+					.check{
+						top: 50%;
+						left: 50%;
+						margin: -9px 0 0 -9px;
+						&:before{
+							top: 2px;
+    						left: 2px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#carrier-reviews-modal{
+	.content-info-carrier{
+		border-bottom: 1px solid $dark_gray_color;
+		.img-carrier{
+			display: block;
+			margin: 0 auto 15px;
+		}
+		.carrier-name{
+			font-family: $bold_font;
+			font-size: $large_size;
+			color: $saint_juan_color;
+			@include margin-bottom(20px);
+		}
+	}
+	.content-carrier-rate{
+		@include padding-top(20px);
+		.title-rate{
+			font-family: $light_font;
+			font-size: $small_size - 2px;
+			color: $dark_gray_color;
+			@include margin-bottom(15px);
+		}
+		.user-calification{
+			float: none;
+			display: inline-block;
+			@include margin-bottom(20px);
+			.nav-item{
+				display: inline-block;
+				@include margin-left(5px);
+				@include margin-right(5px);
+				.fa{
+					font-size: $title_size;
+				}
+				.fa-star{
+					color: $saffron_color;
+				}
+				.fa-star-o{
+					color: $dark_gray_color;
+				}	
+			}
+		}
+	}
+}
+
+#load-activity-info-modal{
+	.line-activity{
+		width: 2px;
+		height: 65px;
+		position: absolute;
+		top: 18px;
+		left: 50%;
+		margin: 0 0 0 0;
+		background: $fern_color;
+	}
+	.round-point-activity{
+		width: 15px;
+		height:15px;
+		background: $fern_color;
+		@include border-radius(200px);
+		display: block;
+		margin: 18px auto 0;
+	}
+	.pic-square{
+		background: $dark_gray_color;
+		width: 100%;
+		max-width: 100px;
+		height: auto;
+		min-height: 53px;
+		display: block;
+		@include border-radius(5px);
+		img{
+			width: 100%;
+			height: auto;
+		}
+	}
+	.description-activity{
+		color: $dark_gray_color;
+		font-size: $small_size;
+		margin: 0px;
+	}
+	.date-activity{
+		color: $dark_gray_color;
+		font-size: $small_size;
+		margin: 0px;
+	}
+}

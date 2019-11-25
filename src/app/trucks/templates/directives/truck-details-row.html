@@ -1,0 +1,149 @@
+<div class="details-table-row">
+	<main-loader ng-if="loadingTruckData"></main-loader> 
+	<p ng-if="!loadingTruckData && !truckData.id" class="text-center">{{ 'trucks:details:error_data:text' | translate }}</p>
+	<div ng-if="!loadingTruckData && truckData.id" class="dropdown-actions-truck">
+		<div class="dropdown">
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span class="fa fa-ellipsis-h"></span>
+			</button>
+			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+				<div permission permission-only="['CARRIER', 'OWNER']" class="dropdown-item">
+					<a ui-sref="private.trucks.edit({id: truckData.id})" ui-sref-opts="{ id: truckData.id }">
+						<span class="fa fa-pencil"></span> {{ "trucks:details:edit:text" | translate }}
+					</a>
+				</div>
+				<div permission permission-only="['CARRIER', 'OWNER']" class="dropdown-item">
+					<a ng-click="truckToggleActive()">
+						<span ng-if="truckData.status=='0'" class="fa fa-thumbs-up"></span>
+						<span ng-if="truckData.status=='1'" class="fa fa-thumbs-down"></span> 
+						<span ng-if="truckData.status=='1'">{{ 'trucks:details:inactive_truck:text' | translate }}</span>
+						<span ng-if="truckData.status=='0'">{{ 'trucks:details:active_truck:text' | translate }}</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<ul ng-if="!loadingTruckData && truckData.id" class="nav name-calification-details">
+		<li class="nav-item">
+			<h3 class="title-truck-details">{{truckData.brand}} {{truckData.model}}</h3>
+		</li>
+		<li ng-if="truckData.driver.user.user_votes.length" class="nav-item">
+			<span ng-class="truckData.driver.user.user_votes[0].total_prom >= 1 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+			<span ng-class="truckData.driver.user.user_votes[0].total_prom >= 2 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+			<span ng-class="truckData.driver.user.user_votes[0].total_prom >= 3 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+			<span ng-class="truckData.driver.user.user_votes[0].total_prom >= 4 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+			<span ng-class="truckData.driver.user.user_votes[0].total_prom >= 5 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+		</li>
+		<li ng-if="!truckData.driver.user.user_votes.length" class="nav-item">
+			<span class="fa fa-star-o"></span>
+			<span class="fa fa-star-o"></span>
+			<span class="fa fa-star-o"></span>
+			<span class="fa fa-star-o"></span>
+			<span class="fa fa-star-o"></span>
+		</li>
+	</ul>
+	<div ng-if="!loadingTruckData && truckData.id" class="row">
+		<div class="col col-md-3 text-center">
+			<img ng-if="truckData.imagenes_trucks" ng-src="{{truckData.imagenes_trucks[0]['imagen-60']}}" class="img-fluid" border="0">
+			<p class="foot-truck-pic">{{ 'trucks:details:loads_delivered:title' | translate }}: {{truckData.Loads_Transported}}</p>	
+		</div>
+		<div class="col col-md-9 truck-items-data">
+			<div class="row parrafo">
+				<div class="col col-sm-3">
+					<h3 class="title-truck-details">{{ 'trucks:details:basic_info:title' | translate }}</h3>
+				</div>
+				<div class="col col-sm-3">
+					<h3 class="title-truck-details">{{ 'trucks:details:truck_details:title' | translate }}</h3>
+				</div>
+			</div>
+			<div class="row parrafo">
+				<div class="col col-sm-3">
+					<label>{{ 'trucks:details:model:title' | translate }}</label>
+					<p ng-if="truckData.model">{{truckData.model}}</p>
+					<p ng-if="!truckData.model">---</p>
+				</div>
+				<div class="col col-sm-3">
+					<label>{{ 'trucks:details:trailer_type:title' | translate }}</label>
+					<p ng-if="truckData.truck_type.truck_type_name">{{truckData.truck_type.truck_type_name}}</p>
+					<p ng-if="!truckData.truck_type.truck_type_name">---</p>
+				</div>
+				<div class="col col-sm-3">
+					<label>{{ 'trucks:details:skills:title' | translate }}</label>
+					<p>{{truckData.SkillsTruckText}}</p>
+				</div>
+				<div class="col col-sm-3">
+					<!--espacio para loads assigned -->
+				</div>
+			</div>
+			<div class="row parrafo">
+				<div class="col col-sm-3">
+					<label>{{ 'trucks:details:year:title' | translate }}</label>
+					<p ng-if="truckData.year">{{truckData.year}}</p>
+					<p ng-if="!truckData.year">---</p>
+				</div>
+				<div class="col col-sm-3">
+					<label>{{ 'trucks:details:length:title' | translate }}</label>
+					<p ng-if="truckData.length">{{truckData.length}}</p>
+					<p ng-if="!truckData.length">---</p>
+				</div>
+				<div class="col col-sm-3">
+					<label>{{ 'trucks:details:capacity:title' | translate }}</label>
+					<p ng-if="truckData.truck_capacity.capacity_name">{{truckData.truck_capacity.capacity_name}}</p>
+					<p ng-if="!truckData.truck_capacity.capacity_name">---</p>
+				</div>
+			</div>
+			<div class="row parrafo">
+				<div class="col col-sm-3">
+					<label>{{ 'trucks:details:plate:title' | translate }}</label>
+					<p ng-if="truckData.plate">{{truckData.plate}}</p>
+					<p ng-if="!truckData.plate">---</p>
+				</div>
+				<div class="col col-sm-3">
+					<label>{{ 'trucks:details:weight:title' | translate }}</label>
+					<p ng-if="truckData.weight">{{truckData.weight}}</p>
+					<p ng-if="!truckData.weight">---</p>
+				</div>
+				<div class="col col-sm-3">
+					<div class="truck-item-large">
+					<label>{{ 'trucks:details:additional_info:title' | translate }}</label>
+					<p ng-if="truckData.additional_info">{{truckData.additional_info}}</p>
+					<p ng-if="!truckData.additional_info">---</p>
+					</div>
+				</div>
+				<div class="col col-sm-3" ng-if="false">
+					<label>{{ 'trucks:details:max_distance:title' | translate }}</label>
+					<p ng-if="truckData.max_distance">{{truckData.max_distance}}</p>
+					<p ng-if="!truckData.max_distance">---</p>
+				</div>
+			</div>
+			<div class="row parrafo">
+				<div class="col col-sm-3">
+					<label>{{ 'trucks:details:driven_by:title' | translate }}</label>
+					<p ng-if="truckData.driver.user.user_first_name || truckData.driver.user.user_last_name">{{truckData.driver.user.user_first_name}} {{truckData.driver.user.user_last_name}}</p>
+					<p ng-if="!truckData.driver.user.user_first_name && !truckData.driver.user.user_last_name">---</p>
+				</div>
+				<div class="col col-sm-3">
+					<label>{{ 'trucks:details:size:title' | translate }}</label>
+					<p ng-if="truckData.size">{{truckData.size}}</p>
+					<p ng-if="!truckData.size">---</p>
+				</div>
+				<div class="col col-sm-3">
+					<label>{{ 'trucks:details:trailer_plate:title' | translate }}</label>
+					<p ng-if="truckData.plate_trailer">{{truckData.plate_trailer}}</p>
+					<p ng-if="!truckData.plate_trailer">---</p>
+				</div>
+				<div class="col col-sm-3" ng-if="false">
+					<label>{{ 'trucks:details:availiability:title' | translate }}</label>
+					<p>{{truckData.AvailabilityTruckText}}</p>
+				</div>
+			</div>
+			<div class="row parrafo">
+				<div class="col col-sm-3">
+					<a ui-sref="private.trucks.loads({id: truckData.id})" ui-sref-opts="{ id: truckData.id }" class="small-text normal-link load-search-lessf pointer">
+						{{ 'trucks:details:truck_loads:title' | translate }}
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

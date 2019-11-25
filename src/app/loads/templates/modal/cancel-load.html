@@ -1,0 +1,19 @@
+<div class="modal-body" id="cancel-load-modal">
+	<h3 class="title-modal text-left">{{ 'modals:cancel_load:title' | translate }}</h3>
+	<p class="small-text parrafo">{{ 'modals:cancel_load:desc' | translate }}</p>
+	<form method="post" id=cancelLoadFormId name="cancelLoadFormName" ng-submit="cancelload.sendCancel(cancelLoadFormName)" novalidate>
+		<div class="form-group">
+			<label class="title-field">{{ 'modals:cancel_load:form:reason:text' | translate }}</label>
+			<select name="reason-opt" id="reason-opt" ng-model="cancelload.dataToSend.reason_cancel" class="form-control input-md" required>
+				<option value="">{{ 'modals:cancel_load:form:select:empty' | translate }}</option>
+				<option ng-repeat="option in cancelload.itemsSizeLenLoads.ReasonLoadCancel_list" value="{{option.id}}">{{option.name_reason}}</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<textarea ng-model="cancelload.dataToSend.reason_cancel_descrip" name="comment-reason" class="form-control" placeholder="Please add your comment" required></textarea>
+		</div>
+		<div class="form-group text-right">
+			<button ng-disabled="cancelload.savingCancel" type="submit" class="btn btn-class1 bg-color-4 color-white">{{ 'modals:cancel_load:btn' | translate}}</button>
+		</div>
+	</form>
+</div>

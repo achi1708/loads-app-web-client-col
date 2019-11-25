@@ -1,0 +1,79 @@
+<div class="modal-body" id="carrier-assigned-modal">
+	<h3 class="title-modal text-left">{{ 'modals:carrier_assigned:title' | translate }}</h3>
+	<main-loader ng-if="carrierassignedinfo.loadingInfo && !carrierassignedinfo.finalCarrierData"></main-loader>
+	<p ng-if="!carrierassignedinfo.loadingInfo && !carrierassignedinfo.finalCarrierData" class="parrafo">{{ 'modals:carrier_assigned:empty_info' | translate }}</p>
+	<div ng-if="!carrierassignedinfo.loadingInfo && carrierassignedinfo.finalCarrierData" class="full-width">
+		<div class="row parrafo">
+			<div class="col-3 col-sm-3">
+				<div class="pic-square">
+					<img ng-if="carrierassignedinfo.finalCarrierData.img_perfil_carrier" ng-src="{{carrierassignedinfo.finalCarrierData.img_perfil_carrier[0]['imagen-60']}}" border="0">
+				</div>
+			</div>
+			<div class="col-8 col-sm-8">
+				<p class="title-field parrafo">{{carrierassignedinfo.finalCarrierData.carrier_info.company_name}}</p>
+				<div ng-if="carrierassignedinfo.finalCarrierData.carrier_info.user.user_votes.length" class="full-width">
+					<ul class="nav user-calification">
+						<li class="nav-item">
+							<span ng-class="carrierassignedinfo.finalCarrierData.carrier_info.user.user_votes[0].total_prom >= 1 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+						</li>
+						<li class="nav-item">
+							<span ng-class="carrierassignedinfo.finalCarrierData.carrier_info.user.user_votes[0].total_prom >= 2 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+						</li>
+						<li class="nav-item">
+							<span ng-class="carrierassignedinfo.finalCarrierData.carrier_info.user.user_votes[0].total_prom >= 3 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+						</li>
+						<li class="nav-item">
+							<span ng-class="carrierassignedinfo.finalCarrierData.carrier_info.user.user_votes[0].total_prom >= 4 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+						</li>
+						<li class="nav-item">
+							<span ng-class="carrierassignedinfo.finalCarrierData.carrier_info.user.user_votes[0].total_prom >= 5 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+						</li>
+					</ul>
+				</div>
+				<div ng-if="!carrierassignedinfo.finalCarrierData.carrier_info.user.user_votes.length" class="full-width">
+					<ul class="nav user-calification">
+						<li class="nav-item">
+							<span class="fa fa-star-o"></span>
+						</li>
+						<li class="nav-item">
+							<span class="fa fa-star-o"></span>
+						</li>
+						<li class="nav-item">
+							<span class="fa fa-star-o"></span>
+						</li>
+						<li class="nav-item">
+							<span class="fa fa-star-o"></span>
+						</li>
+						<li class="nav-item">
+							<span class="fa fa-star-o"></span>
+						</li>
+					</ul>
+				</div>
+				<p class="text-field no-margin">Loads Delivered: {{carrierassignedinfo.finalCarrierData.LoadsTransported}}</p>
+				<p class="text-field no-margin">Contact: {{carrierassignedinfo.finalCarrierData.carrier_info.phone_company}}</p>
+			</div>
+		</div>
+		<h4 class="subtitle-modal text-left">{{ 'modals:carrier_assigned:basic_info:title' | translate }}</h4>
+		<div class="row">
+			<div class="col col-sm-6">
+				<label class="title-field">{{ 'modals:carrier_assigned:basic_info:corp_number:title' | translate }}</label>
+				<p class="text-field">{{carrierassignedinfo.finalCarrierData.carrier_info.corp_number}}</p>
+			</div>
+			<div class="col col-sm-6">
+				<label class="title-field">{{ 'modals:carrier_assigned:basic_info:dot_number:title' | translate }}</label>
+				<p class="text-field">{{carrierassignedinfo.finalCarrierData.carrier_info.dot_number}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-sm-6">
+				<label class="title-field">{{ 'modals:carrier_assigned:basic_info:mc_number:title' | translate }}/label>
+				<p class="text-field">{{carrierassignedinfo.finalCarrierData.carrier_info.mc_number}}</p>
+			</div>
+			<div class="col col-sm-6">
+				<label class="title-field">{{ 'modals:carrier_assigned:basic_info:insurance_policy:title' | translate }}</label>
+				<p class="text-field">{{carrierassignedinfo.finalCarrierData.carrier_info.bond_insurance_policy_num}}</p>
+			</div>
+		</div>
+		<!--<h4 class="subtitle-modal text-left">Truck assigned</h4>-->
+	</div>
+</div>

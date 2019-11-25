@@ -1,0 +1,73 @@
+<div id="page-section-home" class="page-section col">
+	<total-items></total-items>
+	<div class="col content-load-list bg-color-white">
+		<div class="row">
+			<div id="home_map" class="col col-md-4 pull-l hidden-sm-down no-padding">
+				<div ng-if="!interestpoints.loadingMap">
+					<ui-gmap-google-map center='interestpoints.map.center' zoom='interestpoints.map.zoom'>
+						<ui-gmap-marker ng-repeat="m in interestpoints.mapMarkers" coords="m.coords" options="m.options" idkey="m.id">
+							<ui-gmap-window>
+								<div class="windowmap-interestpoints">
+									<p class="place-title"><img ng-src="{{m.details.image}}" class="pull-l img-windowmap" border="0"> {{m.details.name}}</p>
+									<div class="clearfix"></div>
+									<p class="place-details"><span>{{ 'interestpoints:nearby_points:place:type:title' | translate }}:</span> {{m.details.type | capitalize }}</p>
+									<p class="place-details"><span>{{ 'interestpoints:nearby_points:place:schedule:title' | translate }}:</span> {{m.details.opening | capitalize }}</p>
+									<p class="place-details" ng-class="'place-'+m.details.status"><span>{{ 'interestpoints:nearby_points:place:status:title' | translate }}:</span> {{ 'interestpoints:nearby_points:place:'+m.details.status+':text' | translate }}</p>
+								</div>
+							</ui-gmap-window>
+
+						</ui-gmap-marker>
+					</ui-gmap-google-map>
+				</div>
+			</div>
+			<div class="col col-md-8 pull-l load-list-home">
+				<h3 permission permission-only="['CARRIER', 'DRIVER', 'OWNER']" class="large-title">{{ 'interestpoints:nearby_points:title' | translate }}</h3>
+				<div class="row">
+					<div class="col text-right botonera-list">
+						<div class="dropdown">
+						  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    <span class="fa fa-filter"></span>
+						  </button>
+						  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+						    <div ng-click="interestpoints.setFilterPoints()" ng-repeat="filter in interestpoints.filterList" class="dropdown-item">
+						    	<input type="checkbox" id="{{filter.name}}" name="{{filter.name}}" ng-model="filter.checked" class="custom-checkbox" />
+								<label for="{{filter.name}}"><span></span>{{filter.full_name}}</label>
+						    </div>
+						  </div>
+						</div>
+					</div>
+				</div>
+				<main-loader ng-if="interestpoints.loadingData"></main-loader>
+				<div ng-if="!interestpoints.loadingData" class="full-width content-tableData">
+					<table permission permission-only="['CARRIER', 'DRIVER', 'OWNER']" datatable="ng" dt-options="interestpoints.datatableOptions" class="tableDataSort table-interestpoints" width="100%" border="0">
+						<thead>
+							<tr>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in interestpoints.nearbyPoints">
+								<td width="20%">
+									<img ng-src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{item.photos[0].photo_reference}}&key={{interestpoints.apikeymaps}}" class="img-fluid" border="0">
+								</td>
+								<td width="80%">
+									<p ng-if="item.name" class="place-title">{{item.name}}</p>
+									<p ng-if="!item.name" class="place-title">--</p>
+									<p ng-if="item.types[0]" class="place-details"><span>{{ 'interestpoints:nearby_points:place:type:title' | translate }}:</span> {{item.types[0] | capitalize }}</p>
+									<p ng-if="!item.types[0]" class="place-details"><span>{{ 'interestpoints:nearby_points:place:type:title' | translate }}:</span> --</p>
+									<p ng-if="item.opening_hours.weekday_text.length" class="place-details"><span>{{ 'interestpoints:nearby_points:place:schedule:title' | translate }}:</span></p>
+									<p ng-if="!item.opening_hours.weekday_text.length" class="place-details"><span>{{ 'interestpoints:nearby_points:place:schedule:title' | translate }}:</span> --</p>
+									<p ng-if="item.opening_hours.weekday_text.length" ng-repeat="weekday_txt in item.opening_hours.weekday_text" class="place-details">{{weekday_txt}}</p>
+									<p ng-if="item.opening_hours && item.opening_hours.open_now" class="place-details place-open"><span>{{ 'interestpoints:nearby_points:place:status:title' | translate }}:</span> {{ 'interestpoints:nearby_points:place:open:text' | translate }}</p>
+									<p ng-if="item.opening_hours && !item.opening_hours.open_now" class="place-details place-close"><span>{{ 'interestpoints:nearby_points:place:status:title' | translate }}:</span> {{ 'interestpoints:nearby_points:place:close:text' | translate }}</p>
+									<p ng-if="!item.opening_hours" class="place-details"><span>{{ 'interestpoints:nearby_points:place:status:title' | translate }}:</span> --</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

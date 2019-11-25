@@ -1,0 +1,52 @@
+.main-scheme{
+	.menu-asside{
+		@include box-shadow(8px, 0px, 44px, -7px, $black_color, 0.61);
+		position: fixed;
+		left: 0;
+		top: 70px;
+		width: 260px;
+		height: calc(100% - 70px);
+		background: $white_color;
+		overflow-y: auto;
+		overflow-x: hidden;
+		&:before, &:after{
+			content: "";
+		    position: absolute;
+		    width: inherit;
+		    top: 0;
+		    bottom: 0;
+		    z-index: -1;
+		    border: inherit;
+		}
+		.nav{
+			.nav-item{
+				border-bottom: 1px solid #f8f6f8;
+				.nav-link{
+					padding: 20px 20px 20px 25px;
+					font-family: $regular_font;
+					font-size: $regular_size;
+					color: $armadillo_color;
+					border-left: 5px solid transparent;
+					&:hover{
+						border-left: 5px solid $bright_turquoise_color;
+						color: $bright_turquoise_color;
+					}
+					.fa{
+						font-size: $regular_size;
+						@include margin-right(20px);
+						&.fa-truck{
+							@include transform-rotateY(180deg);
+						}
+						&.fa-exclamation-circle{
+							@include transform-rotateX(180deg);
+						}
+					}
+				}
+				&.active .nav-link{
+					border-left: 5px solid $bright_turquoise_color;
+					color: $bright_turquoise_color;
+				}
+			}
+		}
+	}
+}

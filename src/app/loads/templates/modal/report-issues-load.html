@@ -1,0 +1,13 @@
+<div class="modal-body" id="cancel-load-modal">
+	<h3 class="title-modal text-left">{{ 'modals:report_issues_load:title' | translate }}</h3>
+	<p class="small-text parrafo">{{ 'modals:report_issues_load:desc' | translate }}</p>
+	<form method="post" id=reportIssuesLoadFormId name="reportIssuesLoadFormName" ng-submit="reportissuesload.sendReport(reportIssuesLoadFormName)" novalidate>
+		<div class="form-group">
+			<textarea ng-model="reportissuesload.dataToSend.description" name="comment-reason" class="form-control" placeholder="{{ 'modals:report_issues_load:form:placeholder' | translate }}" required></textarea>
+		</div>
+		<div class="form-group text-right">
+			<button ng-click="reportissuesload.closePopup()" type="button" class="btn btn-class1 bg-color-white color-armadillo">{{ 'modals:report_issues_load:close:btn' | translate }}</button>
+			<button ng-disabled="reportissuesload.savingReport" type="submit" class="btn btn-class1 bg-color-4 color-white">{{ 'modals:report_issues_load:btn' | translate}}</button>
+		</div>
+	</form>
+</div>

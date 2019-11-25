@@ -1,0 +1,283 @@
+#page-section-trucks{
+	.title-section{
+		@include margin-bottom(0px);
+	}
+	.data-count-loads{
+		@include border-radius(5px);
+		@include padding-top(15px);
+		@include padding-bottom(15px);
+		@include margin-bottom(15px);
+		text-align: center;
+		.nav{
+			float: none;
+			display: inline-block;
+			.nav-item{
+				display: inline-block;
+				@include margin-left(15px);
+				@include margin-right(15px);
+				.data-load-circle{
+					position: relative;
+					@include border-radius(300px);
+					padding: 50px;
+					border-width: 8px;
+					border-style: solid;
+					max-width: 116px;
+					max-height: 116px;
+					@include margin-top(0);
+					@include margin-left(auto);
+					@include margin-right(auto);
+					@include margin-bottom(15px);
+					span{
+						position: absolute;
+						width: 27px;
+						height: 16px;
+						top: 50%;
+						left: 50%;
+						margin: -8px 0 0 -13px;
+						font-family: $regular_font;
+						font-size: $regular_size;
+						color: $armadillo_color;
+					}
+				}
+				.item-data-load-name{
+					margin: 0;
+					font-family: $regular_font;
+					font-size: $small_size;
+					color: $armadillo_color;
+					text-align: center;
+				}
+			}
+		}
+	}
+	.content-truck-list{
+		@include border-radius(5px);
+		@include padding-top(15px);
+		@include padding-bottom(15px);
+		.content-tableData{
+			table{
+				tr{
+					td{
+						&.img-truck{
+							padding: 10px 0;
+							min-width: 40px;
+							width: 7%;
+						}
+						&.info-truck{
+							width: 75%;
+						}
+						&.status-truck{
+							width: 13%;
+						}
+						&.details-trucks-btn{
+							width: 5%;
+						}
+						.truck-name-table{
+							font-family: $bold_font;
+							font-size: $small_size;
+							color: $armadillo_color;
+							@include margin-bottom(8px);
+						}
+						.driver-name-table{
+							color: $dark_gray_color;
+						}
+					}
+				}
+			}
+		}
+		.detail-truck-table{
+			.details-table-row{
+				position: relative;
+				box-sizing: border-box;
+				.dropdown-actions-truck{
+					position: absolute;
+					top: 5px;
+					right: 5px;
+					z-index: 100;
+					button{
+						font-size: 0;
+						background:none;
+						border:none;
+						span{
+							color: $saint_juan_color;
+							font-size: $large_size;
+						}
+					}
+					.dropdown-menu{
+						.dropdown-item{
+							color: $saint_juan_color;
+							font-size: $regular_size;
+							a{
+								color: $saint_juan_color;
+								font-size: $regular_size - 2px;
+								span{
+									color: $saint_juan_color;
+									font-size: $regular_size - 2px;
+								}
+							}
+						}
+					}
+				}
+				.name-calification-details{
+					@include margin-bottom(10px);
+					.nav-item{
+						@include margin-left(10px);
+						@include margin-right(10px);
+						&:first-child{
+							@include margin-left(0px);
+						}
+						span{
+							font-size: $regular_size;
+							&.fa-star{
+								color: $saffron_color;
+							}
+							&.fa-star-o{
+								color: $dark_gray_color;
+							}
+						}
+					}
+				}
+				.title-truck-details{
+					font-family: $regular_font;
+					font-size: $large_size;
+					color: $armadillo_color;
+					margin: 0;
+				}
+				.foot-truck-pic{
+					@include margin-top(5px);
+					@include margin-bottom(5px);
+					font-family: $light_font;
+					font-size: $small_size - 2px;
+					text-align: center;
+				}
+				.truck-items-data{
+					label{
+						font-family: $bold_font;
+						font-size: $small_size - 3px;
+						color: $armadillo_color;
+						@include margin-bottom(5px);
+						@extend .uppercase-text;
+					}
+					p{
+						font-family: $light_font;
+						font-size: $small_size;
+						color: $armadillo_color;
+						word-wrap: break-word;
+					}
+					.truck-item-large{
+						position: absolute; 
+						top:0; 
+						left: 0; 
+						padding: 0 15px;
+					}
+				}
+			}
+			.dropdown-actions-load{
+				position: absolute;
+				top: 5px;
+				right: 5px;
+				z-index: 100;
+				button{
+					font-size: 0;
+					background:none;
+					border:none;
+					span{
+						color: $saint_juan_color;
+						font-size: $large_size;
+					}
+				}
+				.dropdown-menu{
+					.dropdown-item{
+						color: $saint_juan_color;
+						font-size: $regular_size;
+						a{
+							color: $saint_juan_color;
+							font-size: $regular_size - 2px;
+							span{
+								color: $saint_juan_color;
+								font-size: $regular_size - 2px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#page-section-post-truck{
+	.title-section{
+		@include margin-bottom($spacing3_value);
+	}
+	.subtitle-section{
+		@include margin-bottom($small_size + 1px);
+	}
+	form{
+		label{
+			font-family: $bold_font;
+			font-size: $small_size - 3px;
+			
+			@extend .uppercase-text;
+			@include margin-bottom(5px);
+			&.title-checks{
+				@include margin-bottom(15px);
+			}
+		}
+		.list-checks{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			li{
+				display: inline-block;
+				margin: 0 15px 0 0;
+				label{
+					font-family: $regular_font;
+					font-size: $small_size;
+					color: $armadillo_color;
+					text-transform: capitalize;
+					width:165px;
+				}
+			}
+		}
+		.parrafo-upload{
+			@include margin-top(20px);
+		}
+		.upload-link{
+			@extend .pull-l;
+			margin: 10px 0;
+		}
+		.close-upload{
+			font-family: $regular_font;
+			font-size: $large_size;
+			color: $dark_gray_color;
+			@extend .pull-r;
+			padding: 5px;
+
+		}
+		.main-botonera{
+			button{
+				@include margin-right(20px);
+			}
+			.cancel-post-link{
+				@extend .pull-r;
+				margin: 17px 0;
+			}
+		}
+	}
+}
+
+.pic-square{
+	width: 100%;
+	height: 100%;
+	max-width: 150px;
+	max-height: 150px;
+	background: url(../assets/images/common/camera-ico.ico) no-repeat $dark_gray_color;
+	background-size: 50px;
+	background-position: 50%;
+	margin: 0 auto;
+	@include border-radius(10px);
+	cursor: pointer;
+	overflow: hidden;
+	img{
+		height: 150px;
+	}
+}

@@ -1,0 +1,82 @@
+<div class="modal-body" id="carrier-requests-modal">
+	<h3 class="title-modal text-left">{{ 'modals:carrier_requests:title' | translate }}</h3>
+	<p ng-if="!carrierrequests.loadingInfo && carrierrequests.carrierReqList.length <= 0" class="small-text parrafo">{{ 'modals:carrier_requests:empty_requests:text' | translate }}</p>
+	<p ng-if="!carrierrequests.loadingInfo && carrierrequests.carrierReqList.length > 0" class="small-text parrafo">{{ 'modals:carrier_requests:description' | translate }}</p>
+	<form ng-if="!carrierrequests.loadingInfo && carrierrequests.carrierReqList.length > 0" method="post" id=carrierRequestFormId name="carrierRequestFormName" ng-submit="carrierrequests.sendConfirmRequest(carrierRequestFormName)" novalidate>
+		<div class="full-width content-tableData parrafo">
+			<table datatable="ng" dt-options="carrierrequests.datatableOptions" class="tableDataSort" width="100%" border="0">
+				<thead>
+					<tr>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="carrier in carrierrequests.carrierReqList">
+						<td class="relative">
+							<input ng-model="carrierrequests.dataRequest.carrier" type="radio" id="carrier_{{carrier.id_request}}" name="carrier_id" value="{{carrier.id_request}}" required>
+							<label for="carrier_{{carrier.id_request}}"></label>
+							<div class="check"><div class="inside"></div></div>
+						</td>
+						<td ng-click="carrierrequests.seeCarrierProfile(carrier.carrier.user_id)" class="pointer">
+							<img ng-if="carrier.img_perfil_carrier" ng-src="{{carrier.img_perfil_carrier[0]['imagen-60']}}" width="40" border="0">
+						</td>
+						<td ng-click="carrierrequests.seeCarrierProfile(carrier.carrier.user_id)" class="pointer">{{carrier.carrier.company_name}}</td>
+						<td ng-click="carrierrequests.seeCarrierProfile(carrier.carrier.user_id)" class="pointer">{{carrier.CantidadTruck}}</td>
+						<td ng-click="carrierrequests.seeCarrierProfile(carrier.carrier.user_id)" class="pointer">{{carrier.SkillsCarrierText}}</td>
+						<td ng-click="carrierrequests.seeCarrierProfile(carrier.carrier.user_id)" class="pointer" width="20%" ng-if="carrier.carrier.user.user_votes.length">
+							<ul class="nav user-calification">
+								<li class="nav-item">
+									<span ng-class="carrier.carrier.user.user_votes[0].total_prom >= 1 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+								</li>
+								<li class="nav-item">
+									<span ng-class="carrier.carrier.user.user_votes[0].total_prom >= 2 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+								</li>
+								<li class="nav-item">
+									<span ng-class="carrier.carrier.user.user_votes[0].total_prom >= 3 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+								</li>
+								<li class="nav-item">
+									<span ng-class="carrier.carrier.user.user_votes[0].total_prom >= 4 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+								</li>
+								<li class="nav-item">
+									<span ng-class="carrier.carrier.user.user_votes[0].total_prom >= 5 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+								</li>
+							</ul>
+						</td>
+						<td ng-click="carrierrequests.seeCarrierProfile(carrier.carrier.user_id)" class="pointer" width="20%" ng-if="!carrier.carrier.user.user_votes.length">
+							<ul class="nav user-calification">
+								<li class="nav-item">
+									<span class="fa fa-star-o"></span>
+								</li>
+								<li class="nav-item">
+									<span class="fa fa-star-o"></span>
+								</li>
+								<li class="nav-item">
+									<span class="fa fa-star-o"></span>
+								</li>
+								<li class="nav-item">
+									<span class="fa fa-star-o"></span>
+								</li>
+								<li class="nav-item">
+									<span class="fa fa-star-o"></span>
+								</li>
+							</ul>
+						</td>
+						<td ng-click="carrierrequests.seeCarrierProfile(carrier.carrier.user_id)" class="pointer" width="15%">
+							<span class="fa fa-phone vertical-middle"></span>
+							<a href="#" class="small-text normal-link">{{carrier.carrier.phone_company}}</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="full-width text-right">
+			<button style="max-width: 300px;" ng-disabled="carrierrequests.savingRequest" type="submit" class="btn btn-class1 bg-color-1 color-white">{{ 'modals:carrier_requests:form:btn' | translate }}</button>
+		</div>
+	</form>
+</div>

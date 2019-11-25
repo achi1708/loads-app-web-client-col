@@ -1,0 +1,120 @@
+<div id="page-section-loads" class="page-section col">
+	<total-items></total-items>
+	<div class="col content-load-list bg-color-white">
+		<h3 class="large-title title-section">{{ 'loadslog:section:title' | translate }}</h3>
+		<div class="row">
+			<div class="col text-right botonera-list">
+				<a ng-click="loadslog.openSearchLoadsLogsModal()" class="btn btn-class2 bg-color-1 color-white">
+					<span class="fa fa-calendar-o"></span> {{ 'loadslog:options:filter:text' | translate }}
+				</a>
+			</div>
+		</div>
+	  	<div class="full-width content-tableData">
+	  		<h6>{{ 'loads:list:count' | translate:{ count: loadslog.countLoads } }}</h6>
+	  		<table datatable="" dt-options="loadslog.datatableOptions" dt-columns="loadslog.dtColumns" class="tableDataSort" width="100%" border="0">
+	  			<thead>
+		            <tr>
+		                <th permission permission-only="'GENERADOR_CARGA'">{{"loads:table:column:status" | translate}}</th>
+		                <th permission permission-only="'GENERADOR_CARGA'">{{"loads:table:column:origin" | translate}}</th>
+		                <th permission permission-only="'GENERADOR_CARGA'">{{"loads:table:column:destination" | translate}}</th>
+		                <th permission permission-only="'GENERADOR_CARGA'">{{"loads:table:column:pickup" | translate}}</th>
+		                <th permission permission-only="'GENERADOR_CARGA'">{{"loads:table:column:delivery" | translate}}</th>
+		                <th permission permission-only="'GENERADOR_CARGA'">{{"loads:table:column:distance" | translate}}</th>
+		                <th permission permission-only="'GENERADOR_CARGA'">{{"loads:table:column:length" | translate}}</th>
+		                <th permission permission-only="'GENERADOR_CARGA'">{{"loads:table:column:weight" | translate}}</th>
+		                <th permission permission-only="'GENERADOR_CARGA'">{{"loads:table:column:size" | translate}}</th>
+		                <th permission permission-only="'GENERADOR_CARGA'">{{"loads:table:column:price" | translate}}</th>
+		                <th permission permission-only="'GENERADOR_CARGA'">{{"loads:table:column:ago" | translate}}</th>
+		                <th permission permission-only="'GENERADOR_CARGA'">{{"loads:table:column:actions" | translate}}</th>
+		                <th permission permission-only="['CARRIER', 'DRIVER', 'OWNER']">{{"loads:table:column:profile_img" | translate}}</th>
+		                <th permission permission-only="['CARRIER', 'DRIVER', 'OWNER']">{{"loads:table:column:shipper" | translate}}</th>
+		                <th permission permission-only="['CARRIER', 'DRIVER', 'OWNER']">{{"loads:table:column:origin" | translate}}</th>
+		                <th permission permission-only="['CARRIER', 'DRIVER', 'OWNER']">{{"loads:table:column:destination" | translate}}</th>
+		                <th permission permission-only="['CARRIER', 'DRIVER', 'OWNER']">{{"loads:table:column:pickup" | translate}}</th>
+		                <th permission permission-only="['CARRIER', 'DRIVER', 'OWNER']">{{"loads:table:column:delivery" | translate}}</th>
+		                <th permission permission-only="['CARRIER', 'DRIVER', 'OWNER']">{{"loads:table:column:length" | translate}}</th>
+		                <th permission permission-only="['CARRIER', 'DRIVER', 'OWNER']">{{"loads:table:column:weight" | translate}}</th>
+		                <th permission permission-only="['CARRIER', 'DRIVER', 'OWNER']">{{"loads:table:column:size" | translate}}</th>
+		                <th permission permission-only="['CARRIER', 'DRIVER', 'OWNER']">{{"loads:table:column:price" | translate}}</th>
+		                <th permission permission-only="['CARRIER', 'DRIVER', 'OWNER']">{{"loads:table:column:ago" | translate}}</th>
+		                <th permission permission-only="['CARRIER', 'DRIVER', 'OWNER']">{{"loads:table:column:status" | translate}}</th>
+		                <th permission permission-only="['CARRIER', 'DRIVER', 'OWNER']">{{"loads:table:column:actions" | translate}}</th>
+		            </tr>
+		        </thead>
+				<tbody  permission permission-only="'GENERADOR_CARGA'">
+					<tr ng-if="!loadslog.loadsList.length">
+						<td colspan="13">
+							<p class="text-center">{{ "loads:list:empty:text" | translate }}</p>
+						</td>
+					</tr>
+					<tr ng-repeat-start="loadlog in loadslog.loadsList">
+						<td class="tags-row" colspan="13">
+							<div class="tag_item bg-color-5 color-armadillo" ng-if="loadlog.posteverywhere == '3'"><strong>{{ "loads:table:tag:premium:text" | translate }}</strong></div>
+							<div class="tag_item bg-color-3 color-armadillo" ng-if="loadlog.posteverywhere == '2'"><strong>{{ "loads:table:tag:standard:text" | translate }}</strong></div>
+						</td>
+					</tr>
+					<tr>
+						<td ng-bind-html = "loadlog.status_btn"></td>
+						<td>{{loadlog.from}}</td>
+						<td>{{loadlog.to}}</td>
+						<td>{{loadlog.pickup_date_formatted}}</td>
+						<td>{{loadlog.delivery_date_formatted}}</td>
+						<td>{{loadlog.distance}}</td>
+						<td>{{loadlog.length_loads}}</td>
+						<td>{{loadlog.weight}}</td>
+						<td>{{loadlog.dimension}}</td>
+						<td>{{loadlog.price_to_show}}</td>
+						<td am-time-ago="loadlog.load_date"></td>
+						<td>
+							<i ng-if="!loadlog.expanded" ng-click="loadslog.showDetailsUnique(loadlog.load_id)" class="fa fa-angle-down show-load-details-btn"></i>
+							<i ng-if="loadlog.expanded" ng-click="loadslog.showDetailsUnique(loadlog.load_id)" class="fa fa-angle-up show-load-details-btn"></i>
+						</td>
+					</tr>
+					<tr class="detail-load-table" ng-repeat-end>
+						<td ng-if="loadlog.expanded" colspan="12" class="no-padding">
+							<load-details-row load-id=loadlog.load_id></load-details-row>
+						</td>
+					</tr>
+				</tbody>
+				<tbody  permission permission-only="['CARRIER', 'DRIVER', 'OWNER']">
+					<tr ng-if="!loadslog.loadsList.length">
+						<td colspan="13">
+							<p class="text-center">{{ "loads:list:empty:text" | translate }}</p>
+						</td>
+					</tr>
+					<tr ng-repeat-start="loadlog in loadslog.loadsList">
+						<td class="tags-row" colspan="13">
+							<div class="tag_item bg-color-5 color-armadillo" ng-if="loadlog.posteverywhere == '3'"><strong>{{ "loads:table:tag:premium:text" | translate }}</strong></div>
+							<div class="tag_item bg-color-3 color-armadillo" ng-if="loadlog.posteverywhere == '2'"><strong>{{ "loads:table:tag:standard:text" | translate }}</strong></div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img ng-if="load.img_shipper" ng-src="{{loadlog.img_shipper}}" width="30" border="0">
+						</td>
+						<td>{{loadlog.full_name_shipper}}</td>
+						<td>{{loadlog.from}}</td>
+						<td>{{loadlog.to}}</td>
+						<td>{{loadlog.pickup_date_formatted}}</td>
+						<td>{{loadlog.delivery_date_formatted}}</td>
+						<td>{{loadlog.length_loads}}</td>
+						<td>{{loadlog.weight}}</td>
+						<td>{{loadlog.dimension}}</td>
+						<td>{{loadlog.price_to_show}}</td>
+						<td am-time-ago="loadlog.load_date"></td>
+						<td ng-bind-html = "loadlog.status_btn"></td>
+						<td>
+							<i ng-if="!loadlog.expanded" ng-click="loadslog.showDetailsUnique(loadlog.load_id)" class="fa fa-angle-down show-load-details-btn"></i>
+							<i ng-if="loadlog.expanded" ng-click="loadslog.showDetailsUnique(loadlog.load_id)" class="fa fa-angle-up show-load-details-btn"></i>
+						</td>
+					</tr>
+					<tr class="detail-load-table" ng-repeat-end>
+						<td ng-if="loadlog.expanded" colspan="12" class="no-padding">
+							<load-details-row load-id=loadlog.load_id posteverywhere=loadlog.posteverywhere></load-details-row>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

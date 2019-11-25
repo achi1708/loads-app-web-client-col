@@ -1,0 +1,9 @@
+<div class="modal-body" id="load-price-modal">
+	<h3 class="title-modal text-left">{{ 'modals:load_price_suggested:title' | translate }}</h3>
+	<p class="small-text parrafo">{{ 'modals:load_price_suggested:desc' | translate:{ price: loadprice.priceSuggested } }}</p>
+	
+		<div class="form-group text-right">
+			<button ng-click="loadprice.selectPrice(true)" type="button" class="btn btn-class1 bg-color-1 color-white">{{ 'modals:load_price_suggested:btn_suggested' | translate}}</button>
+			<button ng-click="loadprice.selectPrice(false)" type="button" class="btn btn-class1 bg-color-white color-saint-juan">{{ 'modals:load_price_suggested:btn_client_price' | translate}}</button>
+		</div>
+</div>

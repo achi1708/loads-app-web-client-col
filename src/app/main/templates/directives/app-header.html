@@ -1,0 +1,91 @@
+<nav class="navbar fixed-top navbar-toggleable-sm navbar-light bg-faded">
+	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarUserOptions" aria-controls="navbarUserOptions" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<a class="navbar-brand" ui-sref="private.home" ui-sref-opts="{ reload: true }">
+		<img src="assets/images/common/logo.png" class="d-inline-block align-middle" alt="">
+		{{ 'header:profile:'+ profile +':title' | translate }}
+		<div class="divider hidden-sm-down"></div>
+	</a>
+	<div class="collapse navbar-collapse" id="navbarUserOptions">
+		<div class="col-md-6 no-padding">
+			<form class="form-inline my-2 my-lg-0 form-main-search">
+				<div class="input-group">
+					<span class="input-group-addon">
+						<button class="btn btn-image">
+							<i class="fa fa-search"></i>
+						</button>
+					</span>
+					<input permission permission-only="'GENERADOR_CARGA'" type="text" class="form-control" placeholder="{{'header:search:input:shipper' | translate}}" ng-click="openSearchCarriersModal()" >
+					<input permission permission-only="['CARRIER', 'DRIVER', 'OWNER']" type="text" class="form-control" placeholder="{{'header:search:input:carrier' | translate}}" ng-click="openSearchLoadsModal()" >
+				</div>
+	    	</form>
+    	</div>
+    	<ul class="navbar-nav ml-auto">
+    		<li class="nav-item notify-header-item dropdown hidden-sm-down">
+	    		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownInviteJoinPanel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    			<span class="info-badge"></span>
+	    			<span class="fa fa-heart"></span>
+	    		</a>
+	    		<div class="dropdown-menu dropdown-menu-right invite-join-panel" aria-labelledby="navbarDropdownInviteJoinPanel">
+	    			<invite-join type=""></invite-join>
+	    		</div>
+	    	</li>
+	    	<li class="nav-item notify-header-item hidden-md-up">
+	    		<a class="nav-link" ui-sref="private.invite_join" ui-sref-opts="{ reload: true }">
+	    			<span class="info-badge"></span>
+	    			<span class="fa fa-heart"></span>
+	    		</a>
+	    	</li>
+	    	<li id="notify-header-item-dropdown" class="nav-item notify-header-item dropdown hidden-sm-down">
+	    		<a ng-click="setReadNotifications()" class="nav-link dropdown-toggle" href="#" id="navbarDropdownNotificationPanel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    			<span class="info-badge">{{notificationsCount}}</span>
+	    			<span class="fa fa-bell"></span>
+	    		</a>
+	    		<div class="dropdown-menu dropdown-menu-right notification-list" aria-labelledby="navbarDropdownNotificationPanel">
+	    			<notification-list list-type="notificationTypeList"></notification-list>
+        		</div>
+	    	</li>
+	    	<li class="nav-item notify-header-item hidden-md-up">
+	    		<a class="nav-link" ui-sref="private.notifications" ui-sref-opts="{ reload: true }">
+	    			<span class="info-badge">{{notificationsCount}}</span>
+	    			<span class="fa fa-bell"></span>
+	    		</a>
+	    	</li>
+	    	<li class="nav-item dropdown">
+	    		<a class="nav-link dropdown-toggle" id="navbarDropdownUserOpt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    			{{user.user_first_name | capitalize }} {{user.user_last_name | capitalize }}
+	    			<i class="fa fa-angle-down"></i>
+	    		</a>
+	    		<div class="dropdown-menu dropdown-menu-right user-options-dropdown" aria-labelledby="navbarDropdownUserOpt">
+	    			<div class="col">
+	    				<div class="row align-items-center">
+	    					<div class="col-3">
+	    						<img ng-if="!user.img_perfil_imagenes || user.img_perfil_imagenes.length == 0" src="assets/images/common/profile_pic.png" class="img-fluid rounded-circle">
+	    						<img ng-if="user.img_perfil_imagenes && user.img_perfil_imagenes.length > 0" ng-src="{{user.img_perfil_imagenes[0]['imagen-60']}}" class="img-fluid rounded-circle">
+	    					</div>
+	    					<div class="col-9">
+	    						<p class="user-name">{{user.user_first_name | capitalize }} {{user.user_last_name | capitalize }}</p>
+	    						<span class="user-email" ng-if="userDataProfile">{{userDataProfile.company_name | capitalize }}</span><br>
+	    						<span class="user-email">{{user.user_email}}</span>
+	    					</div>
+	    				</div>
+	    				<div class="row content-view-profile-btn">
+	    					<div class="col text-center">
+	    						<button ng-click="goToProfile()" class="btn btn-class2 bg-color-1 color-white">{{ 'header:view_profile:btn' | translate }}</button>
+	    					</div>
+	    				</div>
+	    			</div>
+	    			<div class="row">
+	    				<hr />
+	    			</div>
+	    			<div class="col option-list">
+	    				<!--<a href="#" class="link-opt-lst1">{{ 'header:user:menu_options:terms' | translate }}</a>
+	    				<a href="#" class="link-opt-lst1">{{ 'header:user:menu_options:faqs' | translate }}</a>-->
+	    				<a ng-click="logout()" class="link-opt-lst2">{{ 'header:user:menu_options:sign_out' | translate }}</a>
+	    			</div>
+        		</div>
+    		</li>
+	    </ul>
+	</div>
+</nav>

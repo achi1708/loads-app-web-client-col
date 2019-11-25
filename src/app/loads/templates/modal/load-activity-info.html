@@ -1,0 +1,40 @@
+<div class="modal-body" id="load-activity-info-modal">
+	<h3 class="title-modal text-left">{{ 'modals:load_activity:title' | translate }}</h3>
+	<p ng-if="!loadactivityinfo.loadData.history_load" class="parrafo">{{ 'modals:load_activity:empty_info' | translate }}</p>
+	<div ng-if="loadactivityinfo.loadData.history_load" class="full-width">
+		<div class="row parrafo">
+			<div class="col-12 col-sm-12">
+				<div class="row parrafo" ng-repeat="history in loadactivityinfo.loadData.history_load">
+					<div class="col-1 col-sm-1 relative">
+						<div class="round-point-activity"></div>
+						<div class="line-activity"></div>
+					</div>
+					<div class="col-2 col-sm-2">
+						<div class="pic-square">
+							<img ng-if="history.img_perfil" ng-src="{{history.img_perfil[0]['imagen-60']}}" border="0">
+						</div>
+					</div>
+					<div class="col-9 col-sm-9">
+						<p class="description-activity" ng-if="history.key == 'apply_load_accept'">{{'modals:load_activity:assigned_load_to:text' | translate}} {{history.name_request}}</p>
+						<p class="description-activity" ng-if="history.key == 'apply_load_collected'">{{'modals:load_activity:load_collected:text' | translate}}</p>
+						<p class="description-activity" ng-if="history.key == 'apply_load_transit'">{{'modals:load_activity:load_transit:text' | translate}} {{history.name_request}}</p>
+						<p class="description-activity" ng-if="history.key == 'apply_load_delivered'">{{'modals:load_activity:load_delivered:text' | translate}} {{history.name_request}}</p>
+						<p class="date-activity"><span class="fa fa-clock"></span> {{history.date_register | amDateFormat:'MMM DD YYYY'}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-1 col-sm-1 relative">
+						<div class="round-point-activity"></div>
+					</div>
+					<div class="col-2 col-sm-2">
+						<div class="pic-square"></div>
+					</div>
+					<div class="col-9 col-sm-9">
+						<p class="description-activity">--</p>
+						<p class="date-activity"><span class="fa fa-clock"></span>  --</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

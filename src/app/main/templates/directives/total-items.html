@@ -1,0 +1,39 @@
+<div class="col data-count-loads hidden-sm-down bg-color-white">
+	<ul class="nav">
+		<li class="nav-item">
+			<div class="data-load-circle border-color-saffron">
+				<span ng-if="loadingItemsData">0</span>
+				<span ng-if="!loadingItemsData">{{totalItems.current_loads}}</span>
+			</div>
+			<p class="item-data-load-name">{{ 'home:total_items:current_loads:title' | translate }}</p>
+		</li>
+		<li class="nav-item">
+			<div class="data-load-circle border-color-bright-turquoise">
+				<span ng-if="loadingItemsData">0</span>
+				<span ng-if="!loadingItemsData">{{totalItems.pending_assign}}</span>
+			</div>
+			<p class="item-data-load-name">{{ 'home:total_items:pending_assign:title' | translate }}</p>
+		</li>
+		<li class="nav-item">
+			<div class="data-load-circle border-color-pastel-red">
+				<span ng-if="loadingItemsData">0</span>
+				<span ng-if="!loadingItemsData">{{totalItems.posted_loads}}</span>
+			</div>
+			<p class="item-data-load-name">{{ 'home:total_items:posted_loads:title' | translate }}</p>
+		</li>
+		<li class="nav-item">
+			<div class="data-load-circle border-color-purple">
+				<span ng-if="loadingItemsData">0</span>
+				<span ng-if="!loadingItemsData">{{totalItems.available_trucks}}</span>
+			</div>
+			<p class="item-data-load-name">{{ 'home:total_items:available_trucks:title' | translate }}</p>
+		</li>
+		<li class="nav-item">
+			<div class="data-load-circle border-color-blue-king">
+				<span ng-if="loadingItemsData">0</span>
+				<span ng-if="!loadingItemsData">{{totalItems.all_loads}}</span>
+			</div>
+			<p class="item-data-load-name">{{ 'home:total_items:all_loads:title' | translate }}</p>
+		</li>
+	</ul>
+</div>

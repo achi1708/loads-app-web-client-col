@@ -1,0 +1,290 @@
+<div class="modal-body" id="edit-profile-modal">
+	<h3 class="title-modal text-left">{{ 'profile:edit:section:title' | translate }}</h3>
+	<p class="subtitle-login small-text">{{ 'sign_up:right_side:subtitle'+editprofile.subtitleForm | translate }}</p>
+	<div class="full-width">
+		<form ng-if="editprofile.validateForm == 'basic_info'" class="animationIf" method="post" id=editProfileFormId name="editProfileFormName" ng-submit="editprofile.validateEdit(editProfileFormName)" novalidate>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:first_name:label' | translate }}(*)</label>
+						<input id="user_first_name" ng-model="editprofile.dataUser.user_first_name" name="user_first_name" type="text" placeholder='' class="form-control input-md" required>
+					</div>
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:last_name:label' | translate }}(*)</label>
+						<input id="user_last_name" ng-model="editprofile.dataUser.user_last_name" name="user_last_name" type="text" placeholder='' class="form-control input-md" required>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:phone:label' | translate }}</label>
+						<input id="user_phone" ng-model="editprofile.dataUser.user_phone" name="user_phone" type="text" placeholder='' class="form-control input-md">
+					</div>
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:email:label' | translate }}(*)</label>
+						<input id="user_email" ng-model="editprofile.dataUser.user_email" name="user_email" type="email" placeholder='' class="form-control input-md" required>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:password:label' | translate }}</label>
+						<input id="user_password" ng-model="editprofile.dataUser.user_new_password" name="user_password" type="password" placeholder='' class="form-control input-md">
+					</div>
+					<!--<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:bank_name:label' | translate }}</label>
+						<input id="name_bank" ng-model="editprofile.dataUser.name_bank" name="name_bank" type="text" placeholder='' class="form-control input-md" required>
+					</div>-->
+				</div>
+			</div>
+			<!--<div class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:bank_account_number:label' | translate }}</label>
+						<input id="number_account_bank" ng-model="editprofile.dataUser.number_account_bank" name="number_account_bank" type="text" placeholder='' class="form-control input-md" required>
+					</div>
+				</div>
+			</div>-->
+			<div class="form-group text-right">
+				<button type="submit" class="btn btn-class2 bg-color-1 color-white">{{ 'sign_up:form:next:btn' | translate }}</button>
+			</div>
+		</form>
+		<form ng-if="editprofile.validateForm == 'company_info'" class="animationIf" method="post" id=editProfileFormId2 name="editProfileFormName2" ng-submit="editprofile.validateEdit(editProfileFormName2)" novalidate>
+
+			<div ng-if="editprofile.profileEdit=='GENERADOR_CARGA'" class="form-group">
+				<div class="row">
+					<div class="col-12">
+						<label class="bold uppercase-text">{{ 'sign_up:form:company_name:label' | translate }}</label>
+						<input id="company_name" ng-model="editprofile.dataUser.company_name" name="company_name" type="text" placeholder='' class="form-control input-md" required>
+					</div>
+				</div>
+			</div>
+			<div ng-if="editprofile.profileEdit=='GENERADOR_CARGA'" class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:type_document:label' | translate }}</label>
+						<select name="type_document" id="type_document" ng-model="editprofile.dataUser.type_document" class="form-control input-md" required>
+							<option ng-repeat="typeDocumentItem in editprofile.typeDocumentOptions" value="{{typeDocumentItem.id}}">{{typeDocumentItem.name}}</option>
+						</select>
+					</div>
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:type_document_number:label' | translate }}</label>
+						<input id="type_document_number" ng-model="editprofile.dataUser.type_document_number" name="type_document_number" type="text" placeholder='' class="form-control input-md">
+					</div>
+				</div>
+			</div>
+			<div ng-if="editprofile.profileEdit=='GENERADOR_CARGA'" class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:address:label' | translate }}</label>
+						<input id="address_company" ng-model="editprofile.dataUser.address_company" name="address_company" type="text" placeholder='' class="form-control input-md" required>
+					</div>
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:company_city:label' | translate }}</label>
+						<input type="text" name="city_company" class="form-control input-md" g-places-autocomplete options="editprofile.optionsGoogleInputCity" force-selection="true" ng-model="editprofile.companyCitySelect" ng-change="editprofile.autoCompleteStateCountry()" placeholder='' required>
+					</div>
+				</div>
+			</div>
+			<div ng-if="editprofile.profileEdit=='GENERADOR_CARGA'" class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:company_state:label' | translate }}</label>
+						<input type="text" name="state_company" class="form-control input-md" g-places-autocomplete force-selection="true" ng-model="editprofile.companyStateSelect" placeholder='' required>
+					</div>
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:company_country:label' | translate }}</label>
+						<input type="text" name="country_company" class="form-control input-md" g-places-autocomplete force-selection="true" ng-model="editprofile.companyCountrySelect" placeholder='' required>
+					</div>
+				</div>
+			</div>
+			<div ng-if="editprofile.profileEdit=='GENERADOR_CARGA'" class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:company_phone:label' | translate }}</label>
+						<input id="phone_company" ng-model="editprofile.dataUser.phone_company" name="phone_company" type="text" placeholder='' class="form-control input-md" required>
+					</div>
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:company_email:label' | translate }}<br>{{ 'sign_up:form:company_email:notice:label' | translate }}</label>
+						<input id="email_company" ng-model="editprofile.dataUser.email_company" name="email_company" type="email" placeholder='' class="form-control input-md" required>
+					</div>
+				</div>
+			</div>
+			<div ng-if="editprofile.profileEdit!='GENERADOR_CARGA' && editprofile.profileEdit!='DRIVER'" class="form-group">
+				<div class="row">
+					<div class="col-12">
+						<label class="bold uppercase-text">{{ 'sign_up:form:company_name:label' | translate }}</label>
+						<input id="company_name" ng-model="editprofile.dataUser.company_name" name="company_name" type="text" placeholder='' class="form-control input-md" required>
+					</div>
+				</div>
+			</div>
+			<div ng-if="editprofile.profileEdit=='DRIVER'" class="form-group">
+				<div class="row">
+					<div class="col-12">
+						<label class="bold uppercase-text">{{ 'sign_up:form:company_name:label' | translate }}</label>
+						<input id="name_company" ng-model="editprofile.dataUser.name_company" name="name_company" type="text" placeholder='' class="form-control input-md" required>
+					</div>
+				</div>
+			</div>
+			<div ng-if="editprofile.profileEdit!='GENERADOR_CARGA' && editprofile.profileEdit!='DRIVER' && editprofile.profileEdit!='OWNER'" class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:mc_number:label' | translate }}</label>
+						<input id="mc_number" ng-model="editprofile.dataUser.mc_number" name="mc_number" type="text" placeholder='' class="form-control input-md" >
+					</div>
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:dot_number:label' | translate }}</label>
+						<input id="dot_number" ng-model="editprofile.dataUser.dot_number" name="dot_number" type="text" placeholder='' class="form-control input-md" >
+					</div>
+				</div>
+			</div>
+			<div ng-if="editprofile.profileEdit!='GENERADOR_CARGA' && editprofile.profileEdit!='DRIVER'" class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:type_document:label' | translate }}</label>
+						<select name="type_document" id="type_document" ng-model="editprofile.dataUser.type_document" class="form-control input-md" required>
+							<option ng-repeat="typeDocumentItem in editprofile.typeDocumentOptions" value="{{typeDocumentItem.id}}">{{typeDocumentItem.name}}</option>
+						</select>
+					</div>
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:type_document_number:label' | translate }}</label>
+						<input id="type_document_number" ng-model="editprofile.dataUser.type_document_number" name="type_document_number" type="text" placeholder='' class="form-control input-md">
+					</div>
+				</div>
+			</div>
+			<div ng-if="editprofile.profileEdit=='DRIVER'" class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:type_document:label' | translate }}</label>
+						<select name="type_document_company" id="type_document_company" ng-model="editprofile.dataUser.type_document_company" class="form-control input-md" required>
+							<option ng-repeat="typeDocumentItem in editprofile.typeDocumentOptions" value="{{typeDocumentItem.id}}">{{typeDocumentItem.name}}</option>
+						</select>
+					</div>
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:type_document_number:label' | translate }}</label>
+						<input id="number_type_document_company" ng-model="editprofile.dataUser.number_type_document_company" name="number_type_document_company" type="text" placeholder='' class="form-control input-md">
+					</div>
+				</div>
+			</div>
+			<div ng-if="editprofile.profileEdit!='GENERADOR_CARGA'" class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:address:label' | translate }}</label>
+						<input id="address_company" ng-model="editprofile.dataUser.address_company" name="address_company" type="text" placeholder='' class="form-control input-md" required>
+					</div>
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:company_city:label' | translate }}</label>
+						<input type="text" name="city_company" class="form-control input-md" g-places-autocomplete options="editprofile.optionsGoogleInputCity" force-selection="true" ng-model="editprofile.companyCitySelect" ng-change="editprofile.autoCompleteStateCountry()" placeholder='' required>
+					</div>
+				</div>
+			</div>
+			<div ng-if="editprofile.profileEdit!='GENERADOR_CARGA' && editprofile.profileEdit!='DRIVER'" class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:company_state:label' | translate }}</label>
+						<input type="text" name="state_company" class="form-control input-md" g-places-autocomplete force-selection="true" ng-model="editprofile.companyStateSelect" placeholder='' required>
+					</div>
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:company_country:label' | translate }}</label>
+						<input type="text" name="country_company" class="form-control input-md" g-places-autocomplete force-selection="true" ng-model="editprofile.companyCountrySelect" placeholder='' required>
+					</div>
+				</div>
+			</div>
+			<div ng-if="editprofile.profileEdit=='DRIVER'" class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:company_state:label' | translate }}</label>
+						<input type="text" name="department_company" class="form-control input-md" g-places-autocomplete force-selection="true" ng-model="editprofile.companyStateSelect" placeholder='' required>
+					</div>
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:company_country:label' | translate }}</label>
+						<input type="text" name="country_company" class="form-control input-md" g-places-autocomplete force-selection="true" ng-model="editprofile.companyCountrySelect" placeholder='' required>
+					</div>
+				</div>
+			</div>
+			<div ng-if="editprofile.profileEdit!='GENERADOR_CARGA'" class="form-group">
+				<div class="row">
+					
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:company_phone:label' | translate }}</label>
+						<input id="phone_company" ng-model="editprofile.dataUser.phone_company" name="phone_company" type="text" placeholder='' class="form-control input-md" required>
+					</div>
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:company_email:label' | translate }}</label>
+						<input id="email_company" ng-model="editprofile.dataUser.email_company" name="email_company" type="email" placeholder='' class="form-control input-md" required>
+					</div>
+				</div>
+			</div>
+			<div ng-if="editprofile.profileEdit=='DRIVER' || editprofile.profileEdit=='OWNER'" class="form-group">
+				<div class="row">
+					
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:truck_type:label' | translate }}</label>
+						<select name="type_truck" id="type_truck" ng-model="editprofile.dataUser.type_truck" class="form-control input-md" required>
+							<option ng-repeat="typeTruckItem in editprofile.truckTypesList" value="{{typeTruckItem.id}}">{{typeTruckItem.name}}</option>
+						</select>
+					</div>
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:truck_skill:label' | translate }}</label>
+						<select name="truck_skill" id="truck_skill" ng-model="editprofile.dataUser.truck_skill" class="form-control input-md" required>
+							<option ng-repeat="truckSkillItem in editprofile.truckSkillsList" value="{{truckSkillItem.id}}">{{truckSkillItem.name}}</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div ng-if="editprofile.profileEdit=='DRIVER' || editprofile.profileEdit=='OWNER'" class="form-group">
+				<div class="row">
+					
+					<div class="col-12">
+						<label class="bold uppercase-text">{{ 'sign_up:form:placa:label' | translate }}</label>
+						<input id="placa" ng-model="editprofile.dataUser.placa" name="placa" type="text" placeholder='' class="form-control input-md" required>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group text-right">
+				<button ng-click="editprofile.comeBackForm()" type="button" class="btn btn-class2 bg-color-white color-saint-juan">{{ 'sign_up:form:back:btn' | translate }}</button>
+				<button type="submit" class="btn btn-class2 bg-color-1 color-white">{{ 'sign_up:form:finish:btn' | translate }}</button>
+			</div>
+		</form>
+		<!--<form ng-if="editprofile.validateForm == 'insurance_info'" class="animationIf" method="post" id=editProfileFormId3 name="editProfileFormName3" ng-submit="editprofile.validateEdit(editProfileFormName3)" novalidate>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:policy_number:label' | translate }}</label>
+						<input id="bond_insurance_num_policy" ng-model="editprofile.dataUser.bond_insurance_num_policy" name="bond_insurance_num_policy" type="text" placeholder='' class="form-control input-md">
+					</div>
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:company_insurance:label' | translate }}</label>
+						<input id="bond_insurance_comp" ng-model="editprofile.dataUser.bond_insurance_comp" name="bond_insurance_comp" type="text" placeholder='' class="form-control input-md">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:bond_policy_number:label' | translate }}</label>
+						<input id="bond_insurance_num" ng-model="editprofile.dataUser.bond_insurance_num" name="bond_insurance_num" type="text" placeholder='' class="form-control input-md">
+					</div>
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:bank_name:label' | translate }}</label>
+						<input id="name_bank" ng-model="editprofile.dataUser.name_bank" name="name_bank" type="text" placeholder='' class="form-control input-md" required>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<label class="bold uppercase-text">{{ 'sign_up:form:bank_account_number:label' | translate }}</label>
+						<input id="number_account_bank" ng-model="editprofile.dataUser.number_account_bank" name="number_account_bank" type="text" placeholder='' class="form-control input-md" required>
+					</div>
+				</div>
+			</div>
+			<div class="form-group text-right">
+				<button ng-click="editprofile.comeBackForm()" type="button" class="btn btn-class2 bg-color-white color-saint-juan">{{ 'sign_up:form:back:btn' | translate }}</button>
+				<button type="submit" class="btn btn-class2 bg-color-1 color-white">{{ 'sign_up:form:finish:btn' | translate }}</button>
+			</div>
+		</form>-->
+	</div>
+</div>

@@ -1,0 +1,38 @@
+<div class="modal-body" id="load-truck-select-modal">
+	<h3 class="title-modal text-left">{{ 'modals:load_truck_select:title' | translate }}</h3>
+	<p ng-if="!loadtruckselect.loadingInfo && loadtruckselect.dataRequest.length <= 0" class="small-text parrafo">{{ 'modals:load_truck_select:empty_trucks:text' | translate }}</p>
+	<form ng-if="!loadtruckselect.loadingInfo && loadtruckselect.dataRequest.length > 0" method="post" id=loadTruckSelectFormId name="loadTruckSelectFormName" ng-submit="loadtruckselect.sendConfirmSelect(loadTruckSelectFormName)" novalidate>
+		<div class="full-width content-tableData parrafo">
+			<table class="tableDataSort" width="100%" border="0">
+				<thead>
+					<tr>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="truck in loadtruckselect.dataRequest">
+						<td class="relative">
+							<input ng-model="loadtruckselect.dataTruckSelect.truck_id" type="radio" id="truck_{{truck.id}}" name="truck_id" value="{{truck.id}}" required>
+							<label for="truck_{{truck.id}}"></label>
+							<div class="check"><div class="inside"></div></div>
+						</td>
+						<td>
+							<img ng-if="truck.truck_img" ng-src="{{truck.truck_img}}" class="img-fluid rounded-circle" border="0">
+						</td>
+						<td>
+							<p class="truck-name-table">{{truck.truck_name}}</p>
+							<span class="driver-name-table">Driven by {{truck.driver_name}}</span>
+						</td>
+						<td ng-bind-html = "truck.truck_status"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="full-width text-right">
+			<button ng-disabled="loadtruckselect.savingRequest" type="submit" class="btn btn-class1 bg-color-1 color-white">{{ 'modals:load_truck_select:form:btn' | translate }}</button>
+		</div>
+	</form>
+</div>

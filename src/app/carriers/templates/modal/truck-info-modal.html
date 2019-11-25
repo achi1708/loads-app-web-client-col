@@ -1,0 +1,119 @@
+<div class="modal-body" id="truck-info-modal">
+	<h3 class="title-modal text-left">{{ "carriers:truck:modal:title" | translate }}</h3>
+	<div ng-if="!loadingData">
+		<div class="img-truck">
+			<img ng-if="truckinfomodal.infoTruck.imagenes_trucks[0]['imagen-60']" ng-src="{{truckinfomodal.infoTruck.imagenes_trucks[0]['imagen-60']}}" class="img-fluid rounded-circle" border="0">
+		</div>
+		<span class="truck-name-table">{{truckinfomodal.infoTruck.brand}} {{truckinfomodal.infoTruck.model}}</span>
+		<span class="driver-name-table">Driven by {{truckinfomodal.infoTruck.driver.user.user_first_name}} {{truckinfomodal.infoTruck.driver.user.user_last_name}}</span><br /><br />
+
+		<form>
+			<h3 class="subtitle-modal text-left">{{ "carriers:truck:modal:basic_info:title" | translate }}</h3>
+			<div class="row form-group">
+				<div class="col-6 col-sm-6">
+					<label class="small-text">{{ "carriers:truck:modal:basic_info:brand:title" | translate }}</label>
+				</div>
+				<div class="col-6 col-sm-6">
+					{{truckinfomodal.infoTruck.brand}}
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-6 col-sm-6">
+					<label class="small-text">{{ "carriers:truck:modal:basic_info:model:title" | translate }}</label>
+				</div>
+				<div class="col-6 col-sm-6">
+					{{truckinfomodal.infoTruck.model}}
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-6 col-sm-6">
+					<label class="small-text">{{ "carriers:truck:modal:basic_info:year:title" | translate }}</label>
+				</div>
+				<div class="col-6 col-sm-6">
+					{{truckinfomodal.infoTruck.year}}
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-6 col-sm-6">
+					<label class="small-text">{{ "carriers:truck:modal:basic_info:plate:title" | translate }}</label>
+				</div>
+				<div class="col-6 col-sm-6">
+					{{truckinfomodal.infoTruck.plate}}
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-6 col-sm-6">
+					<label class="small-text">{{ "carriers:truck:modal:basic_info:driver:title" | translate }}</label>
+				</div>
+				<div class="col-6 col-sm-6">
+					{{truckinfomodal.infoTruck.driver.user.user_first_name}} {{truckinfomodal.infoTruck.driver.user.user_last_name}}
+				</div>
+			</div>
+			<h3 class="subtitle-modal text-left">{{ "carriers:truck:modal:truck_details:title" | translate }}</h3>
+			<div class="row form-group">
+				<div class="col-6 col-sm-6">
+					<label class="small-text">{{ "carriers:truck:modal:basic_info:type:title" | translate }}</label>
+				</div>
+				<div class="col-6 col-sm-6">
+					{{truckinfomodal.infoTruck.truck_type.truck_type_name}}
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-6 col-sm-6">
+					<label class="small-text">{{ "carriers:truck:modal:basic_info:length:title" | translate }}</label>
+				</div>
+				<div class="col-6 col-sm-6">
+					{{truckinfomodal.infoTruck.length}}
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-6 col-sm-6">
+					<label class="small-text">{{ "carriers:truck:modal:basic_info:weight:title" | translate }}</label>
+				</div>
+				<div class="col-6 col-sm-6">
+					{{truckinfomodal.infoTruck.weight}}
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-6 col-sm-6">
+					<label class="small-text">{{ "carriers:truck:modal:basic_info:size:title" | translate }}</label>
+				</div>
+				<div class="col-6 col-sm-6">
+					{{truckinfomodal.infoTruck.size}}
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-6 col-sm-6">
+					<label class="small-text">{{ "carriers:truck:modal:basic_info:skills:title" | translate }}</label>
+				</div>
+				<div class="col-6 col-sm-6">
+					{{truckinfomodal.infoTruck.skills_truck_text}}
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-6 col-sm-6">
+					<label class="small-text">{{ "carriers:truck:modal:basic_info:capacity:title" | translate }}</label>
+				</div>
+				<div class="col-6 col-sm-6">
+					{{truckinfomodal.infoTruck.truck_capacity.capacity_name}}
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-6 col-sm-6">
+					<label class="small-text">{{ "carriers:truck:modal:basic_info:max_distance:title" | translate }}</label>
+				</div>
+				<div class="col-6 col-sm-6">
+					{{truckinfomodal.infoTruck.max_distance}}
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-6 col-sm-6">
+					<label class="small-text">{{ "carriers:truck:modal:basic_info:availability:title" | translate }}</label>
+				</div>
+				<div class="col-6 col-sm-6">
+					{{truckinfomodal.infoTruck.truck_availability_text}}
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

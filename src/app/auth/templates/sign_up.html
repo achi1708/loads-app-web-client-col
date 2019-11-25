@@ -1,0 +1,341 @@
+<div id="left_panel_login" class="col col-md-7 pull-l full-height hidden-xs-down hidden-sm-down bg-carrier-login">
+	<div class="row justify-content-center align-items-center full-height">
+		<div class="col-10">
+			<h3 class="title-1 color-white title-info-left">{{ 'sign_up:left_side:title' | translate }}</h3>
+			<p class="large-title color-white subtitle-info-left">{{ 'sign_up:left_side:title:foot' | translate }}</p>
+			<div class="row justify-content-center content-items-left">
+				<div class="col-3 text-center">
+					<img src="assets/images/login/instapay-white.png" class="block center item-img-left" border="0">
+					<p class="small-text color-white text-center">{{ 'sign_up:left_side:icons:instapay' | translate }}</p>
+				</div>
+				<div class="col-3">
+					<img src="assets/images/login/planner-white.png" class="block center item-img-left" border="0">
+					<p class="small-text color-white text-center">{{ 'sign_up:left_side:icons:route_planner' | translate }}</p>
+				</div>
+				<div class="col-3">
+					<img src="assets/images/login/truck-white.png" class="block center item-img-left" border="0">
+					<p class="small-text color-white text-center">{{ 'sign_up:left_side:icons:truck_posting' | translate }}</p>
+				</div>
+				<div class="col-3">
+					<img src="assets/images/login/alert-white.png" class="block center item-img-left" border="0">
+					<p class="small-text color-white text-center">{{ 'sign_up:left_side:icons:loads_alerts' | translate }}</p>
+				</div>
+			</div>
+			<div class="full-width text-center">
+				<a href="https://www.loadsapp.us/" class="btn btn-class1 bg-color-2 color-white">{{ 'sign_up:left_side:btn:visit_website' | translate }}</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="right_panel_login" class="col col-md-5 pull-l full-height">
+	<div class="row justify-content-center align-items-center full-height">
+		<div class="col-9">
+			<div class="full-width text-center content-logo-login">
+				<img src="assets/images/common/logo.png">
+			</div>
+			<p class="title-login large-title bold">{{ 'sign_up:right_side:title' | translate }}</p>
+			<p class="subtitle-login small-text">{{ 'sign_up:right_side:subtitle'+signup.subtitleForm | translate }}</p>
+			<div class="full-width">
+				<form ng-if="signup.validateForm == 'basic_info'" class="animationIf" method="post" id=signupFormId name="signupFormName" ng-submit="signup.validateSignup(signupFormName)" novalidate>
+					<div class="form-group">
+						<label class="bold uppercase-text">{{ 'sign_up:form:profile:label' | translate }}</label>
+						<select name="profile" id="profile" ng-model="signup.newUser.profile" class="form-control input-md" required>
+								<option ng-repeat="profileItem in signup.profileOptions" value="{{profileItem.id}}">{{profileItem.name}}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:first_name:label' | translate }}</label>
+								<input id="user_first_name" ng-model="signup.newUser.user_first_name" name="user_first_name" type="text" placeholder='' class="form-control input-md" required>
+							</div>
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:last_name:label' | translate }}</label>
+								<input id="user_last_name" ng-model="signup.newUser.user_last_name" name="user_last_name" type="text" placeholder='' class="form-control input-md" required>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:phone:label' | translate }}</label>
+								<input id="user_phone" ng-model="signup.newUser.user_phone" name="user_phone" type="text" placeholder='' class="form-control input-md" required>
+							</div>
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:email:label' | translate }}</label>
+								<input id="user_email" ng-model="signup.newUser.user_email" name="user_email" type="email" placeholder='' class="form-control input-md" required>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:password:label' | translate }}</label>
+								<input id="user_password" ng-model="signup.newUser.user_password" name="user_password" type="password" placeholder='' class="form-control input-md" required>
+							</div>
+							<!--<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:bank_name:label' | translate }}</label>
+								<input id="name_bank" ng-model="signup.newUser.name_bank" name="name_bank" type="text" placeholder='' class="form-control input-md" required>
+							</div>-->
+						</div>
+					</div>
+					<!--<div class="form-group">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:bank_account_number:label' | translate }}</label>
+								<input id="number_account_bank" ng-model="signup.newUser.number_account_bank" name="number_account_bank" type="text" placeholder='' class="form-control input-md" required>
+							</div>
+						</div>
+					</div>-->
+					<div class="form-group text-right">
+						<button ng-click="signup.goToLogin()" type="button" class="btn btn-class2 bg-color-white color-saint-juan">{{ 'sign_up:form:back:btn' | translate }}</button>
+						<button type="submit" class="btn btn-class2 bg-color-1 color-white">{{ 'sign_up:form:next:btn' | translate }}</button>
+					</div>
+				</form>
+				<form ng-if="signup.validateForm == 'company_info'" class="animationIf" method="post" id=signupFormId2 name="signupFormName2" ng-submit="signup.validateSignup(signupFormName2)" novalidate>
+					<div ng-if="signup.newUser.profile=='GENERADOR_CARGA'" class="form-group">
+						<div class="row">
+							<div class="col-12">
+								<label class="bold uppercase-text">{{ 'sign_up:form:company_name:label' | translate }}</label>
+								<input id="company_name" ng-model="signup.newUser.company_name" name="company_name" type="text" placeholder='' class="form-control input-md" required>
+							</div>
+						</div>
+					</div>
+					<div ng-if="signup.newUser.profile=='GENERADOR_CARGA'" class="form-group">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:type_document:label' | translate }}</label>
+								<select name="type_document" id="type_document" ng-model="signup.newUser.type_document" class="form-control input-md" required>
+									<option ng-repeat="typeDocumentItem in signup.typeDocumentOptions" value="{{typeDocumentItem.id}}">{{typeDocumentItem.name}}</option>
+								</select>
+							</div>
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:type_document_number:label' | translate }}</label>
+								<input id="type_document_number" ng-model="signup.newUser.type_document_number" name="type_document_number" type="text" placeholder='' class="form-control input-md">
+							</div>
+						</div>
+					</div>
+					<div ng-if="signup.newUser.profile=='GENERADOR_CARGA'" class="form-group">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:address:label' | translate }}</label>
+								<input id="address_company" ng-model="signup.newUser.address_company" name="address_company" type="text" placeholder='' class="form-control input-md" required>
+							</div>
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:company_city:label' | translate }}</label>
+								<input type="text" name="city_company" class="form-control input-md" g-places-autocomplete options="signup.optionsGoogleInputCity" force-selection="true" ng-model="signup.companyCitySelect" ng-change="signup.autoCompleteStateCountry()" placeholder='' required>
+							</div>
+						</div>
+					</div>
+					<div ng-if="signup.newUser.profile=='GENERADOR_CARGA'" class="form-group">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:company_state:label' | translate }}</label>
+								<input type="text" name="state_company" class="form-control input-md" g-places-autocomplete force-selection="true" ng-model="signup.companyStateSelect" placeholder='' required>
+							</div>
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:company_country:label' | translate }}</label>
+								<input type="text" name="country_company" class="form-control input-md" g-places-autocomplete force-selection="true" ng-model="signup.companyCountrySelect" placeholder='' required>
+							</div>
+						</div>
+					</div>
+					<div ng-if="signup.newUser.profile=='GENERADOR_CARGA'" class="form-group">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:company_phone:label' | translate }}</label>
+								<input id="phone_company" ng-model="signup.newUser.phone_company" name="phone_company" type="text" placeholder='' class="form-control input-md" required>
+							</div>
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:company_email:label' | translate }}<br>{{ 'sign_up:form:company_email:notice:label' | translate }}</label>
+								<input id="email_company" ng-model="signup.newUser.email_company" name="email_company" type="email" placeholder='' class="form-control input-md" required>
+							</div>
+						</div>
+					</div>
+					<div ng-if="signup.newUser.profile!='GENERADOR_CARGA' && signup.newUser.profile!='DRIVER'" class="form-group">
+						<div class="row">
+							<div class="col-12">
+								<label class="bold uppercase-text">{{ 'sign_up:form:company_name:label' | translate }}</label>
+								<input id="company_name" ng-model="signup.newUser.company_name" name="company_name" type="text" placeholder='' class="form-control input-md" required>
+							</div>
+						</div>
+					</div>
+					<div ng-if="signup.newUser.profile=='DRIVER'" class="form-group">
+						<div class="row">
+							<div class="col-12">
+								<label class="bold uppercase-text">{{ 'sign_up:form:company_name:label' | translate }}</label>
+								<input id="name_company" ng-model="signup.newUser.name_company" name="name_company" type="text" placeholder='' class="form-control input-md" required>
+							</div>
+						</div>
+					</div>
+					<div ng-if="signup.newUser.profile!='GENERADOR_CARGA' && signup.newUser.profile!='DRIVER' && signup.newUser.profile!='OWNER'" class="form-group">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:mc_number:label' | translate }}</label>
+								<input id="mc_number" ng-model="signup.newUser.mc_number" name="mc_number" type="text" placeholder='' class="form-control input-md" >
+							</div>
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:dot_number:label' | translate }}</label>
+								<input id="dot_number" ng-model="signup.newUser.dot_number" name="dot_number" type="text" placeholder='' class="form-control input-md" >
+							</div>
+						</div>
+					</div>
+					<div ng-if="signup.newUser.profile!='GENERADOR_CARGA' && signup.newUser.profile!='DRIVER'" class="form-group">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:type_document:label' | translate }}</label>
+								<select name="type_document" id="type_document" ng-model="signup.newUser.type_document" class="form-control input-md" required>
+									<option ng-repeat="typeDocumentItem in signup.typeDocumentOptions" value="{{typeDocumentItem.id}}">{{typeDocumentItem.name}}</option>
+								</select>
+							</div>
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:type_document_number:label' | translate }}</label>
+								<input id="type_document_number" ng-model="signup.newUser.type_document_number" name="type_document_number" type="text" placeholder='' class="form-control input-md">
+							</div>
+						</div>
+					</div>
+					<div ng-if="signup.newUser.profile=='DRIVER'" class="form-group">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:type_document:label' | translate }}</label>
+								<select name="type_document_company" id="type_document_company" ng-model="signup.newUser.type_document_company" class="form-control input-md" required>
+									<option ng-repeat="typeDocumentItem in signup.typeDocumentOptions" value="{{typeDocumentItem.id}}">{{typeDocumentItem.name}}</option>
+								</select>
+							</div>
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:type_document_number:label' | translate }}</label>
+								<input id="number_type_document_company" ng-model="signup.newUser.number_type_document_company" name="number_type_document_company" type="text" placeholder='' class="form-control input-md">
+							</div>
+						</div>
+					</div>
+					<div ng-if="signup.newUser.profile!='GENERADOR_CARGA'" class="form-group">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:address:label' | translate }}</label>
+								<input id="address_company" ng-model="signup.newUser.address_company" name="address_company" type="text" placeholder='' class="form-control input-md" required>
+							</div>
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:company_city:label' | translate }}</label>
+								<input type="text" name="city_company" class="form-control input-md" g-places-autocomplete options="signup.optionsGoogleInputCity" force-selection="true" ng-model="signup.companyCitySelect" ng-change="signup.autoCompleteStateCountry()" placeholder='' required>
+							</div>
+						</div>
+					</div>
+					<div ng-if="signup.newUser.profile!='GENERADOR_CARGA' && signup.newUser.profile!='DRIVER'" class="form-group">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:company_state:label' | translate }}</label>
+								<input type="text" name="state_company" class="form-control input-md" g-places-autocomplete force-selection="true" ng-model="signup.companyStateSelect" placeholder='' required>
+							</div>
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:company_country:label' | translate }}</label>
+								<input type="text" name="country_company" class="form-control input-md" g-places-autocomplete force-selection="true" ng-model="signup.companyCountrySelect" placeholder='' required>
+							</div>
+						</div>
+					</div>
+					<div ng-if="signup.newUser.profile=='DRIVER'" class="form-group">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:company_state:label' | translate }}</label>
+								<input type="text" name="department_company" class="form-control input-md" g-places-autocomplete force-selection="true" ng-model="signup.companyStateSelect" placeholder='' required>
+							</div>
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:company_country:label' | translate }}</label>
+								<input type="text" name="country_company" class="form-control input-md" g-places-autocomplete force-selection="true" ng-model="signup.companyCountrySelect" placeholder='' required>
+							</div>
+						</div>
+					</div>
+					<div ng-if="signup.newUser.profile!='GENERADOR_CARGA'" class="form-group">
+						<div class="row">
+							
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:company_phone:label' | translate }}</label>
+								<input id="phone_company" ng-model="signup.newUser.phone_company" name="phone_company" type="text" placeholder='' class="form-control input-md" required>
+							</div>
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:company_email:label' | translate }}</label>
+								<input id="email_company" ng-model="signup.newUser.email_company" name="email_company" type="email" placeholder='' class="form-control input-md" required>
+							</div>
+						</div>
+					</div>
+					<div ng-if="signup.newUser.profile=='DRIVER' || signup.newUser.profile=='OWNER'" class="form-group">
+						<div class="row">
+							
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:truck_type:label' | translate }}</label>
+								<select name="type_truck" id="type_truck" ng-model="signup.newUser.type_truck" class="form-control input-md" ng-change="signup.trailerPlateVerify()" required>
+									<option ng-repeat="typeTruckItem in signup.truckTypesList" value="{{typeTruckItem.id}}">{{typeTruckItem.name}}</option>
+								</select>
+							</div>
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:truck_skill:label' | translate }}</label>
+								<select name="truck_skill" id="truck_skill" ng-model="signup.newUser.truck_skill" class="form-control input-md" required>
+									<option ng-repeat="truckSkillItem in signup.truckSkillsList" value="{{truckSkillItem.id}}">{{truckSkillItem.name}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div ng-if="signup.newUser.profile=='DRIVER' || signup.newUser.profile=='OWNER'" class="form-group">
+						<div class="row">
+							
+							<div class="col-12">
+								<label class="bold uppercase-text">{{ 'sign_up:form:placa:label' | translate }}</label>
+								<input id="placa" ng-model="signup.newUser.placa" name="placa" type="text" placeholder='' class="form-control input-md" required>
+							</div>
+						</div>
+					</div>
+					<div ng-if="(signup.newUser.profile=='DRIVER' || signup.newUser.profile=='OWNER') && signup.showTrailerPlate" class="form-group">
+						<div class="row">
+							
+							<div class="col-12">
+								<label class="bold uppercase-text">{{ 'sign_up:form:placa_remolque:label' | translate }}</label>
+								<input id="plate" ng-model="signup.newUser.plate" name="plate" type="text" placeholder='' class="form-control input-md" required>
+							</div>
+						</div>
+					</div>
+					<div class="form-group text-right">
+						<button ng-click="signup.comeBackForm()" type="button" class="btn btn-class2 bg-color-white color-saint-juan">{{ 'sign_up:form:back:btn' | translate }}</button>
+						<!--<button ng-if="signup.newUser.profile!='GENERADOR_CARGA'" type="submit" class="btn btn-class2 bg-color-1 color-white">{{ 'sign_up:form:next:btn' | translate }}</button>-->
+						<button type="submit" class="btn btn-class2 bg-color-1 color-white">{{ 'sign_up:form:finish:btn' | translate }}</button>
+					</div>
+				</form>
+				<form ng-if="signup.validateForm == 'insurance_info'" class="animationIf" method="post" id=signupFormId3 name="signupFormName3" ng-submit="signup.validateSignup(signupFormName3)" novalidate>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:policy_number:label' | translate }}</label>
+								<input id="bond_insurance_num_policy" ng-model="signup.newUser.bond_insurance_num_policy" name="bond_insurance_num_policy" type="text" placeholder='' class="form-control input-md">
+							</div>
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:company_insurance:label' | translate }}</label>
+								<input id="bond_insurance_comp" ng-model="signup.newUser.bond_insurance_comp" name="bond_insurance_comp" type="text" placeholder='' class="form-control input-md">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:bond_policy_number:label' | translate }}</label>
+								<input id="bond_insurance_num" ng-model="signup.newUser.bond_insurance_num" name="bond_insurance_num" type="text" placeholder='' class="form-control input-md">
+							</div>
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:bank_name:label' | translate }}</label>
+								<input id="name_bank" ng-model="signup.newUser.name_bank" name="name_bank" type="text" placeholder='' class="form-control input-md" required>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<label class="bold uppercase-text">{{ 'sign_up:form:bank_account_number:label' | translate }}</label>
+								<input id="number_account_bank" ng-model="signup.newUser.number_account_bank" name="number_account_bank" type="text" placeholder='' class="form-control input-md" required>
+							</div>
+						</div>
+					</div>
+					<div class="form-group text-right">
+						<button ng-click="signup.comeBackForm()" type="button" class="btn btn-class2 bg-color-white color-saint-juan">{{ 'sign_up:form:back:btn' | translate }}</button>
+						<button type="submit" class="btn btn-class2 bg-color-1 color-white">{{ 'sign_up:form:finish:btn' | translate }}</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

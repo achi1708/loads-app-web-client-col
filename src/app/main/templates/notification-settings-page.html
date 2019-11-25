@@ -1,0 +1,122 @@
+<div id="page-section-notification-settings" class="page-section page-section-with-margin col bg-color-white">
+	<h3 class="large-title title-notification-settings">{{'notification_settings:section:title' | translate }}</h3>
+	<div class="row panel-settings">
+		<div class="col-12 col-sm-12">
+			<h5 class="bold title-panel-settings">{{'notification_settings:loads_alerts:title' | translate }}</h5>
+			<div class="row">
+				<div class="col-8 col-sm-8">
+					<div class="desc-panel-settings">
+						<span class="fa fa-bell"></span>
+						{{'notification_settings:loads_alerts:desc' | translate }}
+						<p>{{'notification_settings:loads_alerts:desc2' | translate }}</p>	
+					</div>
+				</div>
+				<div class="col-2 col-sm-2">
+					<input type="checkbox" class="custom-checkbox" id="statusload_message" name="statusload_message" ng-model="notificationsettingspage.settingsValues.statusload_message" ng-true-value="1" ng-false-value="0">
+					<label for="statusload_message"><span></span></label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row panel-settings" ng-if="notificationsettingspage.settingsValues.statusload_message == 1">
+		<div class="col-12 col-sm-12">
+			<h5 class="bold title-panel-settings">{{'notification_settings:alert_preferences:title' | translate }}</h5>
+			<div class="row parrafo">
+				<div class="col-8 col-sm-8">
+					<div class="desc-panel-settings">
+						<span class="fa fa-check-circle"></span>
+						{{'notification_settings:assigned_loads:desc' | translate }}
+						<p>{{'notification_settings:assigned_loads:desc2' | translate }}</p>	
+					</div>
+				</div>
+				<div class="col-2 col-sm-2">
+					<input type="checkbox" class="custom-checkbox" id="assignedload_message" name="assignedload_message" ng-model="notificationsettingspage.settingsValues.assignedload_message" ng-true-value="1" ng-false-value="0">
+					<label for="assignedload_message"><span></span></label>
+				</div>
+			</div>
+			<div class="row parrafo">
+				<div class="col-8 col-sm-8">
+					<div class="desc-panel-settings">
+						<span class="fa fa-times-circle"></span>
+						{{'notification_settings:cancelled_loads:desc' | translate }}
+						<p>{{'notification_settings:cancelled_loads:desc2' | translate }}</p>	
+					</div>
+				</div>
+				<div class="col-2 col-sm-2">
+					<input type="checkbox" class="custom-checkbox" id="cancelload_message" name="cancelload_message" ng-model="notificationsettingspage.settingsValues.cancelload_message" ng-true-value="1" ng-false-value="0">
+					<label for="cancelload_message"><span></span></label>
+				</div>
+			</div>
+			<div class="row parrafo">
+				<div class="col-8 col-sm-8">
+					<div class="desc-panel-settings">
+						<span class="fa fa-truck"></span>
+						{{'notification_settings:delivered_loads:desc' | translate }}
+						<p>{{'notification_settings:delivered_loads:desc2' | translate }}</p>	
+					</div>
+				</div>
+				<div class="col-2 col-sm-2">
+					<input type="checkbox" class="custom-checkbox" id="deliveryload_message" name="deliveryload_message" ng-model="notificationsettingspage.settingsValues.deliveryload_message" ng-true-value="1" ng-false-value="0">
+					<label for="deliveryload_message"><span></span></label>
+				</div>
+			</div>
+			<div class="row parrafo" permission permission-only="'CARRIER'">
+				<div class="col-8 col-sm-8">
+					<div class="desc-panel-settings">
+						<span class="fa fa-usd"></span>
+						{{'notification_settings:carrierprecie_driver:desc' | translate }}
+						<p>{{'notification_settings:carrierprecie_driver:desc2' | translate }}</p>	
+					</div>
+				</div>
+				<div class="col-2 col-sm-2">
+					<input type="checkbox" class="custom-checkbox" id="carrierprecie_driver" name="carrierprecie_driver" ng-model="notificationsettingspage.settingsValues.carrierprecie_driver" ng-true-value="1" ng-false-value="0">
+					<label for="carrierprecie_driver"><span></span></label>
+				</div>
+			</div>
+			<div class="row parrafo" permission permission-only="'CARRIER'">
+				<div class="col-8 col-sm-8">
+					<div class="desc-panel-settings">
+						<span class="fa fa-hand-pointer-o"></span>
+						{{'notification_settings:carrier_apply_load_driver:desc' | translate }}
+						<p>{{'notification_settings:carrier_apply_load_driver:desc2' | translate }}</p>	
+					</div>
+				</div>
+				<div class="col-2 col-sm-2">
+					<input type="checkbox" class="custom-checkbox" id="carrier_apply_load_driver" name="carrier_apply_load_driver" ng-model="notificationsettingspage.settingsValues.carrier_apply_load_driver" ng-true-value="1" ng-false-value="0">
+					<label for="carrier_apply_load_driver"><span></span></label>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<div class="row main-botonera">
+		<div class="col-12 col-sm-9">
+			<button ng-disabled="notificationsettingspage.saving" ng-click="notificationsettingspage.saveSettings()" type="button" class="btn btn-class1 bg-color-1 color-white">{{ 'notification_settings:btn:save' | translate }}</button>
+		</div>
+		<div class="col-12 col-sm-3 text-right">
+			<a ng-if="!notificationsettingspage.saving" ui-sref="private.home" ui-sref-opts="{ reload: true }" class="normal-link small-text cancel-post-link">{{ 'notification_settings:btn:cancel' | translate }}</a>
+		</div>
+	</div>
+
+	<div permission permission-only="'GENERADOR_CARGA'" class="row panel-settings">
+		<div class="col-12 col-sm-12">
+			<h5 class="bold title-panel-settings">{{'notification_settings:automatic_assign:title' | translate }}</h5>
+			<div class="row">
+				<div class="col-8 col-sm-8">
+					<div class="desc-panel-settings">
+						<span class="fa fa-bell"></span>
+						{{'notification_settings:automatic_assign:desc' | translate }}
+					</div>
+				</div>
+				<div class="col-2 col-sm-2">
+					<input type="checkbox" class="custom-checkbox" id="automatic_assign" name="automatic_assign" ng-model="notificationsettingspage.automaticAssingParams.automatic_load" ng-true-value="1" ng-false-value="0">
+					<label for="automatic_assign"><span></span></label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div permission permission-only="'GENERADOR_CARGA'" class="row main-botonera">
+		<div class="col-12 col-sm-9">
+			<button ng-disabled="notificationsettingspage.saving" ng-click="notificationsettingspage.saveAutoAssign()" type="button" class="btn btn-class1 bg-color-1 color-white">{{ 'notification_settings:automatic_assign:btn:save' | translate }}</button>
+		</div>
+	</div>
+</div>

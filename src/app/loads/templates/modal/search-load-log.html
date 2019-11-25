@@ -1,0 +1,42 @@
+<div class="modal-body" id="load-search-modal">
+	<h3 class="title-modal text-left">{{ 'modals:loads_log:search:title' | translate }}</h3>
+	<form method="post" id=searchLoadLogFormId name="searchLoadLogFormName" ng-submit="searchloadlog.sendDataLoadsLog(searchLoadLogFormName)" novalidate>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-12">
+					<label class="title-field">{{ 'modals:loads_log:search:fields:type:title' | translate }}</label>
+					<select name="shortcut" id="shortcut" ng-model="searchloadlog.searchData.shortcut" class="form-control input-md">
+						<option ng-repeat="option in searchloadlog.shortCutTypes" value="{{option.id}}">{{option.name}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div ng-if="searchloadlog.searchData.shortcut == 'custom'" class="form-group">
+			<div class="row">
+				<div class="col-12 col-sm-6">
+					<label class="title-field">{{ 'modals:loads_log:search:fields:custom_date_from:title' | translate }}</label>
+					<input ng-blur="searchloadlog.allowDateTo()" date-range-picker id="date_from" ng-model="searchloadlog.searchData.date_from" name="date_from" type="text" placeholder='' class="form-control input-md date-picker" options="searchloadlog.optsDatePicker" >
+				</div>
+				<div class="col-12 col-sm-6">
+					<label class="title-field">{{ 'modals:loads_log:search:fields:custom_date_to:title' | translate }}</label>
+					<input ng-disabled="searchloadlog.dateToDisabled" date-range-picker type="text" name="date_to" class="form-control date-picker" ng-model="searchloadlog.searchData.date_to" placeholder='' options="searchloadlog.optsDatePicker" min="searchloadlog.searchData.date_from" >
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-12">
+					<label class="title-field">{{ 'modals:loads_log:search:fields:load_id:title' | translate }}</label>
+					<input type="text" name="load_id" class="form-control date-picker" ng-model="searchloadlog.searchData.load_id" placeholder=''>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-12">
+					<button type="submit" class="btn btn-class1 bg-color-1 color-white">{{ 'modals:loads_log:search:btn:text' | translate }}</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,65 @@
+<div id="page-section-loads" class="page-section col">
+	<total-items></total-items>
+	<div class="col content-load-list bg-color-white">
+		<h3 class="large-title subtitle-section">{{ 'fastpay:section:title' | translate }}</h3>
+		<p class="small-text title-section">{{ 'fastpay:section:descrip' | translate }}</p>
+		<p class="small-text">{{ 'fastpay:section:descrip2' | translate }}</p>
+		<ol>
+			<li class="small-text" ng-repeat="x in [1,2,3,4]">{{ 'fastpay:section:descrip:list:'+x | translate }}</li>
+		</ol>
+		<h3 class="regular-text parrafo">{{ 'fastpay:status:title' | translate }}</h3>
+		<p ng-if="!fastpay.loadingData && fastpay.fastPayData.factoring_status == 1" class="small-text title-section color-fern">{{ 'fastpay:status:approved:text' | translate }}</p>
+		<p ng-if="!fastpay.loadingData && fastpay.fastPayData.factoring_status == 0" class="small-text title-section color-pastel-red">{{ 'fastpay:status:not_approved:text' | translate }}</p>
+		<p ng-if="fastpay.loadingData" class="small-text title-section">---</p>
+		<h3 class="regular-text parrafo">{{ 'fastpay:factoring_details:title' | translate }}</h3>
+		<p class="small-text title-section">----</p>
+		<h3 class="regular-text parrafo">{{ 'fastpay:last_loads:title' | translate }}</h3>
+		<main-loader ng-if="fastpay.loadingData"></main-loader>
+		<div ng-if="!fastpay.loadingData" class="full-width content-tableData">
+			<table datatable="ng" dt-options="fastpay.datatableOptions" class="tableDataSort" width="100%" border="0">
+				<thead>
+					<tr>
+						<th>{{ 'loads:table:column:profile_img' | translate }}</th>
+						<th>{{ 'loads:table:column:shipper' | translate }}</th>
+						<th>{{ 'loads:table:column:origin' | translate }}</th>
+						<th>{{ 'loads:table:column:destination' | translate }}</th>
+						<th>{{ 'loads:table:column:pickup' | translate }}</th>
+						<th>{{ 'loads:table:column:delivery' | translate }}</th>
+						<th>{{ 'loads:table:column:length' | translate }}</th>
+						<th>{{ 'loads:table:column:weight' | translate }}</th>
+						<th>{{ 'loads:table:column:size' | translate }}</th>
+						<th>{{ 'loads:table:column:price' | translate }}</th>
+						<th>{{ 'loads:table:column:ago' | translate }}</th>
+						<th>{{ 'loads:table:column:status' | translate }}</th>
+						<th>{{ 'loads:table:column:actions' | translate }}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat-start="load in fastpay.fastPayData.results">
+						<td>
+							<img ng-if="load.img_shipper" ng-src="{{load.img_shipper}}" width="30" border="0">
+						</td>
+						<td>{{load.full_name_shipper}}</td>
+						<td>{{load.from}}</td>
+						<td>{{load.to}}</td>
+						<td>{{load.pickup_date_formatted}}</td>
+						<td>{{load.delivery_date_formatted}}</td>
+						<td>{{load.length_loads}}</td>
+						<td>{{load.weight}}</td>
+						<td>{{load.dimension}}</td>
+						<td>${{load.price}}</td>
+						<td am-time-ago="load.load_date"></td>
+						<td ng-bind-html = "load.status_btn"></td>
+						<td>
+							<i ng-if="!load.expanded" ng-click="fastpay.showDetailsUnique(load.load_id)" class="fa fa-angle-down show-load-details-btn"></i>
+							<i ng-if="load.expanded" ng-click="fastpay.showDetailsUnique(load.load_id)" class="fa fa-angle-up show-load-details-btn"></i>
+						</td>
+					</tr>
+					<tr class="detail-load-table" ng-repeat-end>
+						<td ng-if="load.expanded" colspan="13" class="no-padding">
+							<load-details-row load-id=load.load_id></load-details-row>
+						</td>
+					</tr>
+				</tbody>
+	</div>
+</div>

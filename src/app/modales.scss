@@ -1,0 +1,26 @@
+.modal{
+	.title-modal{
+		font-family: $bold_font;
+		font-size: $large_size;
+		color: $saint_juan_color;
+		@include margin-bottom(15px);
+	}
+	.subtitle-modal{
+		font-family: $bold_font;
+		font-size: $large_size - 3px;
+		color: $saint_juan_color;
+		@include margin-bottom(10px);
+	}
+	.title-field{
+		font-family: $bold_font;
+		font-size: $small_size - 3px;
+		color: $saint_juan_color;
+		@extend .uppercase-text;
+		@include margin-bottom(5px);
+	}
+	.text-field{
+		font-family: $regular_font;
+		font-size: $small_size;
+		color: $armadillo_color;
+	}
+}

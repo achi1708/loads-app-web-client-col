@@ -1,0 +1,129 @@
+<div id="page-section-home" class="page-section col">
+	<total-items></total-items>
+	<div class="col content-load-list bg-color-white">
+		<div class="row">
+			<div id="home_map" class="col col-md-4 pull-l hidden-sm-down no-padding" ng-if="!home.hiddenMap">
+				<div ng-if="!home.loadingMap">
+					<ui-gmap-google-map center='home.map.center' zoom='home.map.zoom'>
+						<ui-gmap-marker ng-repeat="m in home.mapMarkers" coords="m.coords" options="m.options" idkey="m.id"></ui-gmap-marker>
+					</ui-gmap-google-map>
+				</div>
+			</div>
+			<div ng-class="home.hiddenMap ? 'col-md-12' : 'col-md-8'" class="col pull-l load-list-home">
+				<h3 permission permission-only="'GENERADOR_CARGA'" class="large-title">{{ 'home:nearby_carriers:title' | translate }}</h3>
+				<h3 permission permission-only="['CARRIER', 'DRIVER', 'OWNER']" class="large-title">{{ 'home:nearby_loads:title' | translate }}</h3>
+				<main-loader ng-if="home.loadingData"></main-loader>
+				<div ng-if="!home.loadingData" class="full-width content-tableData content-tableData-home">
+					<table permission permission-only="'GENERADOR_CARGA'" datatable="ng" dt-options="home.datatableOptions" class="tableDataSort" width="100%" border="0">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Carrier</th>
+								<th>Trucks</th>
+								<th>Skills</th>
+								<th width="25%">Reviews</th>
+								<th width="18%">Contact</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat-start="item in home.nearbyCarriersOrLoads" ng-click="home.showDetailsUnique(item.id)">
+								<td><img ng-if="item.carrier.user.img_perfil_imagenes[0]['imagen-60']" ng-src="{{item.carrier.user.img_perfil_imagenes[0]['imagen-60']}}" width="30" border="0"></td>
+								<td>{{item.carrier.company_name}}</td>
+								<td>{{(item.truck_type.truck_type_name) ? item.truck_type.truck_type_name : '' }} {{(item.brand || item.model) ? item.brand+' '+item.model : '' }}</td>
+								<td>{{item.skills_truck_text}}</td>
+								<td ng-if="item.carrier.user.user_votes.length">
+									<ul class="nav user-calification">
+										<li class="nav-item">
+											<span ng-class="item.carrier.user.user_votes[0].total_prom >= 1 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+										</li>
+										<li class="nav-item">
+											<span ng-class="item.carrier.user.user_votes[0].total_prom >= 2 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+										</li>
+										<li class="nav-item">
+											<span ng-class="item.carrier.user.user_votes[0].total_prom >= 3 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+										</li>
+										<li class="nav-item">
+											<span ng-class="item.carrier.user.user_votes[0].total_prom >= 4 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+										</li>
+										<li class="nav-item">
+											<span ng-class="item.carrier.user.user_votes[0].total_prom >= 5 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+										</li>
+									</ul>
+								</td>
+								<td ng-if="!item.carrier.user.user_votes.length">
+									<ul class="nav user-calification">
+										<li class="nav-item">
+											<span class="fa fa-star-o"></span>
+										</li>
+										<li class="nav-item">
+											<span class="fa fa-star-o"></span>
+										</li>
+										<li class="nav-item">
+											<span class="fa fa-star-o"></span>
+										</li>
+										<li class="nav-item">
+											<span class="fa fa-star-o"></span>
+										</li>
+										<li class="nav-item">
+											<span class="fa fa-star-o"></span>
+										</li>
+									</ul>
+								</td>
+								<td>
+									<span class="fa fa-phone vertical-middle"></span>
+									<a class="small-text normal-link">{{item.phone_contact}}</a>
+								</td>
+								<td>
+									<i ng-if="!item.expanded" class="fa fa-angle-down show-load-details-btn"></i>
+									<i ng-if="item.expanded" class="fa fa-angle-up show-load-details-btn"></i>
+								</td>
+							</tr>
+							<tr class="detail-carrier-table" ng-repeat-end>
+								<td ng-if="item.expanded" colspan="7" class="no-padding">
+									<carrier-details-row carrier-info=item></carrier-details-row>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table permission permission-only="['CARRIER', 'DRIVER', 'OWNER']" datatable="ng" dt-options="home.datatableOptions" class="tableDataSort" width="100%" border="0">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Shipper</th>
+								<th>Origin</th>
+								<th>Destination</th>
+								<th width="15%">Pickup</th>
+								<th width="15%">Delivery</th>
+								<th>Price</th>
+								<th>Ago</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat-start="item in home.nearbyCarriersOrLoads" ng-click="home.showDetailsUnique(item.id)">
+								<td><img ng-if="item.load_generator.user.img_perfil_imagenes[0]['imagen-60']" ng-src="{{item.load_generator.user.img_perfil_imagenes[0]['imagen-60']}}" width="30" border="0"></td>
+								<td>{{item.load_generator.company_name}}</td>
+								<td>{{item.city_pickup}}</td>
+								<td>{{item.city_delivery}}</td>
+								<td>{{item.pickup_date | amDateFormat:'MMM DD YYYY'}}</td>
+								<td>{{item.delivery_date | amDateFormat:'MMM DD YYYY'}}</td>
+								<td>{{item.price}}</td>
+								<td><span am-time-ago="item.load_date_register"></span></td>
+								<td>
+									<i ng-if="!item.expanded" class="fa fa-angle-down show-load-details-btn"></i>
+									<i ng-if="item.expanded" class="fa fa-angle-up show-load-details-btn"></i>
+								</td>
+							</tr>
+							<tr class="detail-load-table" ng-repeat-end>
+								<td ng-if="item.expanded" colspan="9" class="no-padding">
+									<load-details-row load-id=item.id reload-parent="home.getNearbyCarriersOrLoads()"></load-details-row>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

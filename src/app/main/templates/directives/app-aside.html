@@ -1,0 +1,64 @@
+<div class="menu-asside hidden-sm-down">
+	<ul class="nav flex-column">
+		<li class="nav-item" ui-sref-active="active">
+			<a class="nav-link" ui-sref="private.home" ui-sref-opts="{ reload: true }">
+				<span class="fa fa-home"></span>
+				{{"aside:left:menu:home" | translate}}
+			</a>
+		</li>
+		<li class="nav-item" ng-class="{'active': loadsActive}">
+			<a class="nav-link" ui-sref="private.loads" ui-sref-opts="{ reload: true }">
+				<span class="fa fa-spinner"></span>
+				{{"aside:left:menu:loads" | translate}}
+			</a>
+		</li>
+		<li class="nav-item" ui-sref-active="active">
+			<a class="nav-link" ui-sref="private.loadslog" ui-sref-opts="{ reload: true }">
+				<span class="fa fa-clock-o"></span>
+				{{"aside:left:menu:loads_log" | translate}}
+			</a>
+		</li>
+		<li permission permission-only="'GENERADOR_CARGA'" class="nav-item" ng-class="{'active': carriersActive}">
+			<a class="nav-link" ui-sref="private.carriers" ui-sref-opts="{ reload: true }">
+				<span class="fa fa-truck"></span>
+				{{"aside:left:menu:carriers" | translate}}
+			</a>
+		</li>
+		<li permission permission-only="['CARRIER', 'OWNER']" class="nav-item" ui-sref-active="active">
+			<a class="nav-link" ui-sref="private.trucks" ui-sref-opts="{ reload: true }">
+				<span class="fa fa-truck"></span>
+				{{"aside:left:menu:trucks" | translate}}
+			</a>
+		</li>
+		<li permission permission-only="['CARRIER', 'OWNER']" class="nav-item" ui-sref-active="active">
+			<a class="nav-link" ui-sref="private.drivers" ui-sref-opts="{ reload: true }">
+				<span class="fa fa-users"></span>
+				{{"aside:left:menu:drivers" | translate}}
+			</a>
+		</li>
+		<li permission permission-only="['CARRIER', 'OWNER']" class="nav-item" ui-sref-active="active">
+			<a class="nav-link" ui-sref="private.fast_pay" ui-sref-opts="{ reload: true }">
+				<span class="fa fa-flag"></span>
+				{{"aside:left:menu:fast_pay" | translate}}
+			</a>
+		</li>
+		<li permission permission-only="['CARRIER', 'DRIVER', 'OWNER']" class="nav-item" ui-sref-active="active">
+			<a class="nav-link" ui-sref="private.interest_points" ui-sref-opts="{ reload: true }">
+				<span class="fa fa-flag"></span>
+				{{"aside:left:menu:interest_points" | translate}}
+			</a>
+		</li>
+		<li class="nav-item" ui-sref-active="active">
+			<a class="nav-link" ui-sref="private.notification_settings" ui-sref-opts="{ reload: true }">
+				<span class="fa fa-cog"></span>
+				{{"aside:left:menu:settings" | translate}}
+			</a>
+		</li>
+		<li class="nav-item" ui-sref-active="active">
+			<a class="nav-link" ui-sref="private.help" ui-sref-opts="{ reload: true }">
+				<span class="fa fa-exclamation-circle"></span>
+				{{"aside:left:menu:help" | translate}}
+			</a>
+		</li>
+	</ul>
+</div>

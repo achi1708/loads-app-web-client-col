@@ -1,0 +1,212 @@
+<div id="page-section-profile" class="page-section page-section-with-margin col bg-color-white">
+	<h3 class="large-title title-profile">{{'profile:section:title' | translate }}</h3>
+	<form method="post">
+		<div class="row">
+			<div class="col">
+				<div class="section-profile">
+					<div class="row">
+						<div class="col-2">
+							<div ng-if="!profile.myProfileData.img_perfil_imagenes[0]" class="content-img-profile rounded-circle"></div>
+							<img ng-if="profile.myProfileData.img_perfil_imagenes[0]" ng-src="{{profile.myProfileData.img_perfil_imagenes[0]['imagen-270']}}" class="img-fluid rounded-circle" border="0">
+							<div class="full-width text-center">
+								<a ng-if="!profile.fileSaving" ngf-select="profile.uploadImgProfile($file, $invalidFiles)" ngf-accept="'image/jpg, image/jpeg'" class="small-text normal-link inline-block parrafo pointer">{{ 'profile:edit:images:label' | translate }}</a>
+								<p class="small-text parrafo">{{ 'profile:active_since:text' | translate }}: {{ profile.myProfileData.user_register | amUtc | amDateFormat:'MM/YYYY'}}</p>
+								<ul ng-if="profile.myProfileData.user_votes.length" class="nav user-calification">
+									<li class="nav-item">
+										<span ng-class="profile.myProfileData.user_votes[0].total_prom >= 1 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+									</li>
+									<li class="nav-item">
+										<span ng-class="profile.myProfileData.user_votes[0].total_prom >= 2 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+									</li>
+									<li class="nav-item">
+										<span ng-class="profile.myProfileData.user_votes[0].total_prom >= 3 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+									</li>
+									<li class="nav-item">
+										<span ng-class="profile.myProfileData.user_votes[0].total_prom >= 4 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+									</li>
+									<li class="nav-item">
+										<span ng-class="profile.myProfileData.user_votes[0].total_prom >= 5 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+									</li>
+								</ul>
+								<ul ng-if="!profile.myProfileData.user_votes.length" class="nav user-calification">
+									<li class="nav-item">
+										<span class="fa fa-star-o"></span>
+									</li>
+									<li class="nav-item">
+										<span class="fa fa-star-o"></span>
+									</li>
+									<li class="nav-item">
+										<span class="fa fa-star-o"></span>
+									</li>
+									<li class="nav-item">
+										<span class="fa fa-star-o"></span>
+									</li>
+									<li class="nav-item">
+										<span class="fa fa-star-o"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-10">
+							<div class="form-group">
+								<div class="row">
+									<div class="col-6">
+										<label>{{ 'sign_up:form:first_name:label' | translate }}</label>
+										<p class="small-text">{{(profile.myProfileData.user_first_name) ? profile.myProfileData.user_first_name : '---' }}</p>
+									</div>
+									<div class="col-6">
+										<label>{{ 'sign_up:form:last_name:label' | translate }}</label>
+										<p class="small-text">{{profile.myProfileData.user_last_name ? profile.myProfileData.user_last_name : '---'}}</p>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-6">
+										<label>{{ 'sign_up:form:email:label' | translate }}</label>
+										<p class="small-text">{{profile.myProfileData.user_email ? profile.myProfileData.user_email : '---'}}</p>
+									</div>
+									<div class="col-6">
+										<label>{{ 'sign_up:form:phone:label' | translate }}</label>
+										<p class="small-text">{{profile.myProfileData.user_phone ? profile.myProfileData.user_phone : '---'}}</p>
+									</div>
+								</div>
+							</div>
+
+							<div permission permission-except="['DRIVER']" class="form-group">
+								<div class="row">
+									<div class="col-6">
+										<label>{{ 'sign_up:form:bank_name:label' | translate }}</label>
+										<p class="small-text">{{profile.myProfileData.name_bank ? profile.myProfileData.name_bank : '---'}}</p>
+									</div>
+									<div class="col-6">
+										<label>{{ 'sign_up:form:bank_account_number:label' | translate }}</label>
+										<p class="small-text">{{profile.myProfileData.number_account_bank ? profile.myProfileData.number_account_bank : '---'}}</p>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="row">
+									<div class="col-6">
+										<label>{{ 'sign_up:form:company_name:label' | translate }}</label>
+										<p class="small-text">{{profile.specificProfileData.company_name ? profile.specificProfileData.company_name : '---'}}</p>
+									</div>
+									<div class="col-6">
+										<label>{{ 'profile:fields:ein_ssn:label' | translate }}</label>
+										<p class="small-text">{{profile.myProfileData.user_ein_ssn ? profile.myProfileData.user_ein_ssn : '---'}}</p>
+									</div>
+								</div>
+							</div>
+							<div permission permission-only="['DRIVER','OWNER']" class="form-group">
+								<div class="row">
+									<div class="col-6">
+										<label>{{ 'profile:fields:driver_id:label' | translate }}</label>
+										<p class="small-text">{{profile.myProfileData.id ? profile.myProfileData.id : '---'}}</p>
+									</div>
+									<div class="col-6">
+										<label>{{ 'profile:fields:driver_license:label' | translate }}</label>
+										<p class="small-text">{{profile.specificProfileData.driver_license_num ? profile.specificProfileData.driver_license_num : '---'}}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="section-profile">
+					<div class="row">
+						<div class="col">
+							<h3 class="large-title title-profile">{{ 'profile:company_info:title' | translate }}</h3>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-4">
+										<label>{{ 'sign_up:form:mc_number:label' | translate }}</label>
+										<p class="small-text">{{profile.infoCompanyFinal.mc_numberw}}</p>
+									</div>
+									<div class="col-4">
+										<label>{{ 'sign_up:form:dot_number:label' | translate }}</label>
+										<p class="small-text">{{profile.infoCompanyFinal.dot_number}}</p>
+									</div>
+									<div class="col-4">
+										<label>{{ 'sign_up:form:corp_number:label' | translate }}</label>
+										<p class="small-text">{{profile.myProfileData.corp_number}}</p>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-4">
+										<label>{{ 'sign_up:form:address:label' | translate }}</label>
+										<p class="small-text">{{profile.infoCompanyFinal.address_company}}</p>
+									</div>
+									<div class="col-4">
+										<label>{{ 'sign_up:form:company_city:label' | translate }}</label>
+										<p class="small-text">{{profile.infoCompanyFinal.city_company}}</p>
+									</div>
+									<div class="col-4">
+										<label>{{ 'sign_up:form:company_state:label' | translate }}</label>
+										<p class="small-text">{{profile.infoCompanyFinal.state_company}}</p>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-4">
+										<label>{{ 'sign_up:form:company_country:label' | translate }}</label>
+										<p class="small-text">{{profile.infoCompanyFinal.country_company}}</p>
+									</div>
+									<div class="col-4">
+										<label>{{ 'sign_up:form:company_phone:label' | translate }}</label>
+										<p class="small-text">{{profile.infoCompanyFinal.phone_company}}</p>
+									</div>
+									<div class="col-4">
+										<label>{{ 'sign_up:form:company_email:label' | translate }}</label>
+										<p class="small-text">{{profile.infoCompanyFinal.email_company}}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="section-profile">
+					<div class="row">
+						<div class="col">
+							<h3 class="large-title title-profile">{{ 'profile:insurance_info:title' | translate }}</h3>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-4">
+										<label>{{ 'sign_up:form:policy_number:label' | translate }}</label>
+										<p class="small-text">{{profile.specificProfileData.bond_insurance_policy_num ? profile.specificProfileData.bond_insurance_policy_num : '---'}}</p>
+									</div>
+									<div class="col-4">
+										<label>{{ 'sign_up:form:company_insurance:label' | translate }}</label>
+										<p class="small-text">{{profile.specificProfileData.bond_insurance_comp ? profile.specificProfileData.bond_insurance_comp : '---'}}</p>
+									</div>
+									<div class="col-4">
+										<label>{{ 'sign_up:form:bond_policy_number:label' | translate }}</label>
+										<p class="small-text">{{profile.myProfileData.bond_insurance_num ? profile.myProfileData.bond_insurance_num : '---'}}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div permission permission-only="['CARRIER','OWNER']" class="section-profile">
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<label>{{ 'profile:trucks:title' | translate }}</label>
+								<p class="small-text">{{profile.countTrucks}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div permission permission-only="['CARRIER', 'GENERADOR_CARGA', 'OWNER']" class="row">
+			<div class="col text-right">
+				<button ng-click="profile.openEditProfileModal()" class="btn btn-class1 bg-color-1 color-white">{{ 'profile:edit:images:label' | translate }}</button>
+			</div>
+		</div>
+	</form>
+</div>

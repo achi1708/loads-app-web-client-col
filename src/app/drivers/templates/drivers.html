@@ -1,0 +1,59 @@
+<div id="page-section-trucks" class="page-section col">
+	<total-items></total-items>
+	<div class="col content-truck-list bg-color-white">
+		<h3 class="large-title title-section">{{ 'drivers:section:title' | translate }}</h3>
+		<div class="row">
+			<div class="col text-right botonera-list">
+				<a permission permission-only="['CARRIER']" ui-sref="private.drivers.add" ui-sref-opts="{ reload: true }" class="btn btn-class1 bg-color-1 color-white">{{ 'drivers:new_driver:btn' | translate }}</a>
+				<a permission permission-only="['OWNER']" ng-click="drivers.addDriverByOwnerMsg()" class="btn btn-class1 bg-color-1 color-white">{{ 'drivers:new_driver:btn' | translate }}</a>
+			</div>
+		</div>
+		<div class="row">
+			<ul permission permission-only="['CARRIER','OWNER']" class="nav nav-tabs nav-tabs-full-w" role="tablist">
+			  <li class="nav-item">
+			    <a ng-class="{active: drivers.driverOptions.shortcut == 'all' }" class="nav-link" data-toggle="tab" ng-click="drivers.changeCategory('all')" role="tab">{{ 'drivers:list:all:title' | translate }}</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" data-toggle="tab" ng-click="drivers.changeCategory('active')" role="tab">{{ 'drivers:list:active:title' | translate }}</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" data-toggle="tab" ng-click="drivers.changeCategory('inactive')" role="tab">{{ 'drivers:list:inactive:title' | translate }}</a>
+			  </li>
+			</ul>
+		</div>
+		<div class="tab-content tab-content-full-w">
+		  <div class="tab-pane active" id="content_trucks_tab" role="tabpanel">
+		  	<div class="full-width content-tableData">
+				<table datatable="" dt-options="drivers.datatableOptions" dt-columns="drivers.dtColumns" class="tableDataSort" width="100%" border="0">
+					<tbody permission permission-only="['CARRIER','OWNER']">
+						<tr ng-if="!drivers.driversList.length">
+							<td colspan="13">
+								<p class="text-center">{{ "drivers:list:empty:text" | translate }}</p>
+							</td>
+						</tr>
+						<tr ng-repeat-start="driver in drivers.driversList">
+							<td>
+								<img ng-if="driver.driver_img" ng-src="{{driver.driver_img}}" class="img-fluid rounded-circle" border="0">
+							</td>
+							<td class="info-truck">
+								<p class="truck-name-table">{{driver.driver_name}}</p>
+								<span class="driver-name-table">{{driver.driver_details}}</span>
+							</td>
+							<td ng-bind-html = "driver.driver_status"></td>
+							<td>
+								<i ng-if="!driver.expanded" ng-click="drivers.showDetailsUnique(driver.user_id)" class="fa fa-angle-down show-load-details-btn"></i>
+								<i ng-if="driver.expanded" ng-click="drivers.showDetailsUnique(driver.user_id)" class="fa fa-angle-up show-load-details-btn"></i>
+							</td>
+						</tr>
+						<tr class="detail-truck-table" ng-repeat-end>
+							<td ng-if="driver.expanded" colspan="12" class="no-padding">
+								<driver-details-row driver-info=driver></driver-details-row>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		  </div>
+		</div>
+	</div>
+</div>

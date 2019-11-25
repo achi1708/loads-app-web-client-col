@@ -1,0 +1,227 @@
+#page-section-carriers{
+	.title-section{
+		@include margin-bottom(20px);
+	}
+	.data-count-loads{
+		@include border-radius(5px);
+		@include padding-top(15px);
+		@include padding-bottom(15px);
+		@include margin-bottom(15px);
+		text-align: center;
+		.nav{
+			float: none;
+			display: inline-block;
+			.nav-item{
+				display: inline-block;
+				@include margin-left(15px);
+				@include margin-right(15px);
+				.data-load-circle{
+					position: relative;
+					@include border-radius(300px);
+					padding: 50px;
+					border-width: 8px;
+					border-style: solid;
+					max-width: 116px;
+					max-height: 116px;
+					@include margin-top(0);
+					@include margin-left(auto);
+					@include margin-right(auto);
+					@include margin-bottom(15px);
+					span{
+						position: absolute;
+						width: 27px;
+						height: 16px;
+						top: 50%;
+						left: 50%;
+						margin: -8px 0 0 -13px;
+						font-family: $regular_font;
+						font-size: $regular_size;
+						color: $armadillo_color;
+					}
+				}
+				.item-data-load-name{
+					margin: 0;
+					font-family: $regular_font;
+					font-size: $small_size;
+					color: $armadillo_color;
+					text-align: center;
+				}
+			}
+		}
+	}
+	.content-carrier-list{
+		@include border-radius(5px);
+		@include padding-top(15px);
+		@include padding-bottom(15px);
+		.content-tableData{
+			table{
+				tr{
+					td{
+						&.img-carrier{
+							padding: 10px 0;
+							min-width: 40px;
+							width: 7%;
+						}
+						&.info-carrier{
+							width: 75%;
+						}
+						&.status-carrier{
+							width: 13%;
+						}
+						&.details-carriers-btn{
+							width: 5%;
+						}
+						.carrier-name-table{
+							font-family: $bold_font;
+							font-size: $small_size;
+							color: $armadillo_color;
+							@include margin-bottom(8px);
+						}
+						.driver-name-table{
+							color: $dark_gray_color;
+						}
+						.user-calification{
+							float: none;
+							display: inline-block;
+							.nav-item{
+								display: inline-block;
+								@include margin-left(2px);
+								@include margin-right(2px);
+								.fa{
+									font-size: $regular_size;
+								}
+								.fa-star{
+									color: $saffron_color;
+								}
+								.fa-star-o{
+									color: $dark_gray_color;
+								}	
+							}
+						}
+					}
+				}
+			}
+		}
+		.detail-carrier-table{
+			.details-table-row{
+				position: relative;
+				box-sizing: border-box;
+				.name-calification-details{
+					@include margin-bottom(10px);
+					.nav-item{
+						@include margin-left(10px);
+						@include margin-right(10px);
+						&:first-child{
+							@include margin-left(0px);
+						}
+						span{
+							font-size: $regular_size;
+							&.fa-star{
+								color: $saffron_color;
+							}
+							&.fa-star-o{
+								color: $dark_gray_color;
+							}
+						}
+					}
+				}
+				.title-carrier-details{
+					font-family: $regular_font;
+					font-size: $large_size;
+					color: $armadillo_color;
+					margin: 0;
+				}
+				.carrier-drivers-list{
+					@include margin-top(20px);
+					.nav-item{
+						padding: 10px 0;
+						border-bottom: 1px solid $dark_gray_color;
+						.img-truck{
+							width: 37px;
+							height: 37px;
+							float: left;
+							@include margin-right(10px);
+						}
+						span{
+							&.truck-name-table{
+								font-family: $bold_font;
+								font-size: $small_size;
+								color: $armadillo_color;
+								@include margin-bottom(3px);
+								display: inline-block;
+								width: calc(100% - 60px);
+							}
+							&.driver-name-table{
+								color: $dark_gray_color;
+								display: inline-block;
+								width: calc(100% - 60px);
+							}
+						}
+					}
+				}
+				.foot-carrier-pic{
+					@include margin-top(30px);
+					@include margin-bottom(5px);
+					font-family: $light_font;
+					font-size: $regular_size;
+					text-align: center;
+				}
+				.carrier-items-data{
+					label{
+						font-family: $bold_font;
+						font-size: $small_size - 3px;
+						color: $armadillo_color;
+						@include margin-bottom(5px);
+						@extend .uppercase-text;
+					}
+					p{
+						font-family: $light_font;
+						font-size: $small_size;
+						color: $armadillo_color;
+					}
+					.carrier-item-large{
+						position: absolute; 
+						top:0; 
+						left: 0; 
+						padding: 0 15px;
+					}
+				}
+			}
+		}
+	}
+}
+
+#carrier-assigned-modal{
+	.pic-square{
+		background: $dark_gray_color;
+		width: 100%;
+		max-width: 100px;
+		height: 93px;
+		display: block;
+		@include border-radius(5px);
+	}
+}
+
+#truck-info-modal{
+	.img-truck{
+		width: 37px;
+		height: 37px;
+		float: left;
+		@include margin-right(10px);
+	}
+	span{
+		&.truck-name-table{
+			font-family: $bold_font;
+			font-size: $small_size;
+			color: $armadillo_color;
+			@include margin-bottom(3px);
+			display: inline-block;
+			width: calc(100% - 60px);
+		}
+		&.driver-name-table{
+			color: $dark_gray_color;
+			display: inline-block;
+			width: calc(100% - 60px);
+		}
+	}	
+}

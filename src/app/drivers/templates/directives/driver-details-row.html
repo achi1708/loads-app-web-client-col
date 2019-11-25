@@ -1,0 +1,96 @@
+<div class="details-table-row">
+	<div ng-if="driverData.user_id" class="row">
+		<div ng-if="driverData.user" class="dropdown-actions-load">
+			<div class="dropdown">
+				<button ng-if="driverData.user" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span class="fa fa-ellipsis-h"></span>
+				</button>
+				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+					<div ng-if="driverData.user" class="dropdown-item">
+						<a ui-sref="private.drivers.edit({id: driverData.user.id})" ui-sref-opts="{ id: driverData.user.id }">
+							<span class="fa fa-pencil"></span> {{ 'loads:details:options:edit' | translate }}
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col col-md-3 text-center">
+			<img ng-if="driverData.user.img_perfil_arr" ng-src="{{driverData.user.img_perfil_arr[0]['imagen-60']}}" class="img-fluid" border="0">
+		</div>
+		<div class="col col-md-9 truck-items-data">
+			<div class="row parrafo">
+				<div class="col col-sm-3">
+					<h3 class="title-truck-details">{{ 'drivers:details:basic_info:title' | translate }}</h3>
+				</div>
+			</div>
+			<div class="row parrafo">
+				<div class="col col-sm-3">
+					<label>{{ 'drivers:details:first_name:title' | translate }}</label>
+					<p ng-if="driverData.user.user_first_name">{{driverData.user.user_first_name}}</p>
+					<p ng-if="!driverData.user.user_first_name">---</p>
+				</div>
+				<div class="col col-sm-3">
+					<label>{{ 'drivers:details:country:title' | translate }}</label>
+					<p ng-if="driverData.user.user_contry">{{driverData.user.user_contry}}</p>
+					<p ng-if="!driverData.user.user_contry">---</p>
+				</div>
+				<div class="col col-sm-3">
+					<label>{{ 'drivers:details:insurance_number:title' | translate }}</label>
+					<p ng-if="driverData.bond_insurance_num">{{driverData.bond_insurance_num}}</p>
+					<p ng-if="!driverData.bond_insurance_num">---</p>
+				</div>
+			</div>
+			<div class="row parrafo">
+				<div class="col col-sm-3">
+					<label>{{ 'drivers:details:last_name:title' | translate }}</label>
+					<p ng-if="driverData.user.user_last_name">{{driverData.user.user_last_name}}</p>
+					<p ng-if="!driverData.user.user_last_name">---</p>
+				</div>
+				<div class="col col-sm-3">
+					<label>{{ 'drivers:details:city:title' | translate }}</label>
+					<p ng-if="driverData.user.user_city">{{driverData.user.user_city}}</p>
+					<p ng-if="!driverData.user.user_city">---</p>
+				</div>
+				<div class="col col-sm-3">
+					<label>{{ 'drivers:details:insurance_company:title' | translate }}</label>
+					<p ng-if="driverData.bond_insurance_comp">{{driverData.bond_insurance_comp}}</p>
+					<p ng-if="!driverData.bond_insurance_comp">---</p>
+				</div>
+			</div>
+			<div class="row parrafo">
+				<div class="col col-sm-3">
+					<label>{{ 'drivers:details:phone:title' | translate }}</label>
+					<p ng-if="driverData.user.user_phone">{{driverData.user.user_phone}}</p>
+					<p ng-if="!driverData.user.user_phone">---</p>
+				</div>
+				<div class="col col-sm-3">
+					<label>{{ 'drivers:details:state:title' | translate }}</label>
+					<p ng-if="driverData.user.user_state">{{driverData.user.user_state}}</p>
+					<p ng-if="!driverData.user.user_state">---</p>
+				</div>
+				<div class="col col-sm-3">
+					<label>{{ 'drivers:details:insurance_corp_number:title' | translate }}</label>
+					<p ng-if="driverData.bond_insurance_num_policy">{{driverData.bond_insurance_num_policy}}</p>
+					<p ng-if="!driverData.bond_insurance_num_policy">---</p>
+				</div>
+			</div>
+			<div class="row parrafo">
+				<div class="col col-sm-3">
+					<label>{{ 'drivers:details:email:title' | translate }}</label>
+					<p ng-if="driverData.user.user_email">{{driverData.user.user_email}}</p>
+					<p ng-if="!driverData.user.user_email">---</p>
+				</div>
+				<div class="col col-sm-3">
+					<label>{{ 'drivers:details:zipcode:title' | translate }}</label>
+					<p ng-if="driverData.user.user_postalcode">{{driverData.user.user_postalcode}}</p>
+					<p ng-if="!driverData.user.user_postalcode">---</p>
+				</div>
+				<div class="col col-sm-3">
+					<label>{{ 'drivers:details:license_number:title' | translate }}</label>
+					<p ng-if="driverData.driver_license_num">{{driverData.driver_license_num}}</p>
+					<p ng-if="!driverData.driver_license_num">---</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

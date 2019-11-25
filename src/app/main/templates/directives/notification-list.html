@@ -1,0 +1,33 @@
+<div>
+	<h3 class="title-section inline-block">Notifications</h3>
+	<a ui-sref="private.notification_settings" ui-sref-opts="{ reload: true }" class="pull-r notification-settings-link"><span class="fa fa-cog"></span></a>
+	<div class="clearfix"></div>
+	<ul ng-if="listType == 'page'" class="nav flex-column">
+		<li class="nav-item">
+			<a ui-sref="private.loads.details({id: notification.loads_id})" ui-sref-opts="{ id: notification.loads_id }" ng-repeat="notification in notificationList">
+				<div class="read-status-notification">
+					<div class="badge" ng-class="{active: notification.is_read == 'N' }">1</div>
+				</div>
+				<div class="text-notification">
+					<p>{{notification.text_notification_action}}</p>
+				</div>
+				<div class="date-notification">
+					<p am-time-ago="notification.timecreate"></p>
+				</div>
+			</a>
+		</li>
+	</ul>
+	<div class="notification-content-scroll" ng-if="listType == 'widget'">
+		<a class="dropdown-item" ui-sref="private.loads.details({id: notification.loads_id})" ui-sref-opts="{ id: notification.loads_id }" ng-repeat="notification in notificationList">
+			<div class="read-status-notification">
+				<div class="badge" ng-class="{active: notification.is_read == 'N' }">1</div>
+			</div>
+			<div class="text-notification">
+				<p>{{notification.text_notification_action}}</p>
+			</div>
+			<div class="date-notification">
+				<p am-time-ago="notification.timecreate"></p>
+			</div>
+		</a>
+	</div>
+</div>

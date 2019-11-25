@@ -1,0 +1,60 @@
+#page-section-post-load{
+	.title-section{
+		@include margin-bottom($spacing3_value);
+	}
+	.subtitle-section{
+		@include margin-bottom($small_size + 1px);
+	}
+	form{
+		label{
+			font-family: $bold_font;
+			font-size: $small_size - 3px;
+			
+			@extend .uppercase-text;
+			@include margin-bottom(5px);
+			&.title-checks{
+				@include margin-bottom(15px);
+			}
+		}
+		.list-checks{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			li{
+				display: inline-block;
+				margin: 0 15px 0 0;
+				label{
+					font-family: $regular_font;
+					font-size: $small_size;
+					color: $armadillo_color;
+					text-transform: capitalize;
+					width:165px;
+				}
+			}
+		}
+		.parrafo-upload{
+			@include margin-top(20px);
+		}
+		.upload-link{
+			@extend .pull-l;
+			margin: 10px 0;
+		}
+		.close-upload{
+			font-family: $regular_font;
+			font-size: $large_size;
+			color: $dark_gray_color;
+			@extend .pull-r;
+			padding: 5px;
+
+		}
+		.main-botonera{
+			button{
+				@include margin-right(20px);
+			}
+			.cancel-post-link{
+				@extend .pull-r;
+				margin: 17px 0;
+			}
+		}
+	}
+}

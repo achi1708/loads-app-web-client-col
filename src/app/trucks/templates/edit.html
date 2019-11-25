@@ -1,0 +1,151 @@
+<div id="page-section-post-truck" class="page-section page-section-with-margin col bg-color-white">
+	<h3 class="large-title title-section">{{ 'trucks:edit:section:title' | translate }}</h3>
+	<form ng-if="!loadingTruckDetails" method="post" id=postTruckFormId name="postTruckFormName" ng-submit="trucksedit.save(postTruckFormName)" novalidate>
+		<div class="row">
+			<div class="col-12">
+				<div class="row">
+					<div class="col-4">
+						<div class="pic-square" ngf-select ng-model="trucksedit.dataUpdateTruck.pic" name="pic" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="2MB">
+							<img ng-show="postTruckFormName.pic.$valid" ngf-thumbnail="trucksedit.dataUpdateTruck.pic" class="img-fluid">
+						</div>
+					</div>
+					<div class="col-8">
+						<div class="form-group">
+							<div class="row">
+								<div class="col-6">
+									<label>{{ 'trucks:add:form:brand:text' | translate }}</label>
+									<span class="help-inline" ng-show="postTruckFormName.brand.$error.required">*</span>
+									<select name="brand" id="brand" ng-model="trucksedit.dataUpdateTruck.brand" class="form-control input-md" required>
+										<option value="">{{ 'trucks:add:form:select:any' | translate }}</option>
+										<option ng-repeat="option in trucksedit.brandTruckList" value="{{option.tag}}">{{option.name}}</option>
+									</select>
+								</div>
+								<div class="col-6">
+									<label>{{ 'trucks:add:form:model:text' | translate }}</label>
+									<span class="help-inline" ng-show="postTruckFormName.model.$error.required">*</span>
+									<input type="text" name="model" class="form-control" ng-model="trucksedit.dataUpdateTruck.model" placeholder='{{ "trucks:add:form:brand:text" | translate }}' required>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-6">
+									<label>{{ 'trucks:add:form:year:text' | translate }}</label>
+									<span class="help-inline" ng-show="postTruckFormName.year.$error.required">*</span>
+									<input type="number" name="year" class="form-control" ng-model="trucksedit.dataUpdateTruck.year" placeholder='{{ "trucks:add:form:year:text" | translate }}' required>
+								</div>
+								<div class="col-6">
+									<label>{{ 'trucks:add:form:plate:text' | translate }}</label>
+									<span class="help-inline" ng-show="postTruckFormName.plate.$error.required">*</span>
+									<input type="text" name="plate" class="form-control" ng-model="trucksedit.dataUpdateTruck.plate" placeholder='{{ "trucks:add:form:plate:text" | translate }}' required>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-6">
+							<label>{{ 'trucks:add:form:driver:text' | translate }}</label>
+							<span class="help-inline" ng-show="postTruckFormName.driver.$error.required">*</span>
+							<select name="driver" id="driver" ng-model="trucksedit.dataUpdateTruck.id_driver" class="form-control input-md" required>
+								<option value="">{{ 'trucks:add:form:select:any' | translate }}</option>
+								<option ng-repeat="option in trucksedit.myDriversList" value="{{option.id}}">{{option.user_first_name}} {{option.user_last_name}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col col-sm-6">
+							<label>{{ 'trucks:add:form:trailer_type:text' | translate }}</label>
+							<span class="help-inline" ng-show="postTruckFormName.id_truck_type.$error.required">*</span>
+							<select name="id_truck_type" id="id_truck_type" ng-model="trucksedit.dataUpdateTruck.id_truck_type" ng-blur="trucksedit.checkTruckTypePlate()" class="form-control input-md" required>
+								<option value="">--</option>
+								<option ng-repeat="option in trucksedit.itemsSizeLenLoads.Trucktypes_list" value="{{option.id}}">{{option.truck_type_name}}</option>
+							</select>
+						</div>
+						<div class="col col-sm-6" ng-if="trucksedit.allowShowPlateInput">
+							<label>{{ 'trucks:add:form:tariler_plate:text' | translate }}</label>
+							<span class="help-inline" ng-show="postTruckFormName.plate_trailer.$error.required">*</span>
+							<input type="text" name="plate_trailer" class="form-control" ng-model="trucksedit.dataUpdateTruck.plate_trailer" placeholder='{{ "trucks:add:form:tariler_plate:text" | translate }}' required>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-6">
+							<label>{{ 'trucks:add:form:trailer_type_remolque:text' | translate }}</label>
+							<span class="help-inline" ng-show="postTruckFormName.tipodetrailer.$error.required">*</span>
+							<select name="tipodetrailer" id="tipodetrailer" ng-model="trucksedit.trailerTypeRequired" class="form-control input-md" required>
+								<option value="">{{ 'trucks:add:form:select:any' | translate }}</option>
+								<option ng-repeat="option in trucksedit.itemsSizeLenLoads.TipoDeTrailer_list" value="{{option.id}}">{{option.name_ti}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-6 col-sm-3">
+							<label>{{ 'trucks:add:form:length:text' | translate }}</label>
+							<span class="help-inline" ng-show="postTruckFormName.length.$error.required">*</span>
+							<input type="number" name="length" class="form-control" ng-model="trucksedit.dataUpdateTruck.length" placeholder='{{ "trucks:add:form:length:text" | translate }}' required>
+						</div>
+						<div class="col-6 col-sm-3">
+							<label>{{ 'trucks:add:form:weight:text' | translate }}</label>
+							<span class="help-inline" ng-show="postTruckFormName.weight.$error.required">*</span>
+							<input type="number" name="weight" class="form-control" ng-model="trucksedit.dataUpdateTruck.weight" placeholder='{{ "trucks:add:form:weight:text" | translate }}' required>
+						</div>
+						<div class="col-6 col-sm-3">
+							<label>{{ 'trucks:add:form:size:text' | translate }}</label>
+							<span class="help-inline" ng-show="postTruckFormName.id_capacity_size.$error.required">*</span>
+							<select name="id_capacity_size" id="id_capacity_size" ng-model="trucksedit.dataUpdateTruck.id_capacity_size" class="form-control input-md" required>
+								<option value="">Any</option>
+								<option ng-repeat="option in trucksedit.itemsSizeLenLoads.TruckCapacity_list" value="{{option.id}}">{{option.capacity_name}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="title-checks">{{ 'trucks:add:form:skills:text' | translate }}</label>
+					<ul class="list-checks">
+						<li ng-repeat="skill in trucksedit.skillList">
+							<input type="checkbox" id="{{skill.name}}" name="{{skill.name}}" ng-model="skill.checked" class="custom-checkbox" />
+							<label for="{{skill.name}}"><span></span>{{skill.name}}</label>
+						</li>
+					</ul>
+				</div>
+				<div class="form-group" ng-if="false">
+					<div class="row">
+						<div class="col-6 col-sm-3">
+							<label>{{ 'trucks:add:form:max_distance:text' | translate }}</label>
+							<span class="help-inline" ng-show="postTruckFormName.max_distance.$error.required">*</span>
+							<input type="number" name="max_distance" class="form-control" ng-model="trucksedit.dataUpdateTruck.max_distance" placeholder='{{ "trucks:add:form:max_distance:text" | translate }}' required>
+						</div>
+					</div>
+				</div>
+				<div class="form-group" ng-if="false">
+					<label class="title-checks">{{ 'trucks:add:form:availability:text' | translate }}</label>
+					<ul class="list-checks">
+						<li ng-repeat="available_item in trucksedit.availabilityList">
+							<input type="checkbox" id="{{available_item.name}}" name="{{available_item.name}}" ng-model="available_item.checked" class="custom-checkbox" />
+							<label for="{{available_item.name}}"><span></span>{{available_item.name}}</label>
+						</li>
+					</ul>
+				</div>
+				<div class="form-group">
+					<label>{{ 'trucks:add:form:additional_info:text' | translate }}</label>
+					<textarea class="form-control" name="additional_information" ng-model="trucksedit.dataUpdateTruck.additional_info" placeholder="{{ 'trucks:add:form:additional_info:text' | translate }}"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="row main-botonera">
+			<div class="col-12 col-sm-9">
+				<button ng-disabled="trucksedit.savingTruck" type="submit" class="btn btn-class1 bg-color-1 color-white">{{ 'trucks:edit:form:btn' | translate }}</button>
+			</div>
+			<div class="col-12 col-sm-3 text-right">
+				<a ng-if="!trucksedit.savingTruck" ui-sref="private.trucks" ui-sref-opts="{ reload: true }" class="normal-link small-text cancel-post-link">{{ 'loads:add:form:btn:cancel' | translate }}</a>
+			</div>
+		</div>
+	</form>
+</div>

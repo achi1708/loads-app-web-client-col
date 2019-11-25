@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>loadsAppWeb</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/angular-toastr/dist/angular-toastr.css" />
+    <link rel="stylesheet" href="../bower_components/animate.css/animate.css" />
+    <link rel="stylesheet" href="../bower_components/highlightjs/styles/default.css" />
+    <link rel="stylesheet" href="../bower_components/bootstrap-daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="../bower_components/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.css" />
+    <link rel="stylesheet" href="../bower_components/angular-google-places-autocomplete/src/autocomplete.css" />
+    <link rel="stylesheet" href="../bower_components/angular-google-places-autocomplete/dist/autocomplete.min.css" />
+    <link rel="stylesheet" href="../bower_components/ng-image-gallery/dist/ng-image-gallery.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp/serve,src}) styles/app.css -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="app/index.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+    
+    <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <link href="assets/css/jquery.dataTables.min.css" rel="stylesheet">
+  </head>
+  <body ng-app="loadsAppWeb" ng-controller="MainController">
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '367886433642436',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v2.10'
+        });
+        FB.AppEvents.logPageView();   
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div ui-view="app" class="full-width full-height"></div>
+
+    <!-- build:js(src) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="../bower_components/angular-touch/angular-touch.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="../bower_components/angular-messages/angular-messages.js"></script>
+    <script src="../bower_components/angular-aria/angular-aria.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../bower_components/malarkey/dist/malarkey.min.js"></script>
+    <script src="../bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="../bower_components/moment/moment.js"></script>
+    <script src="../bower_components/tether/dist/js/tether.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../bower_components/angular-translate/angular-translate.js"></script>
+    <script src="../bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/highlightjs/highlight.pack.js"></script>
+    <script src="../bower_components/angular-highlightjs/angular-highlightjs.js"></script>
+    <script src="../bower_components/angularjs-crypto/public/js/lib/angularjs-crypto.js"></script>
+    <script src="../bower_components/angularjs-crypto/public/js/lib/plugins/CryptoJSCipher.js"></script>
+    <script src="../bower_components/angularjs-crypto/public/js/lib/ContentHeaderCheck.js"></script>
+    <script src="../bower_components/ngstorage/ngStorage.js"></script>
+    <script src="../bower_components/angular-moment/angular-moment.js"></script>
+    <script src="../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="../bower_components/angular-daterangepicker/js/angular-daterangepicker.js"></script>
+    <script src="../bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+    <script src="../bower_components/lodash/lodash.js"></script>
+    <script src="../bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="../bower_components/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.js"></script>
+    <script src="../bower_components/angular-google-places-autocomplete/src/autocomplete.js"></script>
+    <script src="../bower_components/angular-google-places-autocomplete/dist/autocomplete.min.js"></script>
+    <script src="../bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="../bower_components/angular-permission/dist/angular-permission.js"></script>
+    <script src="../bower_components/angular-permission/dist/angular-permission-ui.js"></script>
+    <script src="../bower_components/angular-permission/dist/angular-permission-ng.js"></script>
+    <script src="../bower_components/hammerjs/hammer.js"></script>
+    <script src="../bower_components/ng-image-gallery/dist/ng-image-gallery.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+    <!-- inject:js -->
+    <script src="app/index.module.js"></script>
+    <script src="app/trucks/services/trucks-serv.js"></script>
+    <script src="app/trucks/directives/truck-details-row-dir.js"></script>
+    <script src="app/trucks/controllers/trucks.loads.controller.js"></script>
+    <script src="app/trucks/controllers/trucks.edit.controller.js"></script>
+    <script src="app/trucks/controllers/trucks.controller.js"></script>
+    <script src="app/trucks/controllers/trucks.add.controller.js"></script>
+    <script src="app/profile/controllers/profile.controller.js"></script>
+    <script src="app/profile/controllers/edit.profile.modal.controller.js"></script>
+    <script src="app/main/services/notification-serv.js"></script>
+    <script src="app/main/services/main-serv.js"></script>
+    <script src="app/main/services/help-serv.js"></script>
+    <script src="app/main/services/datatable-tool-serv.js"></script>
+    <script src="app/main/filters/capitalize-fil.js"></script>
+    <script src="app/main/directives/total-items-dir.js"></script>
+    <script src="app/main/directives/notification-list-dir.js"></script>
+    <script src="app/main/directives/ng-enter-dir.js"></script>
+    <script src="app/main/directives/main-loader-dir.js"></script>
+    <script src="app/main/directives/invite-join-dir.js"></script>
+    <script src="app/main/directives/app-header-dir.js"></script>
+    <script src="app/main/directives/app-aside-dir.js"></script>
+    <script src="app/main/controllers/search.load.modal.controller.js"></script>
+    <script src="app/main/controllers/search.carrier.modal.controller.js"></script>
+    <script src="app/main/controllers/public.controller.js"></script>
+    <script src="app/main/controllers/private.controller.js"></script>
+    <script src="app/main/controllers/notification.settings.page.controller.js"></script>
+    <script src="app/main/controllers/notification.page.controller.js"></script>
+    <script src="app/main/controllers/main.controller.js"></script>
+    <script src="app/main/controllers/invite.join.page.controller.js"></script>
+    <script src="app/main/controllers/home.controller.js"></script>
+    <script src="app/main/controllers/help.controller.js"></script>
+    <script src="app/loads/services/loads-serv.js"></script>
+    <script src="app/loads/controllers/truck.assigned.info.modal.controller.js"></script>
+    <script src="app/loads/controllers/search.load.log.modal.controller.js"></script>
+    <script src="app/loads/controllers/report.issues.load.modal.controller.js"></script>
+    <script src="app/loads/controllers/loads.log.controller.js"></script>
+    <script src="app/loads/controllers/loads.edit.controller.js"></script>
+    <script src="app/loads/controllers/loads.details.controller.js"></script>
+    <script src="app/loads/controllers/loads.controller.js"></script>
+    <script src="app/loads/controllers/loads.add.controller.js"></script>
+    <script src="app/loads/controllers/load.truck.select.modal.controller.js"></script>
+    <script src="app/loads/controllers/load.activity.info.modal.controller.js"></script>
+    <script src="app/loads/controllers/checked.load.price.modal.controller.js"></script>
+    <script src="app/loads/controllers/carrier.requests.modal.controller.js"></script>
+    <script src="app/loads/controllers/carrier.assigned.info.modal.controller.js"></script>
+    <script src="app/loads/controllers/cancel.load.modal.controller.js"></script>
+    <script src="app/loads/directives/load-details-row-dir.js"></script>
+    <script src="app/interestpoint/controllers/interest.points.controller.js"></script>
+    <script src="app/fastpay/services/fastpay-serv.js"></script>
+    <script src="app/fastpay/controllers/fast.pay.controller.js"></script>
+    <script src="app/drivers/services/drivers-serv.js"></script>
+    <script src="app/drivers/directives/driver-details-row-dir.js"></script>
+    <script src="app/drivers/controllers/drivers.edit.controller.js"></script>
+    <script src="app/drivers/controllers/drivers.controller.js"></script>
+    <script src="app/drivers/controllers/drivers.add.controller.js"></script>
+    <script src="app/components/webDevTec/webDevTec.service.js"></script>
+    <script src="app/components/navbar/navbar.directive.js"></script>
+    <script src="app/components/malarkey/malarkey.directive.js"></script>
+    <script src="app/components/githubContributor/githubContributor.service.js"></script>
+    <script src="app/carriers/services/carriers-serv.js"></script>
+    <script src="app/carriers/directives/carrier-details-row-dir.js"></script>
+    <script src="app/carriers/controllers/truck.info.modal.controller.js"></script>
+    <script src="app/carriers/controllers/carriers.details.controller.js"></script>
+    <script src="app/carriers/controllers/carriers.controller.js"></script>
+    <script src="app/auth/services/my-http-interceptor-serv.js"></script>
+    <script src="app/auth/services/auth-serv.js"></script>
+    <script src="app/auth/controllers/sign.up.controller.js"></script>
+    <script src="app/auth/controllers/login.controller.js"></script>
+    <script src="app/auth/controllers/forgot.password.controller.js"></script>
+    <script src="app/index.run.js"></script>
+    <script src="app/index.route.js"></script>
+    <script src="app/index.constants.js"></script>
+    <script src="app/index.config.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
+    <script src='//maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCOr68rWTWKlLf2Ipxt4lnmlvTJ0hVKGvE&libraries=places'></script>
+    <script type="text/javascript" src="../bower_components/crypto-js/crypto-js.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="assets/js/angular-datatables.min.js"></script>
+
+  </body>
+</html>

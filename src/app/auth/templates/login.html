@@ -1,0 +1,64 @@
+<div id="left_panel_login" class="col col-md-7 pull-l full-height hidden-xs-down hidden-sm-down bg-carrier-login">
+	<div class="row justify-content-center align-items-center full-height">
+		<div class="col-10">
+			<h3 class="title-1 color-white title-info-left">{{ 'login:left_side:title' | translate }}</h3>
+			<p class="large-title color-white subtitle-info-left">{{ 'login:left_side:title:foot' | translate }}</p>
+			<div class="row justify-content-center content-items-left">
+				<div class="col-3 text-center">
+					<img src="assets/images/login/instapay-white.png" class="block center item-img-left" border="0">
+					<p class="small-text color-white text-center">{{ 'login:left_side:icons:instapay' | translate }}</p>
+				</div>
+				<div class="col-3">
+					<img src="assets/images/login/planner-white.png" class="block center item-img-left" border="0">
+					<p class="small-text color-white text-center">{{ 'login:left_side:icons:route_planner' | translate }}</p>
+				</div>
+				<div class="col-3">
+					<img src="assets/images/login/truck-white.png" class="block center item-img-left" border="0">
+					<p class="small-text color-white text-center">{{ 'login:left_side:icons:truck_posting' | translate }}</p>
+				</div>
+				<div class="col-3">
+					<img src="assets/images/login/alert-white.png" class="block center item-img-left" border="0">
+					<p class="small-text color-white text-center">{{ 'login:left_side:icons:loads_alerts' | translate }}</p>
+				</div>
+			</div>
+			<div class="full-width text-center">
+				<a ui-sref="public.signup" ui-sref-opts="{ reload: true }" class="btn btn-class1 bg-color-2 color-white">{{ 'login:left_side:btn:create_an_account' | translate }}</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="right_panel_login" class="col col-md-5 pull-l full-height">
+	<div class="row justify-content-center align-items-center full-height">
+		<div class="col-9">
+			<div class="full-width text-center content-logo-login">
+				<img src="assets/images/common/logo.png">
+			</div>
+			<p class="title-login large-title bold">{{ 'login:right_side:title' | translate }}</p>
+			<p class="subtitle-login small-text">{{ 'login:right_side:subtitle' | translate }}</p>
+			<form method="post" id=loginFormId name="loginFormName" ng-submit="login.doLogin(loginFormName)" novalidate>
+				<div class="form-group">
+					<label class="bold uppercase-text">{{ 'login:right_side:fields:email' | translate }}</label>
+					<input type="email" name="email" class="form-control" ng-model="login.credentials.email" placeholder='{{ "login:right_side:fields:email:placeholder" | translate }}' required autofocus>
+				</div>
+				<div class="form-group">
+					<label class="bold uppercase-text">{{ 'login:right_side:fields:password' | translate }}</label>
+					<input type="password" name="password" class="form-control" ng-model="login.credentials.password" placeholder='{{ "login:right_side:fields:password:placeholder" | translate }}' required>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-6">
+							<a ui-sref="public.forgotpassword" ui-sref-opts="{ reload: true }" class="small-text normal-link">{{ 'login:right_side:link:forgot_pass' | translate }}</a>
+						</div>
+						<div class="col-6 text-right">
+							<button type="submit" class="btn btn-class1 bg-color-1 color-white btn-login">{{ 'login:right_side:btn:login' | translate }}</button>
+						</div>
+					</div>
+				</div>
+				<div class="form-group text-right">
+					<span class="small-text">{{ 'login:right_side:msg:sign_up' | translate }} </span>
+					<a ui-sref="public.signup" ui-sref-opts="{ reload: true }" class="small-text normal-link color-saint-juan">{{ 'login:right_side:link:sign_up' | translate }}</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

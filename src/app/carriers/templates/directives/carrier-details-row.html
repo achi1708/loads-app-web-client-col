@@ -1,0 +1,63 @@
+<div class="details-table-row"> 
+	<ul class="nav name-calification-details">
+		<li class="nav-item">
+			<h3 class="title-carrier-details">{{carrierData.carrier.company_name}}</h3>
+		</li>
+		<li ng-if="carrierData.carrier_info.user.user_votes.length" class="nav-item">
+			<span ng-class="carrierData.carrier_info.user.user_votes[0].total_prom >= 1 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+			<span ng-class="carrierData.carrier_info.user.user_votes[0].total_prom >= 2 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+			<span ng-class="carrierData.carrier_info.user.user_votes[0].total_prom >= 3 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+			<span ng-class="carrierData.carrier_info.user.user_votes[0].total_prom >= 4 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+			<span ng-class="carrierData.carrier_info.user.user_votes[0].total_prom >= 5 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+		</li>
+		<li ng-if="!carrierData.carrier_info.user.user_votes.length" class="nav-item">
+			<span class="fa fa-star-o"></span>
+			<span class="fa fa-star-o"></span>
+			<span class="fa fa-star-o"></span>
+			<span class="fa fa-star-o"></span>
+			<span class="fa fa-star-o"></span>
+		</li>
+	</ul>
+	<div class="row">
+		<div class="col col-md-3 text-center">
+			<img ng-if="carrierData.img_perfil_carrier" ng-src="{{carrierData.img_perfil_carrier[0]['imagen-60']}}" class="img-fluid" border="0">
+			<p class="foot-carrier-pic">
+				<span class="fa fa-phone vertical-middle"></span> <a class="regular-text normal-link">{{carrierData.carrier_info.phone_company}}</a>
+			</p>	
+		</div>
+		<div class="col col-md-9 carrier-items-data">
+			<div class="row parrafo">
+				<div class="col col-sm-3">
+					<div class="form-group">
+						<label>Corp number</label>
+						<p>{{carrierData.carrier_info.corp_number}}</p>
+					</div>
+					<div class="form-group">
+						<label>Dot number</label>
+						<p>{{carrierData.carrier_info.dot_number}}</p>
+					</div>
+					<div class="form-group">
+						<label>Mc number</label>
+						<p>{{carrierData.carrier_info.mc_number}}</p>
+					</div>
+					<div class="form-group">
+						<label>Insurance police</label>
+						<p>{{carrierData.carrier_info.bond_insurance_policy_num}}</p>
+					</div>
+				</div>
+				<div class="col col-sm-9">
+					<h3 class="title-carrier-details">Trucks availables</h3>
+					<ul ng-if="carrierData.truck_results.length" class="nav flex-column carrier-drivers-list">
+						<li ng-click="openTruckModal(truck.id)" ng-repeat="truck in carrierData.truck_results" class="nav-item">
+							<div class="img-truck">
+								<img ng-if="truck.img_truck_imagenes[0]['imagen-60']" ng-src="{{truck.img_truck_imagenes[0]['imagen-60']}}" class="img-fluid rounded-circle" border="0">
+							</div>
+							<span class="truck-name-table">{{truck.brand}} {{truck.model}} {{truck.dimension}}</span>
+							<span class="driver-name-table">Driven by {{truck.driver.user.user_first_name}} {{truck.driver.user.user_last_name}}</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

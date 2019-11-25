@@ -1,0 +1,127 @@
+<div class="modal-body" id="truck-assigned-modal">
+	<h3 class="title-modal text-left">{{ 'modals:truck_assigned:title' | translate }}</h3>
+	<main-loader ng-if="truckassignedinfo.loadingInfo && !truckassignedinfo.finalTruckData"></main-loader>
+	<p ng-if="!truckassignedinfo.loadingInfo && !truckassignedinfo.finalTruckData" class="parrafo">{{ 'modals:truck_assigned:empty_info' | translate }}</p>
+	<div ng-if="!truckassignedinfo.loadingInfo && truckassignedinfo.finalTruckData" class="full-width">
+		<ul ng-if="truckassignedinfo.finalTruckData.id" class="nav name-calification-details">
+			<li class="nav-item">
+				<h5 style="margin-right:15px;" class="title-truck-details">{{truckassignedinfo.finalTruckData.brand}} {{truckassignedinfo.finalTruckData.model}}</h5>
+			</li>
+			<li ng-if="truckassignedinfo.finalTruckData.driver.user.user_votes.length" class="nav-item">
+				<span ng-class="truckassignedinfo.finalTruckData.driver.user.user_votes[0].total_prom >= 1 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+				<span ng-class="truckassignedinfo.finalTruckData.driver.user.user_votes[0].total_prom >= 2 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+				<span ng-class="truckassignedinfo.finalTruckData.driver.user.user_votes[0].total_prom >= 3 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+				<span ng-class="truckassignedinfo.finalTruckData.driver.user.user_votes[0].total_prom >= 4 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+				<span ng-class="truckassignedinfo.finalTruckData.driver.user.user_votes[0].total_prom >= 5 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+			</li>
+			<li ng-if="!truckassignedinfo.finalTruckData.driver.user.user_votes.length" class="nav-item">
+				<span class="fa fa-star-o"></span>
+				<span class="fa fa-star-o"></span>
+				<span class="fa fa-star-o"></span>
+				<span class="fa fa-star-o"></span>
+				<span class="fa fa-star-o"></span>
+			</li>
+		</ul>
+		<div ng-if="truckassignedinfo.finalTruckData.id" class="row parrafo">
+			<div class="col col-md-12">
+				<img ng-if="truckassignedinfo.finalTruckData.imagenes_trucks" ng-src="{{truckassignedinfo.finalTruckData.imagenes_trucks[0]['imagen-60']}}" class="img-fluid pull-left" border="0">
+				<p class="foot-truck-pic" style="margin-left:75px;">{{ 'trucks:details:loads_delivered:title' | translate }}: {{truckassignedinfo.finalTruckData.Loads_Transported}}</p>	
+			</div>
+		</div>
+		<div ng-if="truckassignedinfo.finalTruckData.id" class="row">
+			<div class="col truck-items-data">
+				<div class="row">
+					<div class="col col-sm-6">
+						<label class="small-text no-margin">{{ 'trucks:details:brand:title' | translate }}</label>
+						<p ng-if="truckassignedinfo.finalTruckData.brand">{{truckassignedinfo.finalTruckData.brand}}</p>
+						<p ng-if="!truckassignedinfo.finalTruckData.brand">---</p>
+					</div>
+					<div class="col col-sm-6">
+						<label class="small-text no-margin">{{ 'trucks:details:model:title' | translate }}</label>
+						<p ng-if="truckassignedinfo.finalTruckData.model">{{truckassignedinfo.finalTruckData.model}}</p>
+						<p ng-if="!truckassignedinfo.finalTruckData.model">---</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-sm-6">
+						<label class="small-text no-margin">{{ 'trucks:details:year:title' | translate }}</label>
+						<p ng-if="truckassignedinfo.finalTruckData.year">{{truckassignedinfo.finalTruckData.year}}</p>
+						<p ng-if="!truckassignedinfo.finalTruckData.year">---</p>
+					</div>
+					<div class="col col-sm-6">
+						<label class="small-text no-margin">{{ 'trucks:details:plate:title' | translate }}</label>
+						<p ng-if="truckassignedinfo.finalTruckData.plate">{{truckassignedinfo.finalTruckData.plate}}</p>
+						<p ng-if="!truckassignedinfo.finalTruckData.plate">---</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-sm-6">
+						<label class="small-text no-margin">{{ 'trucks:details:driven_by:title' | translate }}</label>
+						<p ng-if="truckassignedinfo.finalTruckData.driver.user.user_first_name || truckassignedinfo.finalTruckData.driver.user.user_last_name">{{truckassignedinfo.finalTruckData.driver.user.user_first_name}} {{truckassignedinfo.finalTruckData.driver.user.user_last_name}}</p>
+						<p ng-if="!truckassignedinfo.finalTruckData.driver.user.user_first_name && !truckassignedinfo.finalTruckData.driver.user.user_last_name">---</p>
+					</div>
+					<div class="col col-sm-6">
+						<label class="small-text no-margin">{{ 'trucks:details:trailer_type:title' | translate }}</label>
+						<p ng-if="truckassignedinfo.finalTruckData.truck_type.truck_type_name">{{truckassignedinfo.finalTruckData.truck_type.truck_type_name}}</p>
+						<p ng-if="!truckassignedinfo.finalTruckData.truck_type.truck_type_name">---</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-sm-6">
+						<label class="small-text no-margin">{{ 'trucks:details:length:title' | translate }}</label>
+						<p ng-if="truckassignedinfo.finalTruckData.length">{{truckassignedinfo.finalTruckData.length}}</p>
+						<p ng-if="!truckassignedinfo.finalTruckData.length">---</p>
+					</div>
+					<div class="col col-sm-6">
+						<label class="small-text no-margin">{{ 'trucks:details:weight:title' | translate }}</label>
+						<p ng-if="truckassignedinfo.finalTruckData.weight">{{truckassignedinfo.finalTruckData.weight}}</p>
+						<p ng-if="!truckassignedinfo.finalTruckData.weight">---</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-sm-6">
+						<label class="small-text no-margin">{{ 'trucks:details:size:title' | translate }}</label>
+						<p ng-if="truckassignedinfo.finalTruckData.size">{{truckassignedinfo.finalTruckData.size}}</p>
+						<p ng-if="!truckassignedinfo.finalTruckData.size">---</p>
+					</div>
+					<div class="col col-sm-6">
+						<label class="small-text no-margin">{{ 'trucks:details:skills:title' | translate }}</label>
+						<p>{{truckassignedinfo.finalTruckData.SkillsTruckText}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-sm-6">
+						<label class="small-text no-margin">{{ 'trucks:details:capacity:title' | translate }}</label>
+						<p ng-if="truckassignedinfo.finalTruckData.truck_capacity.capacity_name">{{truckassignedinfo.finalTruckData.truck_capacity.capacity_name}}</p>
+						<p ng-if="!truckassignedinfo.finalTruckData.truck_capacity.capacity_name">---</p>
+					</div>
+					<div class="col col-sm-6">
+						<label class="small-text no-margin">{{ 'trucks:details:max_distance:title' | translate }}</label>
+						<p ng-if="truckassignedinfo.finalTruckData.max_distance">{{truckassignedinfo.finalTruckData.max_distance}}</p>
+						<p ng-if="!truckassignedinfo.finalTruckData.max_distance">---</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-sm-6">
+						<label class="small-text no-margin">{{ 'trucks:details:availiability:title' | translate }}</label>
+						<p>{{truckassignedinfo.finalTruckData.AvailabilityTruckText}}</p>
+					</div>
+					<div class="col col-sm-6">
+						<a ng-click="truckassignedinfo.goToTruckLoads()" class="small-text normal-link load-search-lessf pointer">
+							{{ 'trucks:details:truck_loads:title' | translate }}
+						</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-sm-12 relative">
+						<div class="truck-item-large">
+							<label class="small-text no-margin">{{ 'trucks:details:additional_info:title' | translate }}</label>
+							<p ng-if="truckassignedinfo.finalTruckData.additional_info">{{truckassignedinfo.finalTruckData.additional_info}}</p>
+							<p ng-if="!truckassignedinfo.finalTruckData.additional_info">---</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

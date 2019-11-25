@@ -1,0 +1,40 @@
+#page-section-help{
+	.header-help-about{
+		@include margin-top(35px);
+		@include margin-bottom(80px);
+		img{
+			@include margin-bottom($spacing3_value);
+		}
+		h5{
+			@include margin-bottom($spacing2_value);
+		}
+	}
+	.content-faq-help{
+		.large-title{
+			@include margin-bottom(15px);
+		}
+		.title-regular-text{
+			@extend .bold;
+			@include margin-top(10px);
+			@include margin-bottom(15px);
+			&.without-margin{
+				@include margin-top(0px);
+			}
+		}
+		.help-accordion-title{
+			@include padding-top(10px);
+			@include padding-bottom(10px);
+			@include padding-left(5px);
+			@include padding-right(5px);
+			@include margin-bottom(10px);
+			border-top: 1px solid;
+			border-bottom: 1px solid;
+		}
+		.content-btn-contact-us{
+			@include margin-top($spacing2_value);
+		}
+		#accordion{
+			max-width:950px;
+		}
+	}
+}

@@ -1,0 +1,112 @@
+<div class="modal-body" id="carrier-search-modal">
+	<h3 class="title-modal text-left">{{ 'modals:search_carrier:title' | translate }}</h3>
+	<form novalidate>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-12">
+					<label class="title-field">{{ 'modals:search_carrier:fields:company:title' | translate }}</label>
+					<input id="company" ng-model="searchcarrier.searchData.company" name="company" type="text" placeholder='' class="form-control input-md" required>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-12 col-sm-8">
+					<label class="title-field">{{ 'modals:search_carrier:fields:trailer_type:title' | translate }}</label>
+					<select name="trailer_type" id="trailer_type" ng-model="searchcarrier.searchData.trailer_type" class="form-control input-md">
+						<option ng-repeat="option in searchcarrier.itemsSizeLenLoads.Trucktypes_list" value="{{option.id}}">{{option.truck_type_name}}</option>
+					</select>
+				</div>
+				<div class="col-12 col-sm-4">
+					<label class="title-field">{{ 'modals:search_carrier:fields:length:title' | translate }}</label>
+					<input type="number" name="length" class="form-control" ng-model="searchcarrier.searchData.len" placeholder='' >
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row align-items-center">
+				<div class="col-12 col-sm-4">
+					<label class="title-field">{{ 'modals:search_carrier:fields:weight:title' | translate }}</label>
+					<input type="number" name="wei" class="form-control" ng-model="searchcarrier.searchData.wei" placeholder='' >
+				</div>
+				<div class="col-12 col-sm-4">
+					<label class="title-field">{{ 'modals:search_carrier:fields:size:title' | translate }}</label>
+					<select name="size" id="size" ng-model="searchcarrier.searchData.size" class="form-control input-md">
+						<option ng-repeat="option in searchcarrier.itemsSizeLenLoads.TruckCapacity_list" value="{{option.id}}">{{option.capacity_name}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row align-items-center">
+				<div class="col-12">
+					<label class="title-field">{{ 'modals:search_carrier:fields:skills:title' | translate }}</label>
+					<ul class="list-checks">
+						<li ng-repeat="skill in searchcarrier.skillList">
+							<input type="checkbox" id="{{skill.name}}" name="{{skill.name}}" ng-model="skill.checked" class="custom-checkbox" />
+							<label for="{{skill.name}}"><span></span>{{skill.name}}</label>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row align-items-center">
+				<div class="col-12 col-sm-8">
+					<label class="title-field">{{ 'modals:search_load:fields:review:title' | translate }}</label>
+					<div class="clearfix"></div>
+					<ul class="nav reviews-calification">
+						<li class="nav-item">
+							<span ng-class="{'fa-star': hover1 || hover2 || hover3 || hover4 || hover5 || searchcarrier.searchData.reviews >= 1, 'fa-star-o': !hover1 && !hover2 && !hover3 && !hover4 && !hover5 && searchcarrier.searchData.reviews < 1}"
+								  ng-init="hover1 = false"
+								  ng-mouseenter="hover1 = true"
+								  ng-mouseleave="hover1 = false" 
+								  ng-click="searchcarrier.setReview('1')" class="fa"></span>
+						</li>
+						<li class="nav-item">
+							<span ng-class="{'fa-star': hover2 || hover3 || hover4 || hover5 || searchcarrier.searchData.reviews >= 2, 'fa-star-o': !hover2 && !hover3 && !hover4 && !hover5 && searchcarrier.searchData.reviews < 2}"
+								  ng-init="hover2 = false"
+								  ng-mouseenter="hover2 = true"
+								  ng-mouseleave="hover2 = false" 
+								  ng-click="searchcarrier.setReview('2')" class="fa"></span>
+						</li>
+						<li class="nav-item">
+							<span ng-class="{'fa-star': hover3 || hover4 || hover5 || searchcarrier.searchData.reviews >= 3, 'fa-star-o': !hover3 && !hover4 && !hover5 && searchcarrier.searchData.reviews < 3}"
+								  ng-init="hover3 = false"
+								  ng-mouseenter="hover3 = true"
+								  ng-mouseleave="hover3 = false" 
+								  ng-click="searchcarrier.setReview('3')" class="fa"></span>
+						</li>
+						<li class="nav-item">
+							<span ng-class="{'fa-star': hover4 || hover5 || searchcarrier.searchData.reviews >= 4, 'fa-star-o': !hover4 && !hover5 && searchcarrier.searchData.reviews < 4}"
+								  ng-init="hover4 = false"
+								  ng-mouseenter="hover4 = true"
+								  ng-mouseleave="hover4 = false" 
+								  ng-click="searchcarrier.setReview('4')" class="fa"></span>
+						</li>
+						<li class="nav-item">
+							<span ng-class="{'fa-star': hover5 || searchcarrier.searchData.reviews >= 5, 'fa-star-o': !hover5 && searchcarrier.searchData.reviews < 5}"
+								  ng-init="hover5 = false"
+								  ng-mouseenter="hover5 = true"
+								  ng-mouseleave="hover5 = false" 
+								  ng-click="searchcarrier.setReview('5')" class="fa"></span>
+						</li>
+						<li class="nav-item">
+							<a ng-click="searchcarrier.setReview('0')" class="small-text normal-link load-search-lessf pointer">Reset review</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row align-items-center justify-content-end">
+				<div class="col-12 col-sm-4">
+					<button ng-click="searchcarrier.resetDataFormSearch()" class="btn btn-class1 bg-color-white color-saint-juan">{{ 'modals:search_carrier:reset_filters:btn' | translate }}</button>
+				</div>
+				<div class="col-12 col-sm-4">
+					<button ng-click="searchcarrier.sendDataFormSearch()" class="btn btn-class1 bg-color-1 color-white">{{ 'modals:search_carrier:search:btn' | translate }}</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

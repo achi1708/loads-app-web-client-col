@@ -1,0 +1,195 @@
+<div id="page-section-post-load" class="page-section page-section-with-margin col bg-color-white">
+	<h3 class="large-title title-section">{{ 'loads:add:section:title' | translate }}</h3>
+	<form method="post" id=postLoadFormId name="postLoadFormName" ng-submit="loadsadd.save(postLoadFormName)" novalidate>
+		<div class="row">
+			<div class="col-12 col-sm-9">
+				<h3 class="large-title subtitle-section">{{ 'loads:add:form:section:basic_information:title' | translate }}</h3>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-6">
+							<label>{{ 'loads:add:form:origin:text' | translate }}</label>
+							<span class="help-inline" ng-show="postLoadFormName.origin.$error.required">*</span>
+							<input type="text" name="origin" class="form-control" g-places-autocomplete options="loadsadd.optionsGoogleInputCity" force-selection="true" ng-model="loadsadd.dataSelectPickupCity" placeholder='{{ "loads:add:form:origin:text" | translate }}' autocomplete="off" required>
+						</div>
+						<div class="col-6">
+							<label>{{ 'loads:add:form:destination:text' | translate }}</label>
+							<span class="help-inline" ng-show="postLoadFormName.destination.$error.required">*</span>
+							<input type="text" name="destination" class="form-control" g-places-autocomplete options="loadsadd.optionsGoogleInputCity" force-selection="true" ng-model="loadsadd.dataSelectDeliveryCity" placeholder='{{ "loads:add:form:destination:text" | translate }}' autocomplete="off" required>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-6">
+							<label>{{ 'loads:add:form:pickup_address:text' | translate }}</label>
+							<span class="help-inline" ng-show="postLoadFormName.pickup_address.$error.required">*</span>
+							<input type="text" name="pickup_address" class="form-control" g-places-autocomplete force-selection="true" ng-model="loadsadd.dataSelectPickupAddress" ng-blur="loadsadd.checkOriginZip()" placeholder='{{ "loads:add:form:pickup_address:text" | translate }}' autocomplete="off" required>
+						</div>
+						<div class="col-6">
+							<label>{{ 'loads:add:form:delivery_address:text' | translate }}</label>
+							<span class="help-inline" ng-show="postLoadFormName.delivery_address.$error.required">*</span>
+							<input type="text" name="delivery_address" class="form-control" g-places-autocomplete force-selection="true" ng-model="loadsadd.dataSelectDeliveryAddress" ng-blur="loadsadd.checkDestinationZip()" placeholder='{{ "loads:add:form:delivery_address:text" | translate }}' autocomplete="off" required>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-6">
+							<label>{{ 'loads:add:form:details_pickup_address:text' | translate }}</label>
+							<input type="text" name="detail_address_pickup" class="form-control" ng-model="loadsadd.dataNewLoad.detail_address_pickup" placeholder='{{ "loads:add:form:details_pickup_address:text" | translate }}'>
+						</div>
+						<div class="col-6">
+							<label>{{ 'loads:add:form:details_delivery_address:text' | translate }}</label>
+							<input type="text" name="detail_address_delivery" class="form-control" ng-model="loadsadd.dataNewLoad.detail_address_delivery" placeholder='{{ "loads:add:form:details_delivery_address:text" | translate }}'>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-6 col-sm-3">
+							<label>{{ 'loads:add:form:pickup_date:text' | translate }}</label>
+							<span class="help-inline" ng-show="postLoadFormName.pickup_date.$error.required">*</span>
+							<input ng-blur="loadsadd.allowDeliveryDate()" date-range-picker type="text" name="pickup_date" class="form-control date-picker" ng-model="loadsadd.dataNewLoad.pickup_date" placeholder='{{ "loads:add:form:pickup_date:text" | translate }}' options="loadsadd.optsDatePicker" min="loadsadd.datePickerMinDate" required>
+						</div>
+						<div class="col-6 col-sm-3">
+							<label>{{ 'loads:add:form:delivery_date:text' | translate }}</label>
+							<span class="help-inline" ng-show="postLoadFormName.delivery_date.$error.required">*</span>
+							<input ng-disabled="loadsadd.dateDeliveryDisabled" date-range-picker type="text" name="delivery_date" class="form-control date-picker" ng-model="loadsadd.dataNewLoad.delivery_date" placeholder='{{ "loads:add:form:delivery_date:text" | translate }}' options="loadsadd.optsDatePicker" min="loadsadd.dataNewLoad.pickup_date" required>
+						</div>
+						<div class="col-6 col-sm-3">
+							<label>{{ 'loads:add:form:pickup_zip:text' | translate }}</label>
+							<span class="help-inline" ng-show="postLoadFormName.pickup_zip.$error.required">*</span>
+							<input type="text" name="pickup_zip" class="form-control" ng-model="loadsadd.dataNewLoad.zip_code_pickup" placeholder='{{ "loads:add:form:pickup_zip:text" | translate }}' required>
+						</div>
+						<div class="col-6 col-sm-3">
+							<label>{{ 'loads:add:form:delivery_zip:text' | translate }}</label>
+							<span class="help-inline" ng-show="postLoadFormName.delivery_zip.$error.required">*</span>
+							<input type="text" name="delivery_zip" class="form-control" ng-model="loadsadd.dataNewLoad.zip_code_delivery" placeholder='{{ "loads:add:form:delivery_zip:text" | translate }}' required>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-6 col-sm-3">
+							<label>{{ 'loads:add:form:price:text' | translate }}</label>
+							<span class="help-inline" ng-show="postLoadFormName.price.$error.required">*</span>
+							<input type="text" name="price" class="form-control" ng-model="loadsadd.dataNewLoad.price" placeholder='{{ "loads:add:form:price:text" | translate }}' required>
+						</div>
+					</div>
+				</div>
+				<h3 class="large-title subtitle-section">{{ 'loads:add:form:section:technical_information:title' | translate }}</h3>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-6 col-sm-4">
+							<label>{{ 'loads:add:form:length:text' | translate }} {{'loads:add:form:length:only_number:text' | translate}}</label>
+							<span class="help-inline" ng-show="postLoadFormName.length.$error.required || (postLoadFormName.length.$viewValue <= 0)">*</span>
+							<input ng-blur="loadsadd.cleanLoadLengthValue()" type="number" name="length" class="form-control" ng-model="loadsadd.dataNewLoad.lenght" placeholder='{{ "loads:add:form:length:text" | translate }}' required>
+						</div>
+						<div class="col-6 col-sm-4">
+							<label>{{ 'loads:add:form:weight:text' | translate }} {{'loads:add:form:weight:only_number:text' | translate}}</label>
+							<span class="help-inline" ng-show="postLoadFormName.weight.$error.required || (postLoadFormName.weight.$viewValue <= 0)">*</span>
+							<input ng-blur="loadsadd.cleanLoadWeightValue()" type="number" name="weight" class="form-control" ng-model="loadsadd.dataNewLoad.weight" placeholder='{{ "loads:add:form:weight:text" | translate }}' required>
+						</div>
+						<div class="col-6 col-sm-4">
+							<label>{{ 'loads:add:form:size:text' | translate }}</label>
+							<span class="help-inline" ng-show="postLoadFormName.dimension.$error.required">*</span>
+							<select name="dimension" id="dimension" ng-model="loadsadd.dataNewLoad.dimension" class="form-control input-md" required>
+								<option ng-repeat="option in loadsadd.itemsSizeLenLoads.LoadsSize_list" value="{{option.id}}">{{option.name}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col">
+							<label>{{ 'loads:add:form:load_type:text' | translate }}</label>
+							<span class="help-inline" ng-show="postLoadFormName.load_type_select.$error.required">*</span>
+							<select name="load_type_select" id="load_type_select" ng-model="loadsadd.dataNewLoad.load_type_select" class="form-control input-md" required>
+								<option ng-repeat="option in loadsadd.loadTypeList" value="{{option.id}}">{{option.name}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col">
+							<label>{{ 'loads:add:form:carrier_skills_required:text' | translate }}</label>
+							<span class="help-inline" ng-show="loadsadd.carrierSkillsRequired">*</span>
+							<ul class="list-checks">
+								<li ng-repeat="carrierskill in loadsadd.skillsRequiredCarrier">
+									<input type="checkbox" id="{{carrierskill.name}}" name="{{carrierskill.name}}" ng-model="carrierskill.checked" class="custom-checkbox" />
+									<label for="{{carrierskill.name}}"><span></span>{{carrierskill.name}}</label>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col">
+							<label>{{ 'loads:add:form:truck_type_required:text' | translate }}</label>
+							<span class="help-inline" ng-show="postLoadFormName.tipodecamion.$error.required">*</span>
+							<select name="tipodecamion" id="tipodecamion" ng-model="loadsadd.truckTypeRequired" class="form-control input-md" required>
+								<option value="">{{ 'loads:add:form:select:any' | translate }}</option>
+								<option ng-repeat="option in loadsadd.itemsSizeLenLoads.TipoDeCamion_list" value="{{option.idtipo_de_camion}}">{{option.name_tc}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col">
+							<label>{{ 'loads:add:form:trailer_type_required:text' | translate }}</label>
+							<span class="help-inline" ng-show="postLoadFormName.tipodetrailer.$error.required">*</span>
+							<select name="tipodetrailer" id="tipodetrailer" ng-model="loadsadd.trailerTypeRequired" class="form-control input-md" required>
+								<option value="">{{ 'loads:add:form:select:any' | translate }}</option>
+								<option ng-repeat="option in loadsadd.itemsSizeLenLoads.TipoDeTrailer_list" value="{{option.id}}">{{option.name_ti}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<h3 class="large-title subtitle-section">{{ 'loads:add:form:section:load_type:title' | translate }}</h3>
+				<div class="form-group">
+					<input type="checkbox" class="custom-checkbox" id="recurrent_load" name="recurrent_load" ng-model="loadsadd.dataNewLoad.frecuency_active" ng-true-value="1" ng-false-value="0">
+					<label for="recurrent_load"><span></span>{{ 'loads:add:form:frecuency_active:text' | translate }}</label>
+				</div>
+				<div ng-if="loadsadd.dataNewLoad.frecuency_active == 1" class="form-group">
+					<div class="row">
+						<div class="col-6 col-sm-3">
+							<label>{{ 'loads:add:form:frecuency_id:text' | translate }}</label>
+							<span class="help-inline" ng-show="postLoadFormName.load_type.$error.required">*</span>
+							<select name="load_type" id="load_type" ng-model="loadsadd.dataNewLoad.frecuency_id" class="form-control input-md" required>
+								<option value="">{{ 'loads:add:form:select:any' | translate }}</option>
+								<option ng-repeat="option in loadsadd.itemsSizeLenLoads.FrecuencyLoads_list" value="{{option.id}}">{{option.name}}</option>
+							</select>
+						</div>
+						<div ng-if="loadsadd.dataNewLoad.frecuency_id == 6" class="col-6 col-sm-3">
+							<label>{{ 'loads:add:form:frecuency_data:text' | translate }}</label>
+							<span class="help-inline" ng-show="postLoadFormName.frecuency_data.$error.required">*</span>
+							<input date-range-picker type="text" name="frecuency_data" class="form-control" ng-model="loadsadd.dataNewLoad.frecuency_data" options="loadsadd.optsDatePicker" required>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>{{ 'loads:add:form:comments:text' | translate }}</label>
+					<textarea class="form-control" name="additional_information" ng-model="loadsadd.dataNewLoad.load_comments" placeholder="{{ 'loads:add:form:comments:text' | translate }}"></textarea>
+				</div>
+			</div>
+			<div class="col-12 col-sm-3">
+				
+			</div>
+		</div>
+		<div class="row main-botonera">
+			<div class="col-12 col-sm-9">
+				<button ng-disabled="loadsadd.savingNewLoad" type="submit" class="btn btn-class1 bg-color-1 color-white">{{ 'loads:add:form:btn:save_post_next' | translate }}</button>
+				<a ng-disabled="loadsadd.savingNewLoad" ng-click="loadsadd.submitReturnListFunc(postLoadFormName)" class="normal-link small-text">{{ 'loads:add:form:btn:save_return_list' | translate }}</a>
+			</div>
+			<div class="col-12 col-sm-3 text-right">
+				<a ng-if="!loadsadd.savingNewLoad" ui-sref="private.loads" ui-sref-opts="{ reload: true }" class="normal-link small-text cancel-post-link">{{ 'loads:add:form:btn:cancel' | translate }}</a>
+			</div>
+		</div>
+	</form>
+</div>

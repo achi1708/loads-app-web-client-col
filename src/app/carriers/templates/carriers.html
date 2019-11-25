@@ -1,0 +1,102 @@
+<div id="page-section-carriers" class="page-section col">
+	<total-items></total-items>
+	<div class="col content-carrier-list bg-color-white">
+		<h3 class="large-title title-section">{{ 'carriers:section:title' | translate }}</h3>
+		<div class="row">
+			<ul class="nav nav-tabs nav-tabs-full-w" role="tablist">
+			  <li class="nav-item">
+			    <a ng-class="{active: carriers.tabList == 'all' }" ng-click="carriers.resetAllFilters()" class="nav-link" data-toggle="tab" role="tab">{{ 'carriers:list:all:title' | translate }}</a>
+			  </li>
+			  <li class="nav-item">
+			    <a ng-class="{active: carriers.tabList == 'my_search' }" ng-click="carriers.searchWithParams()" class="nav-link" data-toggle="tab" role="tab">{{ 'carriers:list:my_search:title' | translate }}</a>
+			  </li>
+			</ul>
+		</div>
+		<div class="tab-content tab-content-full-w">
+			<div class="tab-pane active" id="content_carriers_tab" role="tabpanel">
+				<!--<p ng-if="carriers.loadingCarrierData">{{ 'table:loading_data:text' | translate }}</p>
+		  		<p ng-if="!carriers.loadingCarrierData && !carriers.carriersList.length">{{ 'carriers:list:empty:text' | translate }}</p>-->
+				<div class="full-width content-tableData">
+					<table datatable="" dt-options="carriers.datatableOptions" class="tableDataSort" dt-columns="carriers.dtColumns" width="100%" border="0">
+						<thead>
+							<tr>
+								<th>{{ 'carriers:table:column:image' | translate }}</th>
+								<th>{{ 'carriers:table:column:carrier' | translate }}</th>
+								<th>{{ 'carriers:table:column:transported' | translate }}</th>
+								<th>{{ 'carriers:table:column:transit' | translate }}</th>
+								<th>{{ 'carriers:table:column:trucks' | translate }}</th>
+								<th width="10%">{{ 'carriers:table:column:skills' | translate }}</th>
+								<th>{{ 'carriers:table:column:reviews' | translate }}</th>
+								<th>{{ 'carriers:table:column:contact' | translate }}</th>
+								<th>{{ 'carriers:table:column:actions' | translate }}</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat-start="carrier in carriers.carriersList">
+								<td>
+									<img ng-if="carrier.img_perfil_carrier" ng-src="{{carrier.img_perfil_carrier[0]['imagen-60']}}" width="40" border="0">
+								</td>
+								<td>{{carrier.carrier.company_name}}</td>
+								<td>{{carrier.LoadsTransported}}</td>
+								<td>{{carrier.LoadsTransit}}</td>
+								<td>{{carrier.CantidadTruck}}</td>
+								<td>{{carrier.SkillsCarrierText}}</td>
+								<td ng-if="carrier.carrier.user.user_votes.length">
+									<ul class="nav user-calification">
+										<li class="nav-item">
+											<span ng-class="carrier.carrier.user.user_votes[0].total_prom >= 1 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+										</li>
+										<li class="nav-item">
+											<span ng-class="carrier.carrier.user.user_votes[0].total_prom >= 2 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+										</li>
+										<li class="nav-item">
+											<span ng-class="carrier.carrier.user.user_votes[0].total_prom >= 3 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+										</li>
+										<li class="nav-item">
+											<span ng-class="carrier.carrier.user.user_votes[0].total_prom >= 4 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+										</li>
+										<li class="nav-item">
+											<span ng-class="carrier.carrier.user.user_votes[0].total_prom >= 5 ? 'fa-star' : 'fa-star-o'" class="fa"></span>
+										</li>
+									</ul>
+								</td>
+								<td ng-if="!carrier.carrier.user.user_votes.length">
+									<ul class="nav user-calification">
+										<li class="nav-item">
+											<span class="fa fa-star-o"></span>
+										</li>
+										<li class="nav-item">
+											<span class="fa fa-star-o"></span>
+										</li>
+										<li class="nav-item">
+											<span class="fa fa-star-o"></span>
+										</li>
+										<li class="nav-item">
+											<span class="fa fa-star-o"></span>
+										</li>
+										<li class="nav-item">
+											<span class="fa fa-star-o"></span>
+										</li>
+									</ul>
+								</td>
+								<td>
+									<span class="fa fa-phone vertical-middle"></span>
+									<a href="#" class="small-text normal-link">{{carrier.carrier.phone_company}}</a>
+								</td>
+								<td>
+									<i ng-if="!carrier.expanded" ng-click="carriers.showDetailsUnique(carrier.id)" class="fa fa-angle-down show-load-details-btn"></i>
+									<i ng-if="carrier.expanded" ng-click="carriers.showDetailsUnique(carrier.id)" class="fa fa-angle-up show-load-details-btn"></i>
+								</td>
+							</tr>
+							<tr class="detail-carrier-table" ng-repeat-end>
+								<td ng-if="carrier.expanded" colspan="12" class="no-padding">
+									<carrier-details-row carrier-info=carrier></carrier-details-row>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
