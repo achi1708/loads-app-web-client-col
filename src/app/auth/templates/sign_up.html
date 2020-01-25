@@ -291,6 +291,15 @@
 							</div>
 						</div>
 					</div>
+					<div class="form-group">
+						<div class="row">
+							
+							<div class="col-12">
+								<input type="checkbox" id="{{signup.newUser.tyc.name}}" name="{{signup.newUser.tyc.name}}" ng-model="signup.newUser.tyc.checked" class="custom-checkbox" />
+								<label for="{{signup.newUser.tyc.name}}"><span></span>{{ 'sign_up:form:tyc1:label' | translate }} <a href="http://www.loadsapp.co/tyc-co.pdf" target="_blank">{{ 'sign_up:form:tyc2:label' | translate }}</a> {{ 'sign_up:form:tyc3:label' | translate }} <a href="http://www.loadsapp.co/politica-tratamiento-de-datos-co.pdf" target="_blank">{{ 'sign_up:form:tyc4:label' | translate }}</a></label>
+							</div>
+						</div>
+					</div>
 					<div class="form-group text-right">
 						<button ng-click="signup.comeBackForm()" type="button" class="btn btn-class2 bg-color-white color-saint-juan">{{ 'sign_up:form:back:btn' | translate }}</button>
 						<!--<button ng-if="signup.newUser.profile!='GENERADOR_CARGA'" type="submit" class="btn btn-class2 bg-color-1 color-white">{{ 'sign_up:form:next:btn' | translate }}</button>-->

@@ -54,6 +54,8 @@
         vm.newUser.type_document_number = null;
         vm.newUser.mc_number = null;
         vm.newUser.dot_number = null;
+        vm.newUser.tyc = {name: 'tyc', checked: false};
+
         //campos nuevos para driver
         vm.newUser.name_company = null;
         vm.newUser.type_document_company = null;
@@ -256,6 +258,11 @@
                     toastr.error($filter('translate')('sign_up:form:required:fields:error'));
                     return;
                 }*/
+            }
+
+            if(!vm.newUser.tyc.checked){
+                toastr.error($filter('translate')('sign_up:form:required:fields:error_tyc'));
+                return;
             }
         }
 
